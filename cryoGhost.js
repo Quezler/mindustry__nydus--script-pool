@@ -16,6 +16,7 @@ ts[ts.currentScriptName].function = function(){
           for(i=100;i-->0;){
             const s = Math.random()*100 - 50;
             const t = Math.random()*100 - 50;
+            p.sendMessage("cryo coords: " + p.x+s + ", " + p.y+t);
             Calls.createBullet(
               Bullets.cryoShot,
               Team.crux,
@@ -33,11 +34,13 @@ ts[ts.currentScriptName].function = function(){
         state.running = false;
         break;
       case "status":
-        me().sendMessage(state.running ? "[gree]running" : "[red]stopped");
+        me().sendMessage(state.running ? "[green]running" : "[red]stopped");
         break;
+      case "help":
       default:
         me().sendMessage("[red] invalid action. valid actions are: 'start', 'stop', 'status'");
     }
+    delete action;
   }
 };
 ts[ts.currentScriptName].function();
