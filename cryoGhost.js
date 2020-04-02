@@ -37,6 +37,6 @@ ts[ts.currentScriptName].function = function(){
         "[red] invalid action. valid actions are: 'start', 'stop', 'status'"
     }
   }
-}
+};
 ts[ts.currentScriptName].function();
 
