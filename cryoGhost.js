@@ -13,10 +13,11 @@ ts[ts.currentScriptName].function = function(){
         const task = new java.util.TimerTask() {run(){
           const p = Vars.playerGroup.all().random();
           p.sendMessage("[cyan]cryoghost[orange] >[] oOOoOOoOOOooo");
+          var s = 0;
+          var t = 0;
           for(i=100;i-->0;){
-            const s = Math.random()*100 - 50;
-            const t = Math.random()*100 - 50;
-            p.sendMessage("cryo offsets: " + s + ", " + t);
+            s = Math.random()*100 - 50;
+            t = Math.random()*100 - 50;
             Calls.createBullet(
               Bullets.cryoShot,
               Team.crux,
