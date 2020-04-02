@@ -16,7 +16,7 @@ ts[ts.currentScriptName].function = function(){
           for(i=100;i-->0;){
             const s = Math.random()*100 - 50;
             const t = Math.random()*100 - 50;
-            p.sendMessage("cryo coords: " + p.x+s + ", " + p.y+t);
+            p.sendMessage("cryo offsets: " + s + ", " + t);
             Calls.createBullet(
               Bullets.cryoShot,
               Team.crux,
