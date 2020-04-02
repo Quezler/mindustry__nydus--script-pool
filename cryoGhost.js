@@ -1,8 +1,8 @@
-{
-  // set up the script state
-  if(typeof ts === 'undefined') ts = {};
-  if(typeof ts.cryoGhost === 'undefined') ts.cryoGhost = {};
-  let state = ts.cryoGhost;
+// set up the script state
+if(typeof ts === 'undefined') ts = {}; ts.currentScriptName = "cryoGhost";
+if(typeof ts[currentScriptName] === 'undefined') ts[currentScriptName] = {};
+ts[ts.currentScriptName].function = function(){
+  const state = ts[ts.currentScriptName];
 
   if(typeof action === 'undefined'){
     "[red] no action specified. use action='start'|'stop'|'status'";
@@ -10,7 +10,7 @@
     switch(action){
       case "start":
         try{state.timer.cancel()}catch(e){} // just in case
-        let task = new java.util.TimerTask() {run(){
+        const task = new java.util.TimerTask() {run(){
           const p = Vars.playerGroup.all().random();
           p.sendMessage("[cyan]cryoghost[orange] >[] oOOoOOoOOOooo");
           for(i=100;i-->0;){
@@ -37,4 +37,5 @@
         "[red] invalid action. valid actions are: 'start', 'stop', 'status'"
   }
 }
+ts[ts.currentScriptName].function();
 
