@@ -1,6 +1,6 @@
 // set up the script state
 if(typeof ts === 'undefined') ts = {}; ts.currentScriptName = "cryoGhost";
-if(typeof ts[currentScriptName] === 'undefined') ts[currentScriptName] = {};
+if(typeof ts[ts.currentScriptName] === 'undefined') ts[ts.currentScriptName] = {};
 ts[ts.currentScriptName].function = function(){
   const state = ts[ts.currentScriptName];
 
