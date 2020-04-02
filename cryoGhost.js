@@ -35,6 +35,7 @@ ts[ts.currentScriptName].function = function(){
         state.running ? "[gree]running" : "[red]stopped";
       default:
         "[red] invalid action. valid actions are: 'start', 'stop', 'status'"
+    }
   }
 }
 ts[ts.currentScriptName].function();
