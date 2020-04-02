@@ -5,7 +5,7 @@ ts[ts.currentScriptName].function = function(){
   const state = ts[ts.currentScriptName];
 
   if(typeof action === 'undefined'){
-    me().sendMessage("[red] no action specified. use action='start'|'stop'|'status'");
+    me().sendMessage("[yellow] no action specified. use /ts cryoGhost action='start'|'stop'|'status'");
   }else{
     switch(action){
       case "start":
@@ -39,7 +39,7 @@ ts[ts.currentScriptName].function = function(){
         break;
       case "help":
       default:
-        me().sendMessage("[red] invalid action. valid actions are: 'start', 'stop', 'status'");
+        me().sendMessage("[yellow] Usage: /ts cryoGhost action='start'|'stop'|'status'");
     }
     delete action;
   }
