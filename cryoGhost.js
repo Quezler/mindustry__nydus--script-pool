@@ -5,7 +5,7 @@ ts[ts.currentScriptName].function = function(){
   const state = ts[ts.currentScriptName];
 
   if(typeof action === 'undefined'){
-    "[red] no action specified. use action='start'|'stop'|'status'";
+    me().sendMessage("[red] no action specified. use action='start'|'stop'|'status'");
   }else{
     switch(action){
       case "start":
@@ -14,8 +14,8 @@ ts[ts.currentScriptName].function = function(){
           const p = Vars.playerGroup.all().random();
           p.sendMessage("[cyan]cryoghost[orange] >[] oOOoOOoOOOooo");
           for(i=100;i-->0;){
-            const s = math.Random()*100 - 50;
-            const t = math.Random()*100 - 50;
+            const s = Math.random()*100 - 50;
+            const t = Math.random()*100 - 50;
             Calls.createBullet(
               Bullets.cryoShot,
               Team.crux,
@@ -31,10 +31,12 @@ ts[ts.currentScriptName].function = function(){
       case "stop":
         state.timer.cancel();
         state.running = false;
+        break;
       case "status":
-        state.running ? "[gree]running" : "[red]stopped";
+        me().sendMessage(state.running ? "[gree]running" : "[red]stopped");
+        break;
       default:
-        "[red] invalid action. valid actions are: 'start', 'stop', 'status'"
+        me().sendMessage("[red] invalid action. valid actions are: 'start', 'stop', 'status'");
     }
   }
 };
