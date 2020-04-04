@@ -13,9 +13,10 @@ ts[ts.currentScriptName].function = function(){
       u=unitGroup.get(i);
       if (u.team === team){
                u.kill();
-          }
-    }
-  "Units killed."
-  delete team 
+          };
+    };
+  delete team;  
+  "Units killed.";
+  
 };
 ts[ts.currentScriptName].function();
