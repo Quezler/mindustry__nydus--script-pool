@@ -8,9 +8,8 @@ ts[ts.currentScriptName].function = function(){
   var e = unit.create(me.team);
   e.set(me.x, me.y);
   e.add();
-  delete e;
-  delete me;
+  // clean the arguments
+  delete unit;
 
-  }
 };
 ts[ts.currentScriptname].function();
