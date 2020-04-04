@@ -11,7 +11,9 @@ This way you can also access your script state with js:
 `/js ts.scriptName.somePersistentVariable`.
 
 ```javascript
-// Remember to change `yourScriptName` with the name of your script:
+// Remember to change "yourScriptName"
+// (just the string. the rest is adjusted automatically)
+// with the name of your script:
 if(typeof ts === 'undefined') ts = {}; ts.currentScriptName = "yourScriptName";
 if(typeof ts[ts.currentScriptName] === 'undefined') ts[ts.currentScriptName] = {};
 ts[ts.currentScriptName].function = function(){
