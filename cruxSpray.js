@@ -8,7 +8,7 @@ ts[ts.currentScriptName].function = function(){
 
 
 
-  for(i=0; 1<unitGroup.size; i++) {
+  for(i=0; i < unitGroup.size; i++) {
       u=unitGroup.get(i);
       if (u.team === Team.crux){
                u.kill();
