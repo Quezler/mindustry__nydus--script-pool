@@ -6,8 +6,12 @@ ts[ts.currentScriptName].function = function(){
   const state = ts[ts.currentScriptName];
 
 
- player=((typeof player === 'object') ? me().name : player);
- player=((typeof player === 'undefined') ? me().name : player);
+ if (typeofplayer='undefined'){
+     player = me().name
+ }
+ if (typeofplayer='object') {
+    player = me().name 
+ }
 
  player= Vars.playerGroup.find(boolf(p => p.name.match(player)));
 
