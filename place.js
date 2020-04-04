@@ -2,6 +2,8 @@
 
 team = (typeof team === undefined) ? me().team : team;
 
+String(team);
+
 me().tileOn().setNet(block, team, 0);
 block.placed(me().tileOn());
 
