@@ -14,5 +14,6 @@ ts[ts.currentScriptName].function = function(){
                u.kill();
           }
     }
+  "Units killed."
 };
 ts[ts.currentScriptName].function();
