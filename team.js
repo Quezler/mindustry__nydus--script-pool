@@ -7,6 +7,7 @@ ts[ts.currentScriptName].function = function(){
 
 
  player=((typeof player === 'object') ? me().name : player);
+ player=((typeof player === 'undefined') ? me().name : player);
 
  player= Vars.playerGroup.find(boolf(p => p.name.match(player)));
 
