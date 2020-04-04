@@ -7,4 +7,4 @@ block.placed(me().tileOn());
 
 "placed a [accent]"+ String(block.name) +"[] for team [#"+ String(team.color) +"]"+ String(team) +"[]"
 
-delete team;
+team = undefined
