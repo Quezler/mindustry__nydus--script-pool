@@ -1,6 +1,6 @@
 //Kills all untis of the targetetd team
 // "/ts team=Team.<team>"
-if(typeof ts === 'undefined') ts = {}; ts.currentScriptName = "cruxSpray";
+if(typeof ts === 'undefined') ts = {}; ts.currentScriptName = "teamSpray";
 if(typeof ts[ts.currentScriptName] === 'undefined') ts[ts.currentScriptName] = {};
 ts[ts.currentScriptName].function = function(){
   const state = ts[ts.currentScriptName];
