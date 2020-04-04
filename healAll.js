@@ -12,5 +12,7 @@ ts[ts.currentScriptName].function = function(){
             p.heal();
         }
     }
+    
+    "[green]Healed all[] " + String(me().team) + " [green]players"
 };
 ts[ts.currentScriptName].function();
