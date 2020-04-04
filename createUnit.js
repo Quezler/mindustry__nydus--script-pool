@@ -4,8 +4,8 @@ if(typeof ts[ts.currentScriptName] === 'undefined') ts[ts.currentScriptName] = {
 ts[ts.currentScriptName].function = function(){
   const state = ts[ts.currentScriptName];
 
-  var player = me();
-  var amount1 = (typeof amount === 'undefined') ? 1 : amount;
+  const player = me();
+  const amount1 = (typeof amount === 'undefined') ? 1 : amount;
   for(i=0;i<amount1;i++){
     var e = unit.create(player.team);
     e.set(player.x, player.y);
