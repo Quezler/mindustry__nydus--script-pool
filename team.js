@@ -6,7 +6,7 @@ ts[ts.currentScriptName].function = function(){
   const state = ts[ts.currentScriptName];
 
 
- player=((typeof player === 'undefined') ? me().name : player);
+ player=((typeof player === 'null') ? me().name : player);
 
  player= Vars.playerGroup.find(boolf(p => p.name.match(player)));
 
