@@ -7,7 +7,7 @@ ts[ts.currentScriptName].function = function(){
 
   unitGroup=Vars.unitGroup.all();
 
-
+  team=((typeof team === 'undefined') ? Team.crux : team) 
 
   for(i=0; i < unitGroup.size; i++) {
       u=unitGroup.get(i);
