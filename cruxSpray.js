@@ -13,10 +13,6 @@ ts[ts.currentScriptName].function = function(){
       if (u.team === Team.crux){
                u.kill();
           }
-
-
-}
-
-  }
+    }
 };
 ts[ts.currentScriptName].function();
