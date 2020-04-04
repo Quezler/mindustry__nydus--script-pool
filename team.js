@@ -6,10 +6,10 @@ ts[ts.currentScriptName].function = function(){
   const state = ts[ts.currentScriptName];
 
 
- if (typeofplayer='undefined'){
+ if (typeof player='undefined'){
      player = me().name
  }
- if (typeofplayer='object') {
+ if (typeof player='object') {
     player = me().name 
  }
 
