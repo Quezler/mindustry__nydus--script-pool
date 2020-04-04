@@ -1,7 +1,7 @@
 // "/ts place block=Blocks.coreShard, team=Team.<team>"
 
 //team = (typeof team == undefined) ? me().team : team;
-if (typeof team == undefined) {
+if (team == undefined) {
     team = me().team
 }
 
