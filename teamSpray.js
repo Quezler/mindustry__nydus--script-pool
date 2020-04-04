@@ -16,7 +16,8 @@ ts[ts.currentScriptName].function = function(){
           };
     };
   delete team;  
-  "Units killed.";
+  me().sendMessage("Units killed.");
+  " "
   
 };
 ts[ts.currentScriptName].function();
