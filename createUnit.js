@@ -4,9 +4,9 @@ if(typeof ts[ts.currentScriptName] === 'undefined') ts[ts.currentScriptName] = {
 ts[ts.currentScriptName].function = function(){
   const state = ts[ts.currentScriptName];
 
-  var me = me();
-  var e = unit.create(me.team);
-  e.set(me.x, me.y);
+  var player = me();
+  var e = unit.create(player.team);
+  e.set(player.x, player.y);
   e.add();
   // clean the arguments
   delete unit;
