@@ -1,3 +1,6 @@
 // Heals all allied players.
-Vars.playerGroup.all().each(cons((p)=>If(p.team=me().team){p.heal()}));
-"Players healed.";
+pg = Vars.playerGroup.all()
+for(i=1;i<pg.size,i++) {
+If(pg.get(i).team=me().team){pg.heal()}
+}
+"Players healed."
