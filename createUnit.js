@@ -12,4 +12,4 @@ ts[ts.currentScriptName].function = function(){
   delete unit;
 
 };
-ts[ts.currentScriptname].function();
+ts[ts.currentScriptName].function();
