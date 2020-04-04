@@ -1,4 +1,8 @@
-// "/ts place block=Blocks.coreShard"
-me().tileOn().setNet(block, me().team, 0);
+// "/ts place block=Blocks.coreShard, team=Team.<team>"
+
+if (team === undefined) team = me().team;
+
+me().tileOn().setNet(block, team, 0);
 block.placed(me().tileOn());
-"placed a [accent]"+ block.name +"[] for team [#"+ me().team.color +"]"+ me().team +"[]"
+
+"placed a [accent]"+ block.name +"[] for team [#"+ team.color +"]"+ team +"[]"
