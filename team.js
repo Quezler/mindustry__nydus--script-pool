@@ -1,5 +1,5 @@
 //Switches target players team(defaults to you)
-// "/ts player ="name",team=Team.<team>
+// "/ts player ="name",t=Team.<team>
 if(typeof ts === 'undefined') ts = {}; ts.currentScriptName = "team";
 if(typeof ts[ts.currentScriptName] === 'undefined') ts[ts.currentScriptName] = {};
 ts[ts.currentScriptName].function = function(){
@@ -10,8 +10,8 @@ ts[ts.currentScriptName].function = function(){
 
  player= Vars.playerGroup.find(boolf(p => p.name.match(player)));
 
- player.team=team ;
- delete team;
+ player.team=t ;
+ delete t
  delete player;
  me().sendMessage("Team changed.");
   
