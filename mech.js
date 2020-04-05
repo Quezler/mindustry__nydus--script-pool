@@ -16,6 +16,7 @@ ts[ts.currentScriptName].function = function(){
  player= Vars.playerGroup.find(boolf(p => p.name.match(player)));
 
  player.mech=m ;
+ player.heal();
  delete m;
  delete player;
  me().sendMessage("Mech changed.");
