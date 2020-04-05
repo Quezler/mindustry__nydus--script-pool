@@ -1,5 +1,5 @@
 //Sends all players on the server to the targeted server
-// "/ts invate server="server" port=6567"
+// "/ts invade server="server" port=6567"
 if(typeof ts === 'undefined') ts = {}; ts.currentScriptName = "invade";
 if(typeof ts[ts.currentScriptName] === 'undefined') ts[ts.currentScriptName] = {};
 ts[ts.currentScriptName].function = function(){
