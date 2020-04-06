@@ -36,12 +36,12 @@ ts[ts.currentScriptName].function = function(){
     }
 
     
-    player = Vars.playerGroup.find(boolf(p => p.name.match(p)));
+    player = Vars.playerGroup.find(boolf(p => p.name.match(String(p))));
     server = (typeof s == 'undefined') ? getRandom() : s;
     // player = Vars.playerGroup.find(boolf(p => p.name.match(args[0])));
     // server = args.length > 1 ? parseServer(args[1]) : getRandom();
 
-    if (String(player) == 'null') me().sendMessage(String(player) + "[scarlet] was not found")
+    if (String(player) == 'null') me().sendMessage(String(p) + "[scarlet] was not found")
     else {
         Call.onConnect(player.con, server[0], server[1]);
         me().sendMessage(String(player) + "[cyan] got yeeted to [yellow]" + String(server[0]) + ":" + String(server[1]));
