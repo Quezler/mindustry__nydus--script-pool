@@ -37,7 +37,7 @@ ts[ts.currentScriptName].function = function(){
 
     
     player = p;
-    server = String(s) == "undefined" ? getRandom : s;
+    server = (typeof s == 'undefined') ? getRandom() : s;
     // player = Vars.playerGroup.find(boolf(p => p.name.match(args[0])));
     // server = args.length > 1 ? parseServer(args[1]) : getRandom();
 
