@@ -36,7 +36,7 @@ ts[ts.currentScriptName].function = function(){
     }
 
     
-    player = p;
+    player = Vars.playerGroup.find(boolf(p => p.name.match(p)));
     server = (typeof s == 'undefined') ? getRandom() : s;
     // player = Vars.playerGroup.find(boolf(p => p.name.match(args[0])));
     // server = args.length > 1 ? parseServer(args[1]) : getRandom();
@@ -46,6 +46,9 @@ ts[ts.currentScriptName].function = function(){
         Call.onConnect(player.con, server[0], server[1]);
         me().sendMessage(String(player) + "[cyan] got yeeted to [yellow]" + String(server[0]) + ":" + String(server[1]));
     }
+
+    delete p;
+    delete s;
     
 };
 ts[ts.currentScriptName].function();
