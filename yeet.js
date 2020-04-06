@@ -36,7 +36,7 @@ ts[ts.currentScriptName].function = function(){
     }
 
     
-    player = Vars.playerGroup.find(boolf(p => p.name.match(String(p))));
+    player = Vars.playerGroup.find(boolf(pl => pl.name.match(p)));
     server = (typeof s == 'undefined') ? getRandom() : s;
     // player = Vars.playerGroup.find(boolf(p => p.name.match(args[0])));
     // server = args.length > 1 ? parseServer(args[1]) : getRandom();
