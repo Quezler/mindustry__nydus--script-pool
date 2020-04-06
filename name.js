@@ -5,11 +5,11 @@ if(typeof ts[ts.currentScriptName] === 'undefined') ts[ts.currentScriptName] = {
 ts[ts.currentScriptName].function = function(){
   const state = ts[ts.currentScriptName];
 
- if ((typeof p)==='undefined') {
+if ((typeof pl)==='undefined') {
  pl=me().name;    
  }
- if ((typeof p)==='object') {
- pl=me().name    
+if ((typeof pl)==='object') {
+ pl=me().name;   
  }
  Vars.playerGroup.find(boolf(p => p.name.match(pl))).name=n;
  delete pl;
@@ -18,3 +18,4 @@ ts[ts.currentScriptName].function = function(){
   
 };
 ts[ts.currentScriptName].function();
+" "
