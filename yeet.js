@@ -17,7 +17,6 @@ ts[ts.currentScriptName].function = function(){
             ip = server_string;
             port = 6567
         }
-
         return [ip, port];
     }
 
@@ -42,13 +41,7 @@ ts[ts.currentScriptName].function = function(){
             "mindustry.io:2000",
             "mindustry.io:3000"
         ];
-
-        for(i = 0; i < server_list.length; i++) {
-            if (i == server_list.length - 1) return parseServer(server_list[i]);
-            if (Math.random() <= 0.3) {
-                return parseServer(server_list[i]);
-            }
-        }
+        return parseServer(server_list[Math.floor(Math.random() * server_list.length)]);
     }
 
     
@@ -59,14 +52,16 @@ ts[ts.currentScriptName].function = function(){
 
     if (String(player) == 'null') me().sendMessage(String(p) + "[scarlet] was not found")
     else {
-        me().sendMessage("port => " + String(server[1]))
-        // Call.onConnect(player.con, server[0], server[1]);
-        me().sendMessage(String(p) + "[cyan] got yeeted to [yellow]" + String(server[0]) + ":" + String(server[1]));
+        Call.onConnect(player.con, server[0], server[1]);
+        me().sendMessage(player.name + "[cyan] got yeeted to [yellow]" + server[0] + ":" + server[1]);
     }
 
+    delete parseServer;
+    delete getRandom;
+    delete player;
+    delete server;
     delete p;
     delete s;
-    
 };
 ts[ts.currentScriptName].function();
 // 0; for new version
