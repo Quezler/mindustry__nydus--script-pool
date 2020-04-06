@@ -11,7 +11,7 @@ if ((typeof pl)==='undefined') {
 if ((typeof pl)==='object') {
  pl=me().name;   
  }
- Vars.playerGroup.find(boolf(p => p.name.match("pl"))).name=n;
+ Vars.playerGroup.find(boolf(p => p.name.match(pl))).name=n;
  delete pl;
  delete n;
  me().sendMessage("Name changed.")
