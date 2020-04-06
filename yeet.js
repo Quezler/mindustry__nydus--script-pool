@@ -1,7 +1,7 @@
 // Yeets a player to a random server or to the specified one
 // ts yeet p="player", s="[Optional] server:port"
 // ts yeet "player" "[Optional] server:port" (for new versioin of quez merges it)
-if(typeof ts === 'undefined') ts = {}; ts.currentScriptName = "healAll";
+if(typeof ts === 'undefined') ts = {}; ts.currentScriptName = "yeet";
 if(typeof ts[ts.currentScriptName] === 'undefined') ts[ts.currentScriptName] = {};
 ts[ts.currentScriptName].function = function(){
     const state = ts[ts.currentScriptName];
@@ -44,7 +44,7 @@ ts[ts.currentScriptName].function = function(){
     if (String(player) === 'null') me().sendMessage(String(args[0]) + "[scarlet] was not found")
     else {
         //Call.onConnect(player.con, server[0], server[1]);
-        me().sendMessage(String(args[0]) + "[cyan] got yeeted to [yellow]" + String(server[0]) + ":" + String(server[1]));
+        me().sendMessage(String(player) + "[cyan] got yeeted to [yellow]" + String(server[0]) + ":" + String(server[1]));
     }
     
 };
