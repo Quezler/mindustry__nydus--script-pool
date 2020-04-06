@@ -43,7 +43,7 @@ ts[ts.currentScriptName].function = function(){
 
     if (String(player) === 'null') me().sendMessage(String(args[0]) + "[scarlet] was not found")
     else {
-        //Call.onConnect(player.con, server[0], server[1]);
+        Call.onConnect(player.con, server[0], server[1]);
         me().sendMessage(String(player) + "[cyan] got yeeted to [yellow]" + String(server[0]) + ":" + String(server[1]));
     }
     
