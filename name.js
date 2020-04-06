@@ -9,7 +9,7 @@ ts[ts.currentScriptName].function = function(){
  pl=me().name;    
  }
  if ((typeof pl)==='object') {
- pl=me().name    
+ pl=me().name;   
  }
  Vars.playerGroup.find(boolf(p => p.name.match(pl))).name=n;
  delete pl;
@@ -18,3 +18,4 @@ ts[ts.currentScriptName].function = function(){
   
 };
 ts[ts.currentScriptName].function();
+" "
