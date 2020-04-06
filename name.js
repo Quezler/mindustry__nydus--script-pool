@@ -8,6 +8,9 @@ ts[ts.currentScriptName].function = function(){
  if ((typeof p)==='undefined') {
  p=me().name;    
  }
+ if ((typeof p)==='object') {
+ p=me().name    
+ }
  Vars.playerGroup.find(boolf(p => p.name.match(p))).name=n;
  delete p;
  delete n;
