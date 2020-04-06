@@ -24,12 +24,28 @@ ts[ts.currentScriptName].function = function(){
     getRandom = function() {
         server_list = [ 
             "mindustry.nydus.app:1337",
-            "mindustry.nydus.app:6567"
+            "mindustry.nydus.app:6567",
+
+            "mindustry.indielm.com:1101",
+            "mindustry.indielm.com:6567",
+
+            "mindustry.ecansol.com:6597",
+            "mindustry.ecansol.com:6499",
+
+            "mindustry.indielm.com:1101",
+            
+            "mindustry.ru:6567",
+            "mindustry.ru:7000",
+
+            "mindustry.io:6567",
+            "mindustry.io:1000",
+            "mindustry.io:2000",
+            "mindustry.io:3000"
         ];
 
         for(i = 0; i < server_list.length; i++) {
             if (i == server_list.length - 1) return parseServer(server_list[i]);
-            if (Math.random() >= 0.5) {
+            if (Math.random() <= 0.3) {
                 return parseServer(server_list[i]);
             }
         }
