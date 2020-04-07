@@ -23,7 +23,7 @@ ts[ts.currentScriptName].function = function(){
                 teams = Object.keys(list);
                 for(i = 0; i < teams.length; i++) {
                     t = Structs.find(Team.all(), boolf(t => t.name.equals(teams[i])));
-                    me().sendMessage("  [#" + String(t == 'null' ? "ffffff" : t.color)  + "]" + teams[i] + "[] " + list[teams[i]]);
+                    me().sendMessage("  [#" + String(t == 'null' ? "ffffff" : t.color)  + "]" + String(teams[i]) + "[] " + String(list[teams[i]]));
                 }
             } else {
                 me().sendMessage("  [#" + t.color + "]" + t.name + "[] " + String(typeof list[t] == 'undefined' ? "None" : list[t]));
