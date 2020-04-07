@@ -33,6 +33,8 @@ ts[ts.currentScriptName].function = function(){
         if (typeof g == "undefined") {
             me().sendMessage("");
         }
+
+        delete list;
     }
 
     if (typeof g == 'undefined') {
