@@ -11,7 +11,7 @@ ts[ts.currentScriptName].function = function(){
         if (group.size == 0) return "none";
         for (i = 0; i < group.size; i++) {
             entity = group.get(i);
-            list[entity.team] = list[entity.team] == undefined ? 1 : list[entity.team] += 1
+            list[entity.team] = typeof list[entity.team] == 'undefined' ? 1 : list[entity.team] += 1
         }
         return list;
     }
@@ -23,7 +23,7 @@ ts[ts.currentScriptName].function = function(){
                 teams = Object.keys(list);
                 for(i = 0; i < teams.length; i++) {
                     t = Structs.find(Team.all(), boolf(t => t.name.equals(teams[i])));
-                    me().sendMessage("  [#" + t == 'null' ? "ffffff" : t.color  + "]" + teams[i] + "[] " + list[teams[i]]);
+                    me().sendMessage("  [#" + String(t == 'null' ? "ffffff" : t.color)  + "]" + teams[i] + "[] " + list[teams[i]]);
                 }
             } else {
                 me().sendMessage("  [#" + t.color + "]" + t.name + "[] " + String(typeof list[t] == 'undefined' ? "None" : list[t]));
