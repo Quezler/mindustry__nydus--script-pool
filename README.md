@@ -33,8 +33,6 @@ ts[ts.currentScriptName].function = function(){
     so they don't interfere with future runs, for example:
       delete action; // assuming "action" if one of the parameters of the script
   */
-
-  }
 };
 ts[ts.currentScriptName].function();
 ```
