@@ -17,8 +17,6 @@ ts[ts.currentScriptName].function = function () {
         return escaped;
     }
 
-    print(escapeColor("[purple]Block[pink]zilla"));
-
     if ((typeof player) === 'undefined' || (typeof player) === 'object') {
         player = me().name
     }
