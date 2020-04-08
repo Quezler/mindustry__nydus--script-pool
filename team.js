@@ -16,6 +16,7 @@ ts[ts.currentScriptName].function = function(){
  player= Vars.playerGroup.find(boolf(p => p.name.match(player)));
 
  player.team=t ;
+ player.lastSpawner = null;
  delete t;
  delete player;
  me().sendMessage("Team changed.");
