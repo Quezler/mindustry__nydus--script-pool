@@ -1,26 +1,38 @@
 //Switches target players team(defaults to you)
 // "/ts player ="name";t=Team.<team>
-if(typeof ts === 'undefined') ts = {}; ts.currentScriptName = "team";
-if(typeof ts[ts.currentScriptName] === 'undefined') ts[ts.currentScriptName] = {};
-ts[ts.currentScriptName].function = function(){
-  const state = ts[ts.currentScriptName];
+if (typeof ts === 'undefined') ts = {}; ts.currentScriptName = "team";
+if (typeof ts[ts.currentScriptName] === 'undefined') ts[ts.currentScriptName] = {};
+ts[ts.currentScriptName].function = function () {
+    const state = ts[ts.currentScriptName];
 
+    escapeColor = function(str) {
+        escaped = "";
+        for(i = 0; i < str.length; i++) {
+            if (str[i] == "[") {
+                escaped += "\\[";
+                continue;
+            }
+            escaped += str[i];
+        }
+        return escaped;
+    }
 
- if ((typeof player)==='undefined'){
-     player = me().name
- }
- if ((typeof player)==='object') {
-    player = me().name 
- }
+    print(escapeColor("[purple]Block[pink]zilla"));
 
- player= Vars.playerGroup.find(boolf(p => p.name.match(player)));
+    if ((typeof player) === 'undefined' || (typeof player) === 'object') {
+        player = me().name
+    }
 
- player.team=t ;
- player.lastSpawner = null;
- delete t;
- delete player;
- me().sendMessage("Team changed.");
-  
+    player = Vars.playerGroup.find(boolf(p => p.name.match(escapeColor(player))));
+
+    player.team = t;
+    player.lastSpawner = null;
+
+    delete t;
+    delete player;
+    delete escapeColor;
+
+    me().sendMessage("Team changed.");
 };
 ts[ts.currentScriptName].function();
-" "
+" ";
