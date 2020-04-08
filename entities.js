@@ -7,7 +7,7 @@ ts[ts.currentScriptName].function = function(){
     const state = ts[ts.currentScriptName];
 
     getList = function(group) {
-        list = {};
+        list = { };
         if (group.size == 0) return "none";
         for (i = 0; i < group.size; i++) {
             entity = group.get(i);
@@ -22,8 +22,9 @@ ts[ts.currentScriptName].function = function(){
             if (typeof t == "undefined") {
                 teams = Object.keys(list);
                 for(i = 0; i < teams.length; i++) {
-                    t = Structs.find(Team.all(), boolf(t => t.name.equals(teams[i])));
-                    me().sendMessage("  [#" + String(t == 'null' ? "ffffff" : t.color)  + "]" + String(teams[i]) + "[] " + String(list[teams[i]]));
+                    team = Structs.find(Team.all(), boolf(t => t.name.equals(teams[i])));
+                    me().sendMessage("  [#" + String(team == 'null' ? "ffffff" : team.color)  + "]" + String(teams[i]) + "[] " + String(list[teams[i]]));
+                    delete team;
                 }
             } else {
                 me().sendMessage("  [#" + t.color + "]" + t.name + "[] " + String(typeof list[t] == 'undefined' ? "None" : list[t]));
@@ -33,8 +34,6 @@ ts[ts.currentScriptName].function = function(){
         if (typeof g == "undefined") {
             me().sendMessage("");
         }
-
-        delete list;
     }
 
     if (typeof g == 'undefined') {
