@@ -18,7 +18,7 @@ ts[ts.currentScriptName].function = function () {
     }
 
     if ((typeof player) === 'undefined' || (typeof player) === 'object') {
-        player = me().name
+        player = Vars.scripter.name
     }
 
     player = Vars.playerGroup.find(boolf(p => p.name.match(escapeColor(player))));
@@ -30,7 +30,7 @@ ts[ts.currentScriptName].function = function () {
     delete player;
     delete escapeColor;
 
-    me().sendMessage("Team changed.");
+    Vars.scripter.sendMessage("Team changed.");
 };
 ts[ts.currentScriptName].function();
 " ";

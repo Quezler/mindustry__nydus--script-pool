@@ -6,15 +6,15 @@ ts[ts.currentScriptName].function = function(){
   const state = ts[ts.currentScriptName];
 
 if ((typeof pl)==='undefined') {
- pl=me().name;    
+ pl=Vars.scripter.name;
  }
 if ((typeof pl)==='object') {
- pl=me().name;   
+ pl=Vars.scripter.name;
  }
  Vars.playerGroup.find(boolf(p => p.name.match(pl))).name=n;
  delete pl;
  delete n;
- me().sendMessage("Name changed.")
+ Vars.scripter.sendMessage("Name changed.")
   
 };
 ts[ts.currentScriptName].function();

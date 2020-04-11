@@ -1,11 +1,11 @@
 // "/ts place block=Blocks.coreShard, team=Team.<team>"
 
-team = ((typeof team === 'undefined') ? me().team : team);
+team = ((typeof team === 'undefined') ? Vars.scripter.team : team);
 
-me().tileOn().setNet(block, team, 0);
-block.placed(me().tileOn());
+Vars.scripter.tileOn().setNet(block, team, 0);
+block.placed(Vars.scripter.tileOn());
 
-me().sendMessage("placed a [accent]"+ String(block.name) +"[] for team [#"+ String(team.color) +"]"+ String(team) +"[]");
+Vars.scripter.sendMessage("placed a [accent]"+ String(block.name) +"[] for team [#"+ String(team.color) +"]"+ String(team) +"[]");
 
 delete team;
 " ";

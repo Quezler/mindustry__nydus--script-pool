@@ -7,10 +7,10 @@ ts[ts.currentScriptName].function = function(){
 
 
  if ((typeof player)==='undefined'){
-     player = me().name
+     player = Vars.scripter.name
  }
  if ((typeof player)==='object') {
-    player = me().name 
+    player = Vars.scripter.name
  }
 
  player= Vars.playerGroup.find(boolf(p => p.name.match(player)));
@@ -19,7 +19,7 @@ ts[ts.currentScriptName].function = function(){
  player.heal();
  delete m;
  delete player;
- me().sendMessage("Mech changed.");
+ Vars.scripter.sendMessage("Mech changed.");
   
 };
 ts[ts.currentScriptName].function();

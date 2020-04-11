@@ -5,17 +5,17 @@ if(typeof ts[ts.currentScriptName] === 'undefined') ts[ts.currentScriptName] = {
 ts[ts.currentScriptName].function = function(){
     const state = ts[ts.currentScriptName];
     
-    // if (team === undefined) team = me().team
+    // if (team === undefined) team = Vars.scripter.team
   
     playerGroup = Vars.playerGroup.all();
     
     for (i = 0; i < playerGroup.size; i++) {
         p = playerGroup.get(i);
-        if (p.team === me().team) {
+        if (p.team === Vars.scripter.team) {
             p.heal();
         }
     }
     
-    "[green]Healed all[] " + String(me().team) + " [green]players"
+    "[green]Healed all[] " + String(Vars.scripter.team) + " [green]players"
 };
 ts[ts.currentScriptName].function();

@@ -17,36 +17,36 @@ ts[ts.currentScriptName].function = function(){
     }
     sendList = function(list) {
         if (list == "none") { 
-            me().sendMessage("   None");
+            Vars.scripter.sendMessage("   None");
         } else {
             if (typeof t == "undefined") {
                 teams = Object.keys(list);
                 for(i = 0; i < teams.length; i++) {
                     team = Structs.find(Team.all(), boolf(t => t.name.equals(teams[i])));
-                    me().sendMessage("  [#" + String(team == 'null' ? "ffffff" : team.color)  + "]" + String(teams[i]) + "[] " + String(list[teams[i]]));
+                    Vars.scripter.sendMessage("  [#" + String(team == 'null' ? "ffffff" : team.color)  + "]" + String(teams[i]) + "[] " + String(list[teams[i]]));
                     delete team;
                 }
             } else {
-                me().sendMessage("  [#" + t.color + "]" + t.name + "[] " + String(typeof list[t] == 'undefined' ? "None" : list[t]));
+                Vars.scripter.sendMessage("  [#" + t.color + "]" + t.name + "[] " + String(typeof list[t] == 'undefined' ? "None" : list[t]));
             }
         }
 
         if (typeof g == "undefined") {
-            me().sendMessage("");
+            Vars.scripter.sendMessage("");
         }
     }
 
     if (typeof g == 'undefined') {
-        me().sendMessage("Units:");
+        Vars.scripter.sendMessage("Units:");
         sendList(getList(Vars.unitGroup.all()));
 
-        me().sendMessage("Bullets:");
+        Vars.scripter.sendMessage("Bullets:");
         sendList(getList(Vars.bulletGroup.all()));
 
-        me().sendMessage("Players:");
+        Vars.scripter.sendMessage("Players:");
         sendList(getList(Vars.playerGroup.all()));
 
-        me().sendMessage("Tiles:");
+        Vars.scripter.sendMessage("Tiles:");
         sendList(getList(Vars.tileGroup.all()));
     } else {
         sendList(getList(g.all()));

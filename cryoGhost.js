@@ -5,7 +5,7 @@ ts[ts.currentScriptName].function = function(){
   const state = ts[ts.currentScriptName];
 
   if(typeof action === 'undefined'){
-    me().sendMessage("[yellow] no action specified. use /ts cryoGhost action='start'|'stop'|'status'");
+    Vars.scripter.sendMessage("[yellow] no action specified. use /ts cryoGhost action='start'|'stop'|'status'");
   }else{
     switch(action){
       case "start":
@@ -35,11 +35,11 @@ ts[ts.currentScriptName].function = function(){
         state.running = false;
         break;
       case "status":
-        me().sendMessage(state.running ? "[green]running" : "[red]stopped");
+        Vars.scripter.sendMessage(state.running ? "[green]running" : "[red]stopped");
         break;
       case "help":
       default:
-        me().sendMessage("[yellow] Usage: /ts cryoGhost action='start'|'stop'|'status'");
+        Vars.scripter.sendMessage("[yellow] Usage: /ts cryoGhost action='start'|'stop'|'status'");
     }
     delete action;
   }

@@ -4,7 +4,7 @@ if(typeof ts[ts.currentScriptName] === 'undefined') ts[ts.currentScriptName] = {
 ts[ts.currentScriptName].function = function(){
   const state = ts[ts.currentScriptName];
 
-  const player = me();
+  const player = Vars.scripter;
 
   // set default if optional parameters are not specified
   const amount1 = (typeof amount === 'undefined') ? 1 : amount;

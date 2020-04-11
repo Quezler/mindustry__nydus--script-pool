@@ -16,7 +16,7 @@ ts[ts.currentScriptName].function = function(){
           };
     };
   delete team;  
-  me().sendMessage("Units killed.");
+  Vars.scripter.sendMessage("Units killed.");
   
   
 };
