@@ -1,7 +1,6 @@
 // /ts player="name",server="server",port=6567
 // If port is left empty default port is used
 
-
 port = 6567
 player = undefined
 server = undefined
@@ -14,7 +13,7 @@ for (i = 0; i < args.length; i++) {
 		} else {
 			server = args[i]
 		}
-	} else if (Number.isInteger(args[i]) port = args[i]
+	} else if (Number.isInteger(args[i])) port = args[i]
 }
 
 if (typeof player === 'undefined') {
