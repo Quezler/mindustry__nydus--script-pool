@@ -7,7 +7,7 @@ ts[ts.currentScriptName].function = function(){
 
 	unitGroup = Vars.unitGroup.all();
 
-	team = args.length == 0 ? Var.scripter.team : args[0]
+	team = args.length == 0 ? Team.crux : args[0]
 
 	for(i=0; i < unitGroup.size; i++) {
 		u = unitGroup.get(i);
