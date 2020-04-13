@@ -9,7 +9,7 @@ ts[ts.currentScriptName].function = function () {
         escaped = "";
         for(i = 0; i < str.length; i++) {
             if (str[i] == "[") {
-                escaped += "\[";
+                escaped += "\\[";
                 continue;
             }
             escaped += str[i];
