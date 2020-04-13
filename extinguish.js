@@ -1,3 +1,3 @@
 //Puts out all fires.
 Vars.fireGroup.clear()
-"Fires extinguished."
+"[white]Fires extinguished."

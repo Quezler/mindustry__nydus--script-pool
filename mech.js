@@ -3,24 +3,18 @@
 if(typeof ts === 'undefined') ts = {}; ts.currentScriptName = "mech";
 if(typeof ts[ts.currentScriptName] === 'undefined') ts[ts.currentScriptName] = {};
 ts[ts.currentScriptName].function = function(){
-  const state = ts[ts.currentScriptName];
+	const state = ts[ts.currentScriptName];
 
+	player = args.length > 0 ? args[0] : Vars.playerGroup.find(boolf(p => p.name.match(player)));
+	m = args.length > 1 ? args[1] : Mechs.dart;
 
- if ((typeof player)==='undefined'){
-     player = Vars.scripter.name
- }
- if ((typeof player)==='object') {
-    player = Vars.scripter.name
- }
-
- player= Vars.playerGroup.find(boolf(p => p.name.match(player)));
-
- player.mech=m ;
- player.heal();
- delete m;
- delete player;
- Vars.scripter.sendMessage("Mech changed.");
-  
+	player.mech = m;
+	player.heal();
+	
+	delete m;
+	delete player;
+	
+	Vars.scripter.sendMessage("Mech changed.");
 };
 ts[ts.currentScriptName].function();
-" "
+0;

@@ -1,11 +1,13 @@
+// This script is broken, ill change it later
+
 // lists all entites or a specific group from all teams or the specified one
-// entites t="Team.<> [Optional], g=Vars.<group>"
+// entites Team.<>? Vars.<group>?
 
 if(typeof ts === 'undefined') ts = {}; ts.currentScriptName = "entities";
 if(typeof ts[ts.currentScriptName] === 'undefined') ts[ts.currentScriptName] = {};
 ts[ts.currentScriptName].function = function(){
     const state = ts[ts.currentScriptName];
-
+	
     getList = function(group) {
         list = { };
         if (group.size == 0) return "none";
@@ -15,6 +17,7 @@ ts[ts.currentScriptName].function = function(){
         }
         return list;
     }
+	
     sendList = function(list) {
         if (list == "none") { 
             Vars.scripter.sendMessage("   None");
@@ -35,7 +38,7 @@ ts[ts.currentScriptName].function = function(){
             Vars.scripter.sendMessage("");
         }
     }
-
+	
     if (typeof g == 'undefined') {
         Vars.scripter.sendMessage("Units:");
         sendList(getList(Vars.unitGroup.all()));
@@ -59,4 +62,4 @@ ts[ts.currentScriptName].function = function(){
 
 };
 ts[ts.currentScriptName].function();
-" ";
+0;

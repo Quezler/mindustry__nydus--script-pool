@@ -1,3 +1,4 @@
 // "/ts gameover"
 Events.fire(new EventType.GameOverEvent(Team.sharded));
-"gameover."
+Vars.scripter.sendMessage("Gameover")
+0;

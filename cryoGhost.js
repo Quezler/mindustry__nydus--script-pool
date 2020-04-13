@@ -4,10 +4,10 @@ if(typeof ts[ts.currentScriptName] === 'undefined') ts[ts.currentScriptName] = {
 ts[ts.currentScriptName].function = function(){
   const state = ts[ts.currentScriptName];
 
-  if(typeof action === 'undefined'){
-    Vars.scripter.sendMessage("[yellow] no action specified. use /ts cryoGhost action='start'|'stop'|'status'");
+  if(args.length == 0){
+    Vars.scripter.sendMessage("[yellow] no action specified. use /ts cryoGhost 'start'|'stop'|'status'");
   }else{
-    switch(action){
+    switch(args[0]){
       case "start":
         try{state.timer.cancel()}catch(e){} // just in case
         const task = new java.util.TimerTask() {run(){
@@ -45,4 +45,4 @@ ts[ts.currentScriptName].function = function(){
   }
 };
 ts[ts.currentScriptName].function();
-
+0;

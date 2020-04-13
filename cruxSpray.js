@@ -6,14 +6,13 @@ ts[ts.currentScriptName].function = function(){
 
   unitGroup=Vars.unitGroup.all();
 
-
-
   for(i=0; i < unitGroup.size; i++) {
       u=unitGroup.get(i);
       if (u.team === Team.crux){
                u.kill();
           }
     }
-  "Units killed."
+  Vars.scripter.sendMessage("Units killed.")
 };
 ts[ts.currentScriptName].function();
+0;
