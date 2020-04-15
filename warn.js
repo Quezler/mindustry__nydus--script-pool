@@ -35,14 +35,14 @@ ts[ts.currentScriptName].function = function(){
     }
 
     if (args.length <= 1) {
-        Vars.scripter.sendMessage("Specify the Player's name and the Warning message\nie: warn 'player' 'warning'")
+        Vars.scripter.sendMessage("Specify the Player's name and the Warning message")
     } else {
         player = tryFindPlayer(args[0]);
         if (String(player) == 'null') {
             Vars.scripter.sendMessage(args[0] + " [#EC7063]was not found on the server")
         } else {
             Call.onInfoMessage(player.con, "[#EC7063]Warning[]\n\n" + args[1] + "\n\n\n\n[#F8C471]You have been warned")
-            Vars.scripter.sendMessage(player.name + "[white] has been [#EC7063]warned");
+            Vars.scripter.sendMessage(player.name + "[#85C1E9] has been [#EC7063]warned");
         }
     }
 
