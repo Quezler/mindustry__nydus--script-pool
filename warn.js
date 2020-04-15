@@ -45,6 +45,8 @@ ts[ts.currentScriptName].function = function(){
             Vars.scripter.sendMessage(player.name + "[white] has been [#EC7063]warned");
         }
     }
+
+    delete tryFindPlayer;
 };
 ts[ts.currentScriptName].function();
 0;
