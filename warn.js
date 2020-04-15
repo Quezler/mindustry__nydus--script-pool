@@ -42,6 +42,7 @@ ts[ts.currentScriptName].function = function(){
             Vars.scripter.sendMessage(args[0] + " [#EC7063]was not found on the server")
         } else {
             Call.onInfoMessage(player.con, "[#EC7063]Warning[]\n\n" + args[1] + "\n\n\n\n[#F8C471]You have been warned")
+            Vars.scripter.sendMessage(player.name + "[white] has been [#EC7063]warned");
         }
     }
 };
