@@ -2,13 +2,13 @@ if(typeof ts === 'undefined') ts = {}; ts.currentScriptName = "crash";
 if(typeof ts[ts.currentScriptName] === 'undefined') ts[ts.currentScriptName] = {};
 ts[ts.currentScriptName].function = function(){
     const state = ts[ts.currentScriptName];
-    crashing = typeof crashing == 'undefined' ? false : crashing;
+    // crashing = typeof crashing == 'undefined' ? false : crashing;
 
-    if (!crashing) {
-        Vars.scripter.sendMessage("[#76D7C4]You need to [#C39BD3]enable[] crashing of clients");
-        return;
-    }
-    crashing = false;
+    // if (!crashing) {
+    //     Vars.scripter.sendMessage("[#76D7C4]You need to [#C39BD3]enable[] crashing of clients");
+    //     return;
+    // }
+    // delete crashing;
 
     function tryFindPlayer(name) {
         function stripColor(colored) {
