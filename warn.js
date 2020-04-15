@@ -1,6 +1,6 @@
 // /ts warn "player name pattern" "Warning message/reason" 
 
-if(typeof ts === 'undefined') ts = {}; ts.currentScriptName = "yourScriptName";
+if(typeof ts === 'undefined') ts = {}; ts.currentScriptName = "warn";
 if(typeof ts[ts.currentScriptName] === 'undefined') ts[ts.currentScriptName] = {};
 ts[ts.currentScriptName].function = function(){
     const state = ts[ts.currentScriptName];
