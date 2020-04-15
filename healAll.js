@@ -15,7 +15,7 @@ ts[ts.currentScriptName].function = function(){
         }
     }
     
-    Vars.scripter.sendMessage("Healed all [#" + team.color + "]" + String(team) + "[] players.")
+    Vars.scripter.sendMessage("[#58D68D]Healed all [#" + team.color + "]" + String(team) + "[] players")
 };
 ts[ts.currentScriptName].function();
 0;
