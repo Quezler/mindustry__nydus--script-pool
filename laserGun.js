@@ -23,5 +23,5 @@ ts[ts.currentScriptName].function = function(){
     Vars.scripter.sendMessage("Laser Gun enabled on player " + p.name + ", remember to turn it off when leaving");
   }
 };
-ts[ts.currentScriptName].function();
+ts[ts.currentScriptName].function();0;
 
