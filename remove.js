@@ -6,7 +6,6 @@ if(typeof ts[ts.currentScriptName] === 'undefined') ts[ts.currentScriptName] = {
 ts[ts.currentScriptName].function = function(){
     const state = ts[ts.currentScriptName];
 
-    tiles = Vars.tileGroup.all();
     block = undefined;
     team = undefined;
 
@@ -27,17 +26,20 @@ ts[ts.currentScriptName].function = function(){
         
         } else {
             numRemoved = 0;
-            for (i = 0; i < tiles.size; i++) {
-                if (tiles.get(i).block == block) {
-                    if (typeof team != 'undefined' && tiles.get(i).team == team) {
-                        tiles.get(i).kill();
-                        numRemoved++;
-                    } else if (typeof team == 'undefined'){
-                        tiles.get(i).kill();
-                        numRemoved++;
-                    }
-                }
-            }
+            
+			for (x = 0; x < Vars.world.width(); x++) {
+				for (y = 0; y < Vars.world.height(); y++) {
+					if (Vars.world.tile(x, y).block() == block) {
+						if (typeof team != 'undefined' && Vars.world.tile(x, y).entity.team == team) {
+							Vars.world.tile(x, y).entity.kill();
+							numRemoved++;
+						} else if (typeof team == 'undefined'){
+							Vars.world.tile(x, y).entity.kill();
+							numRemoved++;
+						}
+					}
+				}
+			}
 
             if (numRemoved == 0) {
                 Vars.scripter.sendMessage("[#FFAB4C]No Blocks were found" + (typeof team == 'undefined' ? "" : (" from team [#" + team.color + "]" + team)));
