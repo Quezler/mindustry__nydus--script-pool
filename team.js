@@ -18,7 +18,7 @@ ts[ts.currentScriptName].function = function () {
     }
 	
 	if (args.length == 0) {
-		Vars.scripter.sendMessage("Specify and player name and a team")
+		Vars.scripter.sendMessage("Specify  player name and a team")
 	} else {
 		team = undefined;
 		player = Vars.scripter;
