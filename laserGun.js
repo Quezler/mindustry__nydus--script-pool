@@ -11,7 +11,7 @@ ts[ts.currentScriptName].function = function(){
     Vars.scripter.sendMessage("Laser Gun disabled");
   }else{
     const bullet = Bullets.lancerLaser;
-    const p = Vars.scripter;
+    const p = args[0] || Vars.scripter;
 
     state.task = new java.util.TimerTask() {run(){
       if(p.isShooting())
