@@ -27,19 +27,19 @@ ts[ts.currentScriptName].function = function(){
         } else {
             numRemoved = 0;
             
-			for (x = 0; x < Vars.world.width(); x++) {
-				for (y = 0; y < Vars.world.height(); y++) {
-					if (Vars.world.tile(x, y).block() == block) {
-						if (typeof team != 'undefined' && Vars.world.tile(x, y).entity.team == team) {
-							Vars.world.tile(x, y).entity.kill();
-							numRemoved++;
-						} else if (typeof team == 'undefined'){
-							Vars.world.tile(x, y).entity.kill();
-							numRemoved++;
-						}
-					}
-				}
-			}
+            for (x = 0; x < Vars.world.width(); x++) {
+                for (y = 0; y < Vars.world.height(); y++) {
+                    if (Vars.world.tile(x, y).block() == block) {
+                        if (typeof team != 'undefined' && Vars.world.tile(x, y).entity.team == team) {
+                            Vars.world.tile(x, y).entity.kill();
+                            numRemoved++;
+                        } else if (typeof team == 'undefined'){
+                            Vars.world.tile(x, y).entity.kill();
+                            numRemoved++;
+                        }
+                    }
+                }
+            }
 
             if (numRemoved == 0) {
                 Vars.scripter.sendMessage("[#FFAB4C]No Blocks were found" + (typeof team == 'undefined' ? "" : (" from team [#" + team.color + "]" + team)));
