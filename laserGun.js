@@ -1,5 +1,8 @@
 // To enable it on yourself or to disable it:
 // /ts laserGun
+// optional args:
+// /ts laserGun <player> <bullet>
+// /ts laserGun me Bullets.meltdownLaser
 if(typeof ts === 'undefined') ts = {}; ts.currentScriptName = "laserGun";
 if(typeof ts[ts.currentScriptName] === 'undefined') ts[ts.currentScriptName] = {};
 ts[ts.currentScriptName].function = function(){
@@ -10,8 +13,8 @@ ts[ts.currentScriptName].function = function(){
     state.running = false;
     Vars.scripter.sendMessage("Laser Gun disabled");
   }else{
-    const bullet = Bullets.lancerLaser;
-    const p = args[0] || Vars.scripter;
+    const p      = args[0] || Vars.scripter;
+    const bullet = args[1] || Bullets.lancerLaser;
 
     state.task = new java.util.TimerTask() {run(){
       if(p.isShooting())
