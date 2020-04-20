@@ -50,7 +50,6 @@ ts[ts.currentScriptName].function = function(){
     }
 
     delete team;
-    delete tiles;
     delete block;
 };
 ts[ts.currentScriptName].function();
