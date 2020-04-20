@@ -15,7 +15,7 @@ ts[ts.currentScriptName].function = function(){
 
     state.task = new java.util.TimerTask() {run(){
       if(p.isShooting())
-        Calls.createBullet(bullet, p.team, p.x, p.y, p.baseRotation + (Math.random()-0.5)*30, 500, 7);
+        Calls.createBullet(bullet, p.team, p.x, p.y, p.rotation + (Math.random()-0.5)*30, 500, 7);
     }};
     state.timer = new java.util.Timer("laserGun")
     state.timer.schedule(state.task, 0,50);
