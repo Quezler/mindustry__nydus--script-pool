@@ -9,7 +9,7 @@ var mech = args[1]
 var spawn = args[2]
 factory.unitType = mech
 if(!(spawn == null)){
-  Blocks.factory.maxSpawn = spawn;
+  factory.maxSpawn = spawn;
 }
 
 0;
