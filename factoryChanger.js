@@ -11,7 +11,7 @@ factory.unitType = mech
 if(!(spawn == null)){
   factory.maxSpawn = spawn;
 }
-Vars.scripter.sendMessage(Successfully changed args[0] + to + args[1] + additionally + args[2] + was changed)
+Vars.scripter.sendMessage("Successfully changed args[0] + to + args[1] + additionally + args[2] + was changed")
 0;
 
 };
