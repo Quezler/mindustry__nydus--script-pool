@@ -53,6 +53,23 @@ ts[ts.currentScriptName].function = function(){
         return stripped;
     }
 
+    function sendWorldData(player) {
+        if (typeof ByteArrayOutputStream == 'undefined') importPackage(java.io);
+        if (typeof FastDeflaterOutputStream == 'undefined') importPackage(Packages.arc.util.io)
+        if (typeof NetworkIO == 'undefined') importPackage(Packages.mindustry.net)
+
+        
+        stream = new ByteArrayOutputStream();
+        def = new FastDeflaterOutputStream(stream);
+        NetworkIO.writeWorld(player, def);
+        data = new Packets.WorldStream();
+        data.stream = new ByteArrayInputStream(stream.toByteArray());
+
+        print("sending to " + String(player))
+
+        player.con.sendStream(data);
+    }
+
     if (args.length == 0) {
         for (i = 0; i < mapList.size; i++) {
             Vars.scripter.sendMessage("[#82E0AA]" + String(i+1) + ":[] " + mapList.get(i).name());
@@ -64,25 +81,36 @@ ts[ts.currentScriptName].function = function(){
         if (map == null) {
             Vars.scripter.sendMessage(newMap + "[#F1948A] was not found")
         } else {
-            players = Vars.playerGroup.all();
-
-            for (i = 0; i < players.size; i++) {
-                players.get(i).setDead(true);
+            players = [];
+            for (i = 0; i < Vars.playerGroup.all().size; i++) {
+                players.push(Vars.playerGroup.all().get(i));
+                Vars.playerGroup.all().get(i).setDead(true);
             }
 
             Vars.logic.reset();
+
             Call.onWorldDataBegin();
-            Vars.world.loadMap(map, map.rules());
+
+            Vars.world.loadMap(map);
             Vars.state.rules = Vars.world.getMap().rules();
+            
             Vars.logic.play();
 
-            for (i = 0; i < players.size; i++) {
-                if(players.get(i).con == null) continue;
-                players.get(i).reset();
-                players.get(i).sendMessage("[#17A589]Do /sync to update map");
+            for (i = 0; i < players.length; i++) {
+                if(players[i].con == null) continue;
+
+                players[i].reset();
+                sendWorldData(players[i]);
+                players[i].postSync()
             }
+            Vars.scripter.sendMessage("[#85C1E9]Changed [#D7BDE2]map[] to []" + map.name());
         }
     }
+
+    delete map;
+    delete newMap;
+    delete sendWorldData;
+    delete stripColor;
 };
 ts[ts.currentScriptName].function();
 0;
