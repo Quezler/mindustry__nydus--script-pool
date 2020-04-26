@@ -1,7 +1,7 @@
 // ts sync   syncs all players
 // ts sync "name" syncs the player "name"
 
-if(typeof ts === 'undefined') ts = {}; ts.currentScriptName = "yourScriptName";
+if(typeof ts === 'undefined') ts = {}; ts.currentScriptName = "sync";
 if(typeof ts[ts.currentScriptName] === 'undefined') ts[ts.currentScriptName] = {};
 ts[ts.currentScriptName].function = function(){
     const state = ts[ts.currentScriptName];
