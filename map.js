@@ -58,14 +58,11 @@ ts[ts.currentScriptName].function = function(){
         if (typeof FastDeflaterOutputStream == 'undefined') importPackage(Packages.arc.util.io)
         if (typeof NetworkIO == 'undefined') importPackage(Packages.mindustry.net)
 
-        
         stream = new ByteArrayOutputStream();
         def = new FastDeflaterOutputStream(stream);
         NetworkIO.writeWorld(player, def);
         data = new Packets.WorldStream();
         data.stream = new ByteArrayInputStream(stream.toByteArray());
-
-        print("sending to " + String(player))
 
         player.con.sendStream(data);
     }
