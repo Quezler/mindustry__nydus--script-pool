@@ -27,8 +27,8 @@ ts[ts.currentScriptName].function = function(){
                Calls.createBullet(
                   Bullets.cryoShot,
                   team,
-                  (p.x+Math.cos((j+rot)/57.3)*30*((mov^0.5) - (0.16*mov))/1.55),
-                  (p.y+Math.sin((j+rot)/57.3)*30*((mov^0.5) - (0.16*mov))/1.55),
+                  (p.x+(Math.cos((j+rot)/57.3))*30*((mov^0.5) - (0.16*mov))/4),
+                  (p.y+(Math.sin((j+rot)/57.3))*30*((mov^0.5) - (0.16*mov))/4),
                   j,
                   0,
                   0.2
