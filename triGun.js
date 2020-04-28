@@ -53,7 +53,6 @@ ts[ts.currentScriptName].function = function(){
          }else{
             mov = 0
          };
-      }
     }};
     state.timer = new java.util.Timer("laserGun")
     state.timer.schedule(state.task, 0,50);
