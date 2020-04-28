@@ -32,7 +32,7 @@ ts[ts.currentScriptName].function = function(){
                   team,
                   (p.x+(Math.cos((j+rot)/57.3))*5*mov),
                   (p.y+(Math.sin((j+rot)/57.3))*5*mov),
-                  j,
+                  0,
                   0,
                   0.2
                );
@@ -60,7 +60,7 @@ ts[ts.currentScriptName].function = function(){
                   team,
                   (p.x+(Math.cos((f+rot)/57.3))*5*mov),
                   (p.y+(Math.sin((f+rot)/57.3))*5*mov),
-                  j,
+                  0,
                   0,
                   0.2
                   );
