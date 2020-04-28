@@ -23,7 +23,7 @@ ts[ts.currentScriptName].function = function(){
 
       state.task = new java.util.TimerTask() {run(){
          if(p.isShooting()){
-            for(j=0;j<360;j=j+72){
+            for(j=0;j<360;j=j+120){
                Calls.createBullet(
                   Bullets.cryoShot,
                   team,
@@ -38,12 +38,12 @@ ts[ts.currentScriptName].function = function(){
             if(mov<8){
                mov = mov+0.1
             }else{
-               for(i=0;i<360;i=i+72){
+               for(i=0;i<360;i=i+120){
                   Calls.createBullet(
                      bullet,
                      team,
-                     (p.x+Math.cos((j+rot)/57.3)*30),
-                     (p.y+Math.sin((j+rot)/57.3)*30),
+                     (p.x+Math.cos((i+rot)/57.3)*30),
+                     (p.y+Math.sin((i+rot)/57.3)*30),
                      p.rotation+(Math.random()*accuracy)-accuracy,
                      1,
                      1
