@@ -43,15 +43,87 @@ ts[ts.currentScriptName].function = function(){
         return parseServer(server_list[Math.floor(Math.random() * server_list.length)]);
     }
 
-    player = Vars.playerGroup.find(boolf(p => p.name.match(args[0])));
+    function tryFindPlayer(name) {
+        function stripColor(colored) {
+            var colors = [
+                "clear", "black", "white", "lightgray",
+                "gray", "darkgray", "blue", "navy",
+                "royal", "slate", "sky", "cyan",
+                "teal", "green", "acid", "lime",
+                "forest", "olive", "yellow", "gold",
+                "goldenrod", "orange", "brown", "tan",
+                "brick", "red", "scarlet", "coral", "salmon",
+                "pink", "magenta", "purple", "violet", "maroon"
+            ];
+    
+            var stripped = ""
+            var color = ""
+            var inColor = false
+    
+            for (i = 0; i < colored.length; i++) {
+                if (colored[i] == "[") {
+                    inColor = true;
+                    continue;
+                } else if (colored[i] == "]") {
+                    inColor = false;
+                    if(typeof colors.find(c => c == color) == 'undefined') {
+                        if (!color.match("(^#[0-9A-Fa-f]{6}$)|(^#[0-9A-Fa-f]{8}$)")) {
+                            stripped += "[" + color + "]";
+                        }
+                    }
+                    color = "";
+                    continue;
+                }
+                if (inColor) {
+                    if (i == colored.length - 1) {
+                        stripped += "["
+                        stripped += color;
+                        stripped += colored[i];
+                        break;
+                    }
+                    color += colored[i];
+                    continue;
+                }
+                stripped += colored[i];
+            }
+            return stripped;
+        }
+    
+        function escapeBracket(unescaped) {
+            var escaped = "";
+            for(i = 0; i < unescaped.length; i++) {
+                if (unescaped[i] == "[") {
+                    escaped += "\\[";
+                    continue;
+                }
+                escaped += unescaped[i];
+            }
+            return escaped;
+        }
+        
+        player = Vars.playerGroup.all().find(boolf(p => stripColor(p.name).match(stripColor(name))))
+        if (player == 'null') {
+            player = Vars.playerGroup.all().find(boolf(p => p.name.match(escapeBracket(name))));
+            if (player == 'null') {
+                player = Vars.playerGroup.all().find(boolf(p => stripColor(p.name).match(escapeBracket(stripColor(name)))));
+                if (player == 'null') {
+                    player = Vars.playerGroup.all().find(boolf(p => p.name == name));
+                }
+            }
+        }
+        return player;
+    }
+
+    player = tryFindPlayer(args[0]);
     server = args.length > 1 ? parseServer(args[1]) : getRandom();
 
-    if (String(player) == 'null') Vars.scripter.sendMessage(String(p) + "[scarlet] was not found")
+    if (player == null) Vars.scripter.sendMessage(String(args[0]) + "[#E6B0AA] was not found")
     else {
-        Call.onConnect(player.con, server[0], server[1]);
+        // Call.onConnect(player.con, server[0], server[1]);
         Vars.scripter.sendMessage(player.name + "[#E8DAEF] got yeeted to [#A9DFBF]" + server[0] + "[]:[#F9E79F]" + server[1]);
     }
 
+    delete tryFindPlayer;
     delete parseServer;
     delete getRandom;
     delete player;
