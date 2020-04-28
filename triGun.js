@@ -3,7 +3,7 @@
 // optional args:
 // /ts laserGun <player> <bullet>
 // /ts laserGun me Bullets.meltdownLaser
-// Sorry for stealing code from laserGun, I hope you dont mind. -Photemy
+// Sorry for stealing code from laserGun , I hope you dont mind. -Photemy
 if(typeof ts === 'undefined') ts = {}; ts.currentScriptName = "laserGun";
 if(typeof ts[ts.currentScriptName] === 'undefined') ts[ts.currentScriptName] = {};
 ts[ts.currentScriptName].function = function(){
