@@ -71,7 +71,7 @@ ts[ts.currentScriptName].function = function(){
     state.timer = new java.util.Timer("laserGun")
     state.timer.schedule(state.task, 0,100);
     state.running = true;
-    Vars.scripter.sendMessage(" " + p.name + " is now using Trigun. Arguments in order: bullet, accuracy, team, rotspd, reload, player.");
+    Vars.scripter.sendMessage(" " + player.name + " is now using Trigun. Arguments in order: bullet, accuracy, team, rotspd, reload, player.");
   }
 };
 ts[ts.currentScriptName].function();0;
