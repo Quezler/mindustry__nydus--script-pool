@@ -53,6 +53,18 @@ ts[ts.currentScriptName].function = function(){
         return stripped;
     }
 
+    function escapeBracket(unescaped) {
+        var escaped = "";
+        for(e = 0; e < unescaped.length; e++) {
+            if (unescaped[e] == "[") {
+                escaped += "\\[";
+                continue;
+            }
+            escaped += unescaped[e];
+        }
+        return escaped;
+    }
+
     function sendWorldData(player) {
         if (typeof ByteArrayOutputStream == 'undefined') importPackage(java.io);
         if (typeof FastDeflaterOutputStream == 'undefined') importPackage(Packages.arc.util.io)
@@ -74,7 +86,18 @@ ts[ts.currentScriptName].function = function(){
         Vars.scripter.sendMessage("[#85C1E9]Maps Listed [#C39BD3]" + mapList.size);
     } else {
         var newMap = args[0];
-        map = mapList.find(boolf(m => m.name().match(stripColor(newMap))));
+        map = null;
+        map = mapList.find(boolf(m => m.name().match(newMap)));
+        if (map == null) {
+            mapList.find(boolf(m => m.name().match(escapeBracket(newMap))));
+            if (map == null) {
+                map = mapList.find(boolf(m => m.name().match(stripColor(newMap))));
+                if (map == null) {
+                    map = mapList.find(boolf(m => m.name() == newMap));
+                }
+            }
+        }
+
         if (map == null) {
             Vars.scripter.sendMessage(newMap + "[#F1948A] was not found")
         } else {
