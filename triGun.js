@@ -34,7 +34,7 @@ ts[ts.currentScriptName].function = function(){
                   0.2
                );
             };
-            rot = rot+4;
+            rot = rot+6;
             if(mov<10){
                mov = mov+0.1
             }else{
@@ -51,11 +51,23 @@ ts[ts.currentScriptName].function = function(){
                };
             };
          }else{
-            mov = 0
+            for(f=0;f<360;f=f+120){
+               Calls.createBullet(
+                  Bullets.slagShot,
+                  team,
+                  (p.x+(Math.cos((f+rot)/57.3))*5*mov),
+                  (p.y+(Math.sin((f+rot)/57.3))*5*mov),
+                  j,
+                  0,
+                  0.2
+             };
+            if(mov>0){
+               mov = mov - 0.2
+            }
          };
     }};
     state.timer = new java.util.Timer("laserGun")
-    state.timer.schedule(state.task, 0,50);
+    state.timer.schedule(state.task, 0,100);
     state.running = true;
     Vars.scripter.sendMessage(" " + p.name + " is now using Trigun. Please turn it off before you leave");
   }
