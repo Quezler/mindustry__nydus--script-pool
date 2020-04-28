@@ -4,7 +4,7 @@
 // /ts laserGun <player> <bullet>
 // /ts laserGun me Bullets.meltdownLaser
 // Sorry for stealing code from laserGun, I hope you dont mind. -Photemy
-if(typeof ts === 'undefined') ts = {}; ts.currentScriptName = "triGun";
+if(typeof ts === 'undefined') ts = {}; ts.currentScriptName = "laserGun";
 if(typeof ts[ts.currentScriptName] === 'undefined') ts[ts.currentScriptName] = {};
 ts[ts.currentScriptName].function = function(){
   const state = ts[ts.currentScriptName];
@@ -14,12 +14,11 @@ ts[ts.currentScriptName].function = function(){
     state.running = false;
     Vars.scripter.sendMessage("Trigun has been disabled");
   }else{
-    const bullet   = args[0] || Bullets.missileJavelin;
-    const p        = args[6] || Vars.scripter;
-    const accuracy = args[1] || 10;
-    const team     = args[3] || p.team;
-    const rotspd   = args[4] || 1;
-    const reload   = args[5] || 1;
+    const p        = args[0] || Vars.scripter;
+    const bullet   = args[1] || Bullets.missileJavelin;
+    const accuracy = args[2] || 10
+    const team     = args[3] || p.team
+    var   rot      = 1
     var   mov      = 0
 
       state.task = new java.util.TimerTask() {run(){
@@ -35,9 +34,9 @@ ts[ts.currentScriptName].function = function(){
                   0.2
                );
             };
-            rot = rot+(6*rotspd);
+            rot = rot+6;
             if(mov<10){
-               mov = mov+(0.1/reload)
+               mov = mov+0.1
             }else{
                for(i=0;i<360;i=i+120){
                   Calls.createBullet(
@@ -58,20 +57,20 @@ ts[ts.currentScriptName].function = function(){
                   team,
                   (p.x+(Math.cos((f+rot)/57.3))*5*mov),
                   (p.y+(Math.sin((f+rot)/57.3))*5*mov),
-                  0,
+                  j,
                   0,
                   0.2
-                 );
+                  );
              };
             if(mov>0){
-               mov = mov - (0.2*reload)
+               mov = mov - 0.2
             }
          };
     }};
-    state.timer = new java.util.Timer("triGun")
+    state.timer = new java.util.Timer("laserGun")
     state.timer.schedule(state.task, 0,100);
     state.running = true;
-    Vars.scripter.sendMessage(" " + p.name + " is now using Trigun. Arguments in order: bullet, accuracy, team, rotspd, reload, player.");
+    Vars.scripter.sendMessage(" " + p.name + " is now using Trigun. Please turn it off before you leave");
   }
 };
 ts[ts.currentScriptName].function();0;
