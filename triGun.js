@@ -14,37 +14,38 @@ ts[ts.currentScriptName].function = function(){
     state.running = false;
     Vars.scripter.sendMessage("Trigun has been disabled");
   }else{
-    const p        = args[0] || Vars.scripter;
-    const bullet   = args[1] || Bullets.missileJavelin;
-    const accuracy = args[2] || 10
+    const bullet   = args[0] || Bullets.missileJavelin;
+    const accuracy = args[1] || 10
     const team     = args[3] || p.team
-    var   rot      = 1
+    const rotspd   = args[4] || 1
+    const reload   = args[5] || 1
+    const player   = args[6] || Vars.scripter;
     var   mov      = 0
 
       state.task = new java.util.TimerTask() {run(){
-         if(p.isShooting()){
+         if(player.isShooting()){
             for(j=0;j<360;j=j+120){
                Calls.createBullet(
                   Bullets.cryoShot,
                   team,
-                  (p.x+(Math.cos((j+rot)/57.3))*5*mov),
-                  (p.y+(Math.sin((j+rot)/57.3))*5*mov),
+                  (player.x+(Math.cos((j+rot)/57.3))*5*mov),
+                  (player.y+(Math.sin((j+rot)/57.3))*5*mov),
                   j,
                   0,
                   0.2
                );
             };
-            rot = rot+6;
+            rot = rot+(6*rotspd);
             if(mov<10){
-               mov = mov+0.1
+               mov = mov+(0.1/reload)
             }else{
                for(i=0;i<360;i=i+120){
                   Calls.createBullet(
                      bullet,
                      team,
-                     (p.x+Math.cos((i+rot)/57.3)*50),
-                     (p.y+Math.sin((i+rot)/57.3)*50),
-                     p.rotation+(Math.random()*accuracy)-(accuracy/2),
+                     (player.x+Math.cos((i+rot)/57.3)*50),
+                     (player.y+Math.sin((i+rot)/57.3)*50),
+                     player.rotation+(Math.random()*accuracy)-(accuracy/2),
                      1,
                      1
                   );
@@ -55,22 +56,22 @@ ts[ts.currentScriptName].function = function(){
                Calls.createBullet(
                   Bullets.slagShot,
                   team,
-                  (p.x+(Math.cos((f+rot)/57.3))*5*mov),
-                  (p.y+(Math.sin((f+rot)/57.3))*5*mov),
+                  (player.x+(Math.cos((f+rot)/57.3))*5*mov),
+                  (player.y+(Math.sin((f+rot)/57.3))*5*mov),
                   j,
                   0,
                   0.2
                  );
              };
             if(mov>0){
-               mov = mov - 0.2
+               mov = mov - (0.2*reload)
             }
          };
     }};
     state.timer = new java.util.Timer("laserGun")
     state.timer.schedule(state.task, 0,100);
     state.running = true;
-    Vars.scripter.sendMessage(" " + p.name + " is now using Trigun. Please turn it off before you leave");
+    Vars.scripter.sendMessage(" " + p.name + " is now using Trigun. Arguments in order: bullet, accuracy, team, rotspd, reload, player.");
   }
 };
 ts[ts.currentScriptName].function();0;
