@@ -1,5 +1,3 @@
-// To enable it on yourself or to disable it:
-// /ts triGun
 // optional args:
 // /ts laserGun <player> <bullet>
 // /ts laserGun me Bullets.meltdownLaser
@@ -27,8 +25,8 @@ ts[ts.currentScriptName].function = function(){
                Calls.createBullet(
                   Bullets.cryoShot,
                   team,
-                  (p.x+(Math.cos((j+rot)/57.3))*30*((mov^0.5) - (0.16*mov))/4),
-                  (p.y+(Math.sin((j+rot)/57.3))*30*((mov^0.5) - (0.16*mov))/4),
+                  (p.x+(Math.cos((j+rot)/57.3))*4*mov),
+                  (p.y+(Math.sin((j+rot)/57.3))*4*mov),
                   j,
                   0,
                   0.2
@@ -54,3 +52,10 @@ ts[ts.currentScriptName].function = function(){
             mov = 0
          };
     }};
+    state.timer = new java.util.Timer("laserGun")
+    state.timer.schedule(state.task, 0,50);
+    state.running = true;
+    Vars.scripter.sendMessage(" " + p.name + " is now using Trigun. Please turn it off before you leave");
+  }
+};
+ts[ts.currentScriptName].function();0;
