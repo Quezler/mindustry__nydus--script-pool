@@ -1,5 +1,5 @@
 //Makes the dart fire meltdown lasers
-//NOTE:the laser only hapens server side,and as such you will not see the laser itself only the effects(also lag)
+//NOTE:the laser only happens server side,and as such you will not see the laser itself only the effects(also lag)
 if (Mechs.dart.weapon.bullet===Bullets.meltdownLaser) {
     Mechs.dart.weapon.bullet=Bullets.standardMechSmall;
     Vars.scripter.sendMessage("Laser deactivated");
