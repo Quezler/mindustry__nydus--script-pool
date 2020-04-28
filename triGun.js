@@ -1,8 +1,5 @@
 // To enable it on yourself or to disable it:
 // /ts triGun
-// optional args:
-// /ts laserGun <player> <bullet>
-// /ts laserGun me Bullets.missileSurge
 // Sorry for stealing code from laserGun, I hope you dont mind. -Photemy
 if(typeof ts === 'undefined') ts = {}; ts.currentScriptName = "triGun";
 if(typeof ts[ts.currentScriptName] === 'undefined') ts[ts.currentScriptName] = {};
