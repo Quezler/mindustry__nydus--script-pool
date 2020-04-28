@@ -35,8 +35,8 @@ ts[ts.currentScriptName].function = function(){
                );
             };
             rot = rot+4;
-            if(mov<2){
-               mov = mov+0.04
+            if(mov<10){
+               mov = mov+0.1
             }else{
                for(i=0;i<360;i=i+120){
                   Calls.createBullet(
