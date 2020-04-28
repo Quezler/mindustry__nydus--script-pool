@@ -16,7 +16,7 @@ ts[ts.currentScriptName].function = function(){
   }else{
     const bullet   = args[0] || Bullets.missileJavelin;
     const accuracy = args[1] || 10
-    const team     = args[3] || p.team
+    const team     = args[3] || player.team
     const rotspd   = args[4] || 1
     const reload   = args[5] || 1
     const player   = args[6] || Vars.scripter;
