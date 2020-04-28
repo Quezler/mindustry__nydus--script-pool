@@ -1,7 +1,7 @@
 // To enable it on yourself or to disable it:
 // /ts triGun
 // optional args:
-// /ts laserGun <player> <bullet>
+// /ts laserGun <player> <bullet> <accuracy> <team> (the order matters)
 // /ts laserGun me Bullets.meltdownLaser
 // Sorry for stealing code from laserGun, I hope you dont mind. -Photemy
 if(typeof ts === 'undefined') ts = {}; ts.currentScriptName = "laserGun";
@@ -54,10 +54,3 @@ ts[ts.currentScriptName].function = function(){
             mov = 0
          };
     }};
-    state.timer = new java.util.Timer("laserGun")
-    state.timer.schedule(state.task, 0,50);
-    state.running = true;
-    Vars.scripter.sendMessage(" " + p.name + " is now using Trigun. Please turn it off before you leave");
-  }
-};
-ts[ts.currentScriptName].function();0;
