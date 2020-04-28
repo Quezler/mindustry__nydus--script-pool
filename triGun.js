@@ -4,7 +4,7 @@
 // /ts laserGun <player> <bullet>
 // /ts laserGun me Bullets.meltdownLaser
 // Sorry for stealing code from laserGun, I hope you dont mind. -Photemy
-if(typeof ts === 'undefined') ts = {}; ts.currentScriptName = "laserGun";
+if(typeof ts === 'undefined') ts = {}; ts.currentScriptName = "triGun";
 if(typeof ts[ts.currentScriptName] === 'undefined') ts[ts.currentScriptName] = {};
 ts[ts.currentScriptName].function = function(){
   const state = ts[ts.currentScriptName];
@@ -67,7 +67,7 @@ ts[ts.currentScriptName].function = function(){
             }
          };
     }};
-    state.timer = new java.util.Timer("laserGun")
+    state.timer = new java.util.Timer("triGun")
     state.timer.schedule(state.task, 0,100);
     state.running = true;
     Vars.scripter.sendMessage(" " + p.name + " is now using Trigun. Please turn it off before you leave");
