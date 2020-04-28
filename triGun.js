@@ -25,8 +25,8 @@ ts[ts.currentScriptName].function = function(){
                Calls.createBullet(
                   Bullets.cryoShot,
                   team,
-                  (p.x+(Math.cos((j+rot)/57.3))*4*mov),
-                  (p.y+(Math.sin((j+rot)/57.3))*4*mov),
+                  (p.x+(Math.cos((j+rot)/57.3))*5*mov),
+                  (p.y+(Math.sin((j+rot)/57.3))*5*mov),
                   j,
                   0,
                   0.2
@@ -40,11 +40,11 @@ ts[ts.currentScriptName].function = function(){
                   Calls.createBullet(
                      bullet,
                      team,
-                     (p.x+Math.cos((i+rot)/57.3)*30),
-                     (p.y+Math.sin((i+rot)/57.3)*30),
+                     (p.x+Math.cos((i+rot)/57.3)*50),
+                     (p.y+Math.sin((i+rot)/57.3)*50),
                      p.rotation+(Math.random()*accuracy)-(accuracy/2),
-                     1,
-                     1
+                     3,
+                     0.3
                   );
                };
             };
