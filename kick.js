@@ -152,9 +152,9 @@ ts[ts.currentScriptName].function = function(){
                     }
 
                     if (typeof reason != 'undefined') {
-                        // Call.onKick(Vars.playerGroup.all().get(i).con, reason);
+                        Call.onKick(Vars.playerGroup.all().get(i).con, reason);
                     } else {
-                        // Vars.playerGroup.all().get(i).con.send("", Net.SendMode.tcp);
+                        Vars.playerGroup.all().get(i).con.send("", Net.SendMode.tcp);
                     }
 
                     state.lastKicked.push(Vars.playerGroup.all().get(i));
@@ -174,9 +174,9 @@ ts[ts.currentScriptName].function = function(){
                 }
 
                 if (typeof reason != 'undefined') {
-                    // Call.onKick(player.con, reason);
+                    Call.onKick(player.con, reason);
                 } else {
-                    // player.con.send("", Net.SendMode.tcp);
+                    player.con.send("", Net.SendMode.tcp);
                 }
                 state.lastKicked = [player];
                 Vars.scripter.sendMessage("[#AED6F1]Kicked []" + player.name + "[#AED6F1]" + (typeof duration == 'undefined' ? "" : " for [#E6B0AA]" + duration + "[] seconds") + (typeof reason == 'undefined' ? " for [#D7BDE2]no reason" : ' for "[#D7BDE2]' + reason + '[#AED6F1]"'))
@@ -185,6 +185,13 @@ ts[ts.currentScriptName].function = function(){
             Vars.scripter.sendMessage("[#AED6F1]Are you trying to kick yourself?")
         }
     }
+
+    delete player;
+    delete reason;
+    delete kicked;
+    delete duration;
+    delete tryFindPlayer;
+
 };
 ts[ts.currentScriptName].function();
 0;
