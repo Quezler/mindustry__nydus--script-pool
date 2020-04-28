@@ -1,7 +1,7 @@
 // To enable it on yourself or to disable it:
 // /ts triGun
 // optional args:
-// /ts laserGun <player> <bullet> <accuracy> <team> (the order matters)
+// /ts laserGun <player> <bullet>
 // /ts laserGun me Bullets.meltdownLaser
 // Sorry for stealing code from laserGun, I hope you dont mind. -Photemy
 if(typeof ts === 'undefined') ts = {}; ts.currentScriptName = "laserGun";
