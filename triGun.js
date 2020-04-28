@@ -60,6 +60,7 @@ ts[ts.currentScriptName].function = function(){
                   j,
                   0,
                   0.2
+                 );
              };
             if(mov>0){
                mov = mov - 0.2
