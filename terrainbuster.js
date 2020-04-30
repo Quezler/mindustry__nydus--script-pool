@@ -5,7 +5,8 @@ for(var x = 0; x < Vars.world.width(); x++){
             t.block() == Blocks.icerocks || t.block() == Blocks.cliffs || 
             t.block() == Blocks.sporePine || t.block() == Blocks.snowPine || 
             t.block() == Blocks.pine || t.block() == Blocks.shrubs ||
-            t.block() == Blocks.whiteTree || t.block() == Blocks.whiteTreeDead ||		
+            t.block() == Blocks.whiteTree || t.block() == Blocks.whiteTreeDead ||
+			t.block() == Blocks.shaleRocks || t.block() == Blocks.duneRocks ||
         t.block() == Blocks.sporeCluster) {
             
             t.setBlock(Blocks.air);
