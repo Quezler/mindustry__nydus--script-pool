@@ -119,7 +119,7 @@ ts[ts.currentScriptName].function = function(){
 
     if (player == null) Vars.scripter.sendMessage(String(args[0]) + "[#E6B0AA] was not found")
     else {
-        // Call.onConnect(player.con, server[0], server[1]);
+        Call.onConnect(player.con, server[0], server[1]);
         Vars.scripter.sendMessage(player.name + "[#E8DAEF] got yeeted to [#A9DFBF]" + server[0] + "[]:[#F9E79F]" + server[1]);
     }
 
