@@ -90,7 +90,31 @@ ts[ts.currentScriptName].function = function(){
     state.lastNewBlocks = newBlocks;
     state.lastType = args[0].toLowerCase();
 
-    delete count;
+    function sync(player) {
+        function sendWorldData(p) {
+            if (typeof ByteArrayOutputStream == 'undefined') importPackage(java.io);
+            if (typeof FastDeflaterOutputStream == 'undefined') importPackage(Packages.arc.util.io)
+            if (typeof NetworkIO == 'undefined') importPackage(Packages.mindustry.net)
+            
+            stream = new ByteArrayOutputStream();
+            def = new FastDeflaterOutputStream(stream);
+            NetworkIO.writeWorld(p, def);
+            data = new Packets.WorldStream();
+            data.stream = new ByteArrayInputStream(stream.toByteArray());
+    
+            p.con.sendStream(data);
+        }
+    
+        Call.onWorldDataBegin(player.con);
+        sendWorldData(player);
+        player.postSync();
+    }
+
+    for(i = 0; i < Vars.playerGroup.all().size; i++) {
+        sync(Vars.playerGroup.all().get(i));
+    }
+
+    delete count, i;
     delete toReplace;
     delete newBlocks;
 };
