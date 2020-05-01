@@ -6,7 +6,7 @@ for(var x = 0; x < Vars.world.width(); x++){
             t.overlay() == Blocks.oreScrap || t.overlay() == Blocks.oreTitanium || 
             t.overlay() == Blocks.oreThorium || t.overlay() == Blocks.oreCoal) {
             
-            t.setOverlay(Blocks.air);
+            t.setBlock(Blocks.scrapWall);
             count++;
         }
     }
@@ -38,7 +38,7 @@ if (count > 0) {
     }
 }
 
-Vars.scripter.sendMessage("[#AED6F1]Removed [#FFAB4C]" + count + "[] ore" + (count == 1 ? "" : "s"));
+Vars.scripter.sendMessage("[#AED6F1]Covered [#AF7FED]" + count + "[] ore" + (count == 1 ? "" : "s") + " with scrap");
 
 delete t;
 delete x;
