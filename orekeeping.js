@@ -9,3 +9,5 @@ for(var x = 0; x < Vars.world.width(); x++){
         }
     }
 }
+
+0;
