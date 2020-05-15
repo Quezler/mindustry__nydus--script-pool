@@ -54,27 +54,27 @@ ts[ts.currentScriptName].function = function(){
             //TODO tweak buffs
             case Blocks.copperWall:
             case Blocks.copperWallLarge:
-              p.health(Math.max(p.health()+10, p.maxHealth()));
+              p.health(Math.min(p.health()+10, p.maxHealth()));
               break;
             case Blocks.titaniumWall:
             case Blocks.titaniumWallLarge:
-              p.health(Math.max(p.health()+10, p.maxHealth()));
+              p.health(Math.min(p.health()+10, p.maxHealth()));
               break;
             case Blocks.thoriumWall:
             case Blocks.thoriumWallLarge:
-              p.health(Math.max(p.health()+10, p.maxHealth()));
+              p.health(Math.min(p.health()+10, p.maxHealth()));
               break;
             case Blocks.plastaniumWall:
             case Blocks.plastaniumWallLarge:
-              p.health(Math.max(p.health()+10, p.maxHealth()));
+              p.health(Math.min(p.health()+10, p.maxHealth()));
               break;
             case Blocks.phaseWall:
             case Blocks.phaseWallLarge:
-              p.health(Math.max(p.health()+10, p.maxHealth()));
+              p.health(Math.min(p.health()+10, p.maxHealth()));
               break;
             case Blocks.surgeWall:
             case Blocks.surgeWallLarge:
-              p.health(Math.max(p.health()+10, p.maxHealth()));
+              p.health(Math.min(p.health()+10, p.maxHealth()));
               break;
           }
         }));
