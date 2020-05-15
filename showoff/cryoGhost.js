@@ -41,7 +41,6 @@ ts[ts.currentScriptName].function = function(){
       default:
         Vars.scripter.sendMessage("[yellow] Usage: /ts cryoGhost action='start'|'stop'|'status'");
     }
-    delete action;
   }
 };
 ts[ts.currentScriptName].function();
