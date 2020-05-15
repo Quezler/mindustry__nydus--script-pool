@@ -19,59 +19,59 @@ ts[ts.currentScriptName].function = function(){
             //TODO tweak status effects and damages
             case Blocks.copperWall:
             case Blocks.copperWallLarge:
-              p.applyEffect(StatusEffects.burning,2)
+              p.applyEffect(StatusEffects.burning,2*60)
               p.damage(10);
               break;
             case Blocks.titaniumWall:
             case Blocks.titaniumWallLarge:
-              p.applyEffect(StatusEffects.freezing,1)
+              p.applyEffect(StatusEffects.freezing,1*60)
               p.damage(20);
               break;
             case Blocks.thoriumWall:
             case Blocks.thoriumWallLarge:
-              p.applyEffect(StatusEffects.corroded,5)
+              p.applyEffect(StatusEffects.corroded,5*60)
               p.damage(50);
               break;
             case Blocks.plastaniumWall:
             case Blocks.plastaniumWallLarge:
-              p.applyEffect(StatusEffects.overdrive,5)
+              p.applyEffect(StatusEffects.overdrive,5*60)
               p.damage(70);
               break;
             case Blocks.phaseWall:
             case Blocks.phaseWallLarge:
-              p.applyEffect(StatusEffects.tarred,10)
+              p.applyEffect(StatusEffects.tarred,10*60)
               p.damage(30);
               break;
             case Blocks.surgeWall:
             case Blocks.surgeWallLarge:
-              p.applyEffect(StatusEffects.shocked,7)
+              p.applyEffect(StatusEffects.shocked,7*60)
               p.damage(100);
               break;
           }else if(tileOn.getTeam() == p.team) switch(blockOn){
             //TODO tweak buffs
             case Blocks.copperWall:
             case Blocks.copperWallLarge:
-              p.health+=10;
+              p.health(Math.max(p.health()+10, p.maxHealth()));
               break;
             case Blocks.titaniumWall:
             case Blocks.titaniumWallLarge:
-              p.health+=10;
+              p.health(Math.max(p.health()+10, p.maxHealth()));
               break;
             case Blocks.thoriumWall:
             case Blocks.thoriumWallLarge:
-              p.health+=10;
+              p.health(Math.max(p.health()+10, p.maxHealth()));
               break;
             case Blocks.plastaniumWall:
             case Blocks.plastaniumWallLarge:
-              p.health+=10;
+              p.health(Math.max(p.health()+10, p.maxHealth()));
               break;
             case Blocks.phaseWall:
             case Blocks.phaseWallLarge:
-              p.health+=10;
+              p.health(Math.max(p.health()+10, p.maxHealth()));
               break;
             case Blocks.surgeWall:
             case Blocks.surgeWallLarge:
-              p.health+=10;
+              p.health(Math.max(p.health()+10, p.maxHealth()));
               break;
           }
         }));
