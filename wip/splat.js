@@ -23,32 +23,32 @@ ts[ts.currentScriptName].function = function(){
             case Blocks.copperWall:
             case Blocks.copperWallLarge:
               p.applyEffect(StatusEffects.burning,2*60)
-              p.damage(10);
+              p.damage(2);
               break;
             case Blocks.titaniumWall:
             case Blocks.titaniumWallLarge:
               p.applyEffect(StatusEffects.freezing,1*60)
-              p.damage(20);
+              p.damage(4);
               break;
             case Blocks.thoriumWall:
             case Blocks.thoriumWallLarge:
               p.applyEffect(StatusEffects.corroded,5*60)
-              p.damage(50);
+              p.damage(10);
               break;
             case Blocks.plastaniumWall:
             case Blocks.plastaniumWallLarge:
               p.applyEffect(StatusEffects.overdrive,5*60)
-              p.damage(70);
+              p.damage(14);
               break;
             case Blocks.phaseWall:
             case Blocks.phaseWallLarge:
               p.applyEffect(StatusEffects.tarred,10*60)
-              p.damage(30);
+              p.damage(6);
               break;
             case Blocks.surgeWall:
             case Blocks.surgeWallLarge:
-              p.applyEffect(StatusEffects.shocked,7*60)
-              p.damage(100);
+              Calls.createBullet(Bullets.flakSurge, tileOn.getTeam(), p.x, p.y, 0, 0, 30);
+              p.damage(20);
               break;
           }else if(tileOn.getTeam() == p.team) switch(blockOn){
             //TODO tweak buffs
