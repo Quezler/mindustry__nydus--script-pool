@@ -39,7 +39,7 @@ ts[ts.currentScriptName].function = function(){
         break;
       case "help":
       default:
-        Vars.scripter.sendMessage("[yellow] Usage: /ts cryoGhost action='start'|'stop'|'status'");
+        Vars.scripter.sendMessage("[yellow] Usage: /ts cryoGhost 'start'|'stop'|'status'");
     }
   }
 };
