@@ -28,10 +28,6 @@ ts[ts.currentScriptName].function = function(){
     Store any persistent state you need between runs in `state`, for example:
       state.timer = new java.util.Timer("my timer");
       state.running = true;
-    
-    It's good to delete the parameters at the end of the script
-    so they don't interfere with future runs, for example:
-      delete action; // assuming "action" if one of the parameters of the script
   */
 };
 ts[ts.currentScriptName].function();
