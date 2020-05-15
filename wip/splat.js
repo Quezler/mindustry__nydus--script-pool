@@ -10,12 +10,12 @@ ts[ts.currentScriptName].function = function(){
       // Start the wall placer timer
       try{state.placer.cancel()}catch(e){} // just in case
       const task = new java.util.TimerTask() { run() {
-        Vars.playerGroup.all().each(cons((p) => 
+        Vars.playerGroup.all().each(cons(function(p) {
           if(p.tileOn().block() === Blocks.air) {
             p.tileOn().setNet(Blocks.copperWall, p.team, 0);
             Blocks.copperWall.placed(p.tileOn());
           }
-        ));
+        }));
       }};
       state.placer = new java.util.Timer("splat placer")
       state.placer.schedule(task, 0,100);
