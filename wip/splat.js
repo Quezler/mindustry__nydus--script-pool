@@ -3,16 +3,19 @@ if(typeof ts[ts.currentScriptName] === 'undefined') ts[ts.currentScriptName] = {
 ts[ts.currentScriptName].function = function(){
   const state = ts[ts.currentScriptName];
 
+  state.createWalls = true;
   if(args.length == 0) {
     Vars.scripter.sendMessage("[yellow] no action specified. use /ts splat 'start'|'stop'|'status'");
   } else switch(args[0]) {
+    case "start-nowalls":
+      state.createWalls = false;
     case "start":
       try{state.timer.cancel()}catch(e){} // just in case
       const task = new java.util.TimerTask() { run() {
         Vars.playerGroup.all().each(cons(function(p) {
           const tileOn = p.tileOn();
           const blockOn = tileOn.block();
-          if(blockOn === Blocks.air) {
+          if(state.createWalls && blockOn === Blocks.air) {
             tileOn.setNet(Blocks.copperWall, p.team, 0);
             Blocks.copperWall.placed(tileOn);
           }else if(tileOn.getTeam() !== p.team) switch(blockOn){
