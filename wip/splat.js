@@ -24,31 +24,32 @@ ts[ts.currentScriptName].function = function(){
             //TODO tweak status effects and damages
             case Blocks.copperWall:
             case Blocks.copperWallLarge:
-              p.applyEffect(StatusEffects.burning,2*60)
+              p.applyEffect(StatusEffects.burning,4*60)
               p.damage(2);
               break;
             case Blocks.titaniumWall:
             case Blocks.titaniumWallLarge:
-              p.applyEffect(StatusEffects.freezing,1*60)
+              p.applyEffect(StatusEffects.freezing,2*60)
               p.damage(4);
               break;
             case Blocks.thoriumWall:
             case Blocks.thoriumWallLarge:
-              p.applyEffect(StatusEffects.corroded,5*60)
+              p.applyEffect(StatusEffects.corroded,10*60)
               p.damage(10);
               break;
             case Blocks.plastaniumWall:
             case Blocks.plastaniumWallLarge:
-              p.applyEffect(StatusEffects.overdrive,5*60)
+              p.applyEffect(StatusEffects.overdrive,10*60)
               p.damage(14);
               break;
             case Blocks.phaseWall:
             case Blocks.phaseWallLarge:
-              p.applyEffect(StatusEffects.tarred,10*60)
+              p.applyEffect(StatusEffects.tarred,20*60)
               p.damage(6);
               break;
             case Blocks.surgeWall:
             case Blocks.surgeWallLarge:
+              Calls.createBullet(Bullets.flakSurge, tileOn.getTeam(), p.x, p.y, 0, 0, 0);
               Calls.createBullet(Bullets.flakSurge, tileOn.getTeam(), p.x, p.y, 0, 0, 0);
               p.damage(20);
               break;
