@@ -47,7 +47,7 @@ ts[ts.currentScriptName].function = function(){
               break;
             case Blocks.surgeWall:
             case Blocks.surgeWallLarge:
-              Calls.createBullet(Bullets.flakSurge, tileOn.getTeam(), p.x, p.y, 0, 0, 30);
+              Calls.createBullet(Bullets.flakSurge, tileOn.getTeam(), p.x, p.y, 0, 0, 0);
               p.damage(20);
               break;
           }else if(tileOn.getTeam() == p.team) switch(blockOn){
