@@ -13,7 +13,7 @@ ts[ts.currentScriptName].function = function(){
       try{state.timer.cancel()}catch(e){} // just in case
       const task = new java.util.TimerTask() { run() {
         Vars.playerGroup.all().each(cons(function(p) {
-          const tileOn = p.tileOn() instanceof BlockPart
+          const tileOn = p.tileOn().block() instanceof BlockPart
                        ? p.tileOn().block().linked(p.tileOn())
                        : p.tileOn();
           const blockOn = tileOn.block();
