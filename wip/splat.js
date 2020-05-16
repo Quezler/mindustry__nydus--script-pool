@@ -13,7 +13,9 @@ ts[ts.currentScriptName].function = function(){
       try{state.timer.cancel()}catch(e){} // just in case
       const task = new java.util.TimerTask() { run() {
         Vars.playerGroup.all().each(cons(function(p) {
-          const tileOn = p.tileOn();
+          const tileOn = p.tileOn() instanceof BlockPart
+                       ? p.tileOn().block().linked(p.tileOn())
+                       : p.tileOn();
           const blockOn = tileOn.block();
           if(state.createWalls && blockOn === Blocks.air) {
             tileOn.setNet(Blocks.copperWall, p.team, 0);
