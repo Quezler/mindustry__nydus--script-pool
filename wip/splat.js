@@ -19,7 +19,7 @@ ts[ts.currentScriptName].function = function(){
                        : p.tileOn();
           if (tileOn() == null) return; // there might be a stray blockpart
           const blockOn = tileOn.block();
-          if(state.createWalls && blockOn === Blocks.air && p.isShooting) {
+          if(state.createWalls && blockOn === Blocks.air) {
             tileOn.setNet(Blocks.copperWall, p.team, 0);
             Blocks.copperWall.placed(tileOn);
           }else if(tileOn.getTeam() !== p.team) switch(blockOn){
