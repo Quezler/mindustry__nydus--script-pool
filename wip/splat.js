@@ -12,6 +12,7 @@ ts[ts.currentScriptName].function = function(){
     case "start":
       try{state.timer.cancel()}catch(e){} // just in case
       const task = new java.util.TimerTask() { run() {
+        try{
         Vars.playerGroup.all().each(cons(function(p) {
           if (p.tileOn() == null) return; // player might be outside of map
           const tileOn = p.tileOn().block() instanceof BlockPart
@@ -83,6 +84,7 @@ ts[ts.currentScriptName].function = function(){
               break;
           }
         }));
+        }catch(e){Calls.sendMessage("EXCEPTION: "+e);}
       }};
       state.timer = new java.util.Timer("splat")
       state.timer.schedule(task, 0,100);
