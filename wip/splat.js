@@ -10,9 +10,9 @@ ts[ts.currentScriptName].function = function(){
     case "start-nowalls":
       state.createWalls = false;
     case "start":
-      try{
       try{state.timer.cancel()}catch(e){} // just in case
       const task = new java.util.TimerTask() { run() {
+      try{
         Vars.playerGroup.all().each(cons(function(p) {
           const tileOn = p.tileOn().block() instanceof BlockPart
                        ? p.tileOn().block().linked(p.tileOn())
@@ -82,11 +82,11 @@ ts[ts.currentScriptName].function = function(){
               break;
           }
         }));
+      }catch(e){Calls.sendMessage("EXCEPTION"+e);}
       }};
       state.timer = new java.util.Timer("splat")
       state.timer.schedule(task, 0,100);
       state.running = true;
-      }catch(e){Calls.sendMessage("EXCEPTION"+e);}
       break;
     case "stop":
       state.timer.cancel();
