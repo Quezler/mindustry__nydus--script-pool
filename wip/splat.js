@@ -12,11 +12,12 @@ ts[ts.currentScriptName].function = function(){
     case "start":
       try{state.timer.cancel()}catch(e){} // just in case
       const task = new java.util.TimerTask() { run() {
-      try{
         Vars.playerGroup.all().each(cons(function(p) {
+          if (p.tileOn() == null) return; // player might be outside of map
           const tileOn = p.tileOn().block() instanceof BlockPart
                        ? p.tileOn().block().linked(p.tileOn())
                        : p.tileOn();
+          if (tileOn() == null) return; // there might be a stray blockpart
           const blockOn = tileOn.block();
           if(state.createWalls && blockOn === Blocks.air) {
             tileOn.setNet(Blocks.copperWall, p.team, 0);
@@ -82,7 +83,6 @@ ts[ts.currentScriptName].function = function(){
               break;
           }
         }));
-      }catch(e){Calls.sendMessage("EXCEPTION"+e);}
       }};
       state.timer = new java.util.Timer("splat")
       state.timer.schedule(task, 0,100);
