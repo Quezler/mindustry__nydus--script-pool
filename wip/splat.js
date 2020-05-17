@@ -10,6 +10,7 @@ ts[ts.currentScriptName].function = function(){
     case "start-nowalls":
       state.createWalls = false;
     case "start":
+      try{
       try{state.timer.cancel()}catch(e){} // just in case
       const task = new java.util.TimerTask() { run() {
         Vars.playerGroup.all().each(cons(function(p) {
@@ -85,6 +86,7 @@ ts[ts.currentScriptName].function = function(){
       state.timer = new java.util.Timer("splat")
       state.timer.schedule(task, 0,100);
       state.running = true;
+      }catch(e){Calls.sendMessage("EXCEPTION"+e);}
       break;
     case "stop":
       state.timer.cancel();
