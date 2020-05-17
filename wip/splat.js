@@ -18,7 +18,7 @@ ts[ts.currentScriptName].function = function(){
           const tileOn = p.tileOn().block() instanceof BlockPart
                        ? p.tileOn().block().linked(p.tileOn())
                        : p.tileOn();
-          if (tileOn() == null) return; // there might be a stray blockpart
+          if (tileOn == null) return; // there might be a stray blockpart
           const blockOn = tileOn.block();
           if(state.createWalls && blockOn === Blocks.air) {
             tileOn.setNet(Blocks.copperWall, p.team, 0);
