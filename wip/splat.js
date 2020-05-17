@@ -89,6 +89,7 @@ ts[ts.currentScriptName].function = function(){
       state.timer = new java.util.Timer("splat")
       state.timer.schedule(task, 0,100);
       state.running = true;
+      Vars.scripter.sendMessage("Started");
       break;
     case "stop":
       state.timer.cancel();
