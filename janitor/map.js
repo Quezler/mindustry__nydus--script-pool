@@ -107,7 +107,7 @@ ts[ts.currentScriptName].function = function(){
                 Vars.playerGroup.all().get(i).setDead(true);
             }
 
-            let rules = Vars.state.rules;
+            var rules = Vars.state.rules;
             
             Vars.logic.reset();
             Call.onWorldDataBegin();
