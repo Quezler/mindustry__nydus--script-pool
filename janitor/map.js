@@ -112,7 +112,7 @@ ts[ts.currentScriptName].function = function(){
             Call.onWorldDataBegin();
 
             Vars.world.loadMap(map);
-            Vars.state.rules = Vars.world.getMap().rules();
+            // Vars.state.rules = Vars.world.getMap().rules();
             
             Vars.logic.play();
 
