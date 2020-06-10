@@ -107,14 +107,14 @@ ts[ts.currentScriptName].function = function(){
                 Vars.playerGroup.all().get(i).setDead(true);
             }
 
-            Vars.logic.reset();
-
-            Call.onWorldDataBegin();
-
-            Vars.world.loadMap(map);
-            // Vars.state.rules = Vars.world.getMap().rules();
+            let rules = Vars.state.rules;
             
+            Vars.logic.reset();
+            Call.onWorldDataBegin();
+            Vars.world.loadMap(map);
             Vars.logic.play();
+            
+            Vars.state.rules = rules;
 
             for (i = 0; i < players.length; i++) {
                 if(players[i].con == null) continue;
