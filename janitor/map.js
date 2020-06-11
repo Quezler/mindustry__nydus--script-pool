@@ -111,11 +111,12 @@ ts[ts.currentScriptName].function = function(){
             
             Vars.logic.reset();
             Call.onWorldDataBegin();
-            Vars.world.loadMap(map);
+
+            Vars.world.loadMap(map, map.applyRules(Gamemode.bestFit(rules)));
+            Vars.state.rules = Vars.world.getMap().applyRules(Gamemode.bestFit(rules));
+
             Vars.logic.play();
             
-            Vars.state.rules = rules;
-
             for (i = 0; i < players.length; i++) {
                 if(players[i].con == null) continue;
 
@@ -131,6 +132,7 @@ ts[ts.currentScriptName].function = function(){
     delete newMap;
     delete sendWorldData;
     delete stripColor;
+    delete rules;
 };
 ts[ts.currentScriptName].function();
 0;
