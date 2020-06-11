@@ -14,7 +14,7 @@ ts[ts.currentScriptName].function = function(){
         Vars.playerGroup.all().get(i).team = args[Math.floor(Math.random() * args.length)];
         Vars.playerGroup.all().get(i).spawner = null;
         Vars.playerGroup.all().get(i).lastSpawner = null;
-        Vars.playerGroup.all().get(i).reset();
+        Vars.playerGroup.all().get(i).kill();
     }
     
     Vars.scripter.sendMessage("[#AED6F1]Randmized [#D7BDE2]team" + (Vars.playerGroup.size() == 1 ? "" : "s") + "[] of [#AF7FED]" + Vars.playerGroup.size() + "[#D7BDE2] player" + (Vars.playerGroup.size() == 1 ? "" : "s"))
