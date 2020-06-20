@@ -14,6 +14,26 @@ ts[ts.currentScriptName].function = function(){
     state.lastBlocks = typeof state.lastBlocks == 'undefined' ? [] : state.lastBlocks;
     state.lastType = typeof state.lastType == 'undefined' ? "null" : state.lastType;
 
+    function sync(player) {
+        function sendWorldData(p) {
+            if (typeof ByteArrayOutputStream == 'undefined') importPackage(java.io);
+            if (typeof FastDeflaterOutputStream == 'undefined') importPackage(Packages.arc.util.io)
+            if (typeof NetworkIO == 'undefined') importPackage(Packages.mindustry.net)
+            
+            stream = new ByteArrayOutputStream();
+            def = new FastDeflaterOutputStream(stream);
+            NetworkIO.writeWorld(p, def);
+            data = new Packets.WorldStream();
+            data.stream = new ByteArrayInputStream(stream.toByteArray());
+    
+            p.con.sendStream(data);
+        }
+    
+        Call.onWorldDataBegin(player.con);
+        sendWorldData(player);
+        player.postSync();
+    }
+
     function isIn(list, item) {
         if (list == null) return false;
         for (i = 0; i < list.length; i++) {
@@ -53,6 +73,10 @@ ts[ts.currentScriptName].function = function(){
             return;
         }
         count = replace(state.lastNewBlocks, state.lastBlocks, state.lastType);
+        for(i = 0; i < Vars.playerGroup.all().size; i++) {
+            sync(Vars.playerGroup.all().get(i));
+        }
+        
         Vars.scripter.sendMessage("[#D7BDE2]Reverted [#AF7FED]" + count + "[] block" + (count == 1 ? "" : "s"));
         return;
     }
@@ -89,26 +113,6 @@ ts[ts.currentScriptName].function = function(){
     state.lastBlocks = toReplace == null ? [] : toReplace;
     state.lastNewBlocks = newBlocks;
     state.lastType = args[0].toLowerCase();
-
-    function sync(player) {
-        function sendWorldData(p) {
-            if (typeof ByteArrayOutputStream == 'undefined') importPackage(java.io);
-            if (typeof FastDeflaterOutputStream == 'undefined') importPackage(Packages.arc.util.io)
-            if (typeof NetworkIO == 'undefined') importPackage(Packages.mindustry.net)
-            
-            stream = new ByteArrayOutputStream();
-            def = new FastDeflaterOutputStream(stream);
-            NetworkIO.writeWorld(p, def);
-            data = new Packets.WorldStream();
-            data.stream = new ByteArrayInputStream(stream.toByteArray());
-    
-            p.con.sendStream(data);
-        }
-    
-        Call.onWorldDataBegin(player.con);
-        sendWorldData(player);
-        player.postSync();
-    }
 
     for(i = 0; i < Vars.playerGroup.all().size; i++) {
         sync(Vars.playerGroup.all().get(i));
