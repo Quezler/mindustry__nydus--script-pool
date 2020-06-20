@@ -1,17 +1,18 @@
 // ts randomTeams <Team A> <Team B> ...
-// Requires at least two teams
-// There can be more then just 2 teams to chose from
+// If there are no teams specified uses the team cores available on map
 
+if(typeof ts === 'undefined') ts = {}; ts.currentScriptName = "randomTeams";
+if(typeof ts[ts.currentScriptName] === 'undefined') ts[ts.currentScriptName] = {};
 ts[ts.currentScriptName].function = function(){
     const state = ts[ts.currentScriptName];
 
-    if (args.length < 2) {
-        Vars.scripter.sendMessage("[#FFAB4C]There must be atleast [#F1948A]2 teams[] in the arguments");
-        return;
-    }
-
     for (var i = 0; i < Vars.playerGroup.size(); i++) {
-        Vars.playerGroup.all().get(i).team = args[Math.floor(Math.random() * args.length)];
+        if (args.length < 2) {
+            Vars.playerGroup.all().get(i).team = Vars.state.teams.active.get(Math.floor(Math.random() * Vars.state.teams.active.size)).team;
+        } else {
+            Vars.playerGroup.all().get(i).team = args[Math.floor(Math.random() * args.length)];
+        }
+
         Vars.playerGroup.all().get(i).spawner = null;
         Vars.playerGroup.all().get(i).lastSpawner = null;
         Vars.playerGroup.all().get(i).kill();
