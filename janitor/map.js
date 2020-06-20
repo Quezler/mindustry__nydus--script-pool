@@ -64,6 +64,14 @@ ts[ts.currentScriptName].function = function(){
         }
         return escaped;
     }
+    
+    function getMapName(map) {
+        return map.name()
+    }
+
+    function getMapFile(map) {
+        return map.toString().split("").reverse().join("").match("vasm\..*?\/")[0].replace("/", "").split("").reverse().join("");
+    }
 
     function sendWorldData(player) {
         if (typeof ByteArrayOutputStream == 'undefined') importPackage(java.io);
@@ -81,23 +89,29 @@ ts[ts.currentScriptName].function = function(){
 
     if (args.length == 0) {
         for (i = 0; i < mapList.size; i++) {
-            Vars.scripter.sendMessage("[#82E0AA]" + String(i+1) + ":[] " + mapList.get(i).name());
+            Vars.scripter.sendMessage("[#82E0AA]" + String(i+1) + ":[#D4EFDF] " + getMapName(mapList.get(i)) + "[#D7BDE2] => [#CCD1D1]" + getMapFile(mapList.get(i)));
         }
         Vars.scripter.sendMessage("[#85C1E9]Maps Listed [#C39BD3]" + mapList.size);
     } else {
         var newMap = args[0];
         map = null;
-        map = mapList.find(boolf(m => m.name().match(newMap)));
+        map = mapList.find(boolf(m => getMapFile(m).match(newMap)));
         if (map == null) {
-            mapList.find(boolf(m => m.name().match(escapeBracket(newMap))));
+            map = mapList.find(boolf(m => getMapFile(m).match(escapeBracket(newMap))));
             if (map == null) {
-                map = mapList.find(boolf(m => m.name().match(stripColor(newMap))));
+                map = mapList.find(boolf(m => m.name().match(newMap)));
                 if (map == null) {
-                    map = mapList.find(boolf(m => m.name() == newMap));
+                    mapList.find(boolf(m => m.name().match(escapeBracket(newMap))));
+                    if (map == null) {
+                        map = mapList.find(boolf(m => m.name().match(stripColor(newMap))));
+                        if (map == null) {
+                            map = mapList.find(boolf(m => m.name() == newMap));
+                        }
+                    }
                 }
             }
         }
-
+        
         if (map == null) {
             Vars.scripter.sendMessage(newMap + "[#F1948A] was not found")
         } else {
