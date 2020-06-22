@@ -95,25 +95,40 @@ ts[ts.currentScriptName].function = function(){
     } else {
         var newMap = args[0];
         map = null;
-        map = mapList.find(boolf(m => getMapFile(m).match(newMap)));
-        if (map == null) {
-            map = mapList.find(boolf(m => getMapFile(m).match(escapeBracket(newMap))));
-            if (map == null) {
-                map = mapList.find(boolf(m => m.name().match(newMap)));
-                if (map == null) {
-                    mapList.find(boolf(m => m.name().match(escapeBracket(newMap))));
-                    if (map == null) {
-                        map = mapList.find(boolf(m => m.name().match(stripColor(newMap))));
-                        if (map == null) {
-                            map = mapList.find(boolf(m => m.name() == newMap));
+        
+        if (typeof newMap === 'number') {
+            if (!((newMap - 1) >= mapList.size || (newMap - 1) < 0)) {
+                map = mapList.get(newMap - 1);
+            }
+        } else {
+            map = mapList.find(boolf(m => getMapFile(m).match(newMap)));
+            if (map === null) {
+                map = mapList.find(boolf(m => getMapFile(m).match(escapeBracket(newMap))));
+                if (map === null) {
+                    map = mapList.find(boolf(m => m.name().match(newMap)));
+                    if (map === null) {
+                        mapList.find(boolf(m => m.name().match(escapeBracket(newMap))));
+                        if (map === null) {
+                            map = mapList.find(boolf(m => m.name().match(stripColor(newMap))));
+                            if (map === null) {
+                                map = mapList.find(boolf(m => getMapFile(m) === newMap));
+                                    if (map === null) {
+                                    map = mapList.find(boolf(m => m.name() === newMap));
+                                }
+                            }
                         }
                     }
                 }
             }
         }
         
-        if (map == null) {
-            Vars.scripter.sendMessage(newMap + "[#F1948A] was not found")
+        if (map === null) {
+            if (typeof newMap === 'number') {
+                if ((newMap - 1) < 0) Vars.scripter.sendMessage("[#F7DC6F]Map number cannot be smaller then [#AF7AC5]one");
+                else Vars.scripter.sendMessage("[#F7DC6F]Map number must not be greater then [#AF7AC5]" + mapList.size);
+            } else {
+                Vars.scripter.sendMessage(newMap + "[#F1948A] was not found")
+            }
         } else {
             players = [];
             for (i = 0; i < Vars.playerGroup.all().size; i++) {
