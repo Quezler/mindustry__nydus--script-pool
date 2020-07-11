@@ -12,8 +12,8 @@ ts[ts.currentScriptName].function = function(){
     state.players = typeof state.players == 'undefined' ? {} : state.players;
     if (typeof state.eventsRegistered == 'undefined') {
         function run() {
-            for (i = 0; i < Vars.playerGroup.all().size; i++) {
-                state.player = Vars.playerGroup.all().get(i);
+            for (p = 0; p < Vars.playerGroup.all().size; p++) {
+                state.player = Vars.playerGroup.all().get(p);
                 if (typeof state.players[state.player.uuid] != 'undefined') {
                     if (state.player.isShooting() && state.players[state.player.uuid].enabled && state.players[state.player.uuid].timer.get(0, state.players[state.player.uuid].reload)) {
                         Calls.createBullet(state.players[state.player.uuid].bullet, state.player.team, state.player.x, state.player.y, state.player.rotation, 1, 1);
@@ -24,7 +24,7 @@ ts[ts.currentScriptName].function = function(){
 
         var task = java.util.TimerTask({run: run});
         var timer = java.util.Timer();
-        timer.schedule(task, 0, 60);
+        timer.schedule(task, 0, 50);
 
         state.task = task;
         state.timer = timer;
@@ -81,13 +81,14 @@ ts[ts.currentScriptName].function = function(){
         Vars.scripter.sendMessage("[#F7DC6F]Provide at least the bullet");
 
     } else {
-        var player = undefined;
+        var player = Vars.scripter;
         var bullet = undefined;
         var reload = undefined;
 
         for (i = 0; i < args.length; i++) {
-            if (typeof args[i] == 'string') {
+            if (typeof args[i] === 'string') {
                 player = tryFindPlayer(args[i]);
+                if (player == null) player = args[i]
             
             } else if (args[i] instanceof BulletType) {
                 bullet = args[i];
@@ -97,36 +98,39 @@ ts[ts.currentScriptName].function = function(){
             }
         }
 
-        if (player == null) { player = Vars.scripter }
-        
-        if (typeof state.players[player.uuid] == 'undefined') { 
-            state.players[player.uuid] = { };
-            state.players[player.uuid].enabled = false;
-            state.players[player.uuid].bullet = player.mech.weapon.bullet;
-            state.players[player.uuid].reload = player.mech.weapon.alternate ? player.mech.weapon.reload / 2 : player.mech.weapon.reload;
-            state.players[player.uuid].timer = new Interval();
-        }
-
-        if (state.players[player.uuid].enabled && (typeof bullet == 'undefined' || (bullet == state.players[player.uuid].bullet && reload == state.players[player.uuid].reload))) {
-            state.players[player.uuid].enabled = false;
-            state.players[player.uuid].bullet = player.mech.weapon.bullet;
-            state.players[player.uuid].reload = player.mech.weapon.alternate ? player.mech.weapon.reload / 2 : player.mech.weapon.reload;
-
-            Vars.scripter.sendMessage("[#AED6F1]Reverted [#D7BDE2]bullet[] of player [#" + player.color + "]" + player.name);
-        
+        if (typeof player === 'string') { 
+            Vars.scripter.sendMessage(player + "[#F1948A] was not found");
         } else {
-            state.players[player.uuid].enabled = true;
-            state.players[player.uuid].bullet = bullet;
-
-            if (typeof reload != 'undefined') {
-                state.players[player.uuid].reload = reload;
+            if (typeof state.players[player.uuid] == 'undefined') { 
+                state.players[player.uuid] = { };
+                state.players[player.uuid].enabled = false;
+                state.players[player.uuid].bullet = player.mech.weapon.bullet;
+                state.players[player.uuid].reload = player.mech.weapon.alternate ? player.mech.weapon.reload / 2 : player.mech.weapon.reload;
+                state.players[player.uuid].timer = new Interval();
             }
 
-            Vars.scripter.sendMessage("[#AED6F1]Set bullet of [#" + player.color + "]" + player.name + "[#AED6F1] to [#D7BDE2]" + bullet + (typeof reload == 'undefined' ? "" : "[] with reload speed [#D7BDE2]" + reload));
+            if (state.players[player.uuid].enabled && (typeof bullet == 'undefined' || (bullet == state.players[player.uuid].bullet && reload == state.players[player.uuid].reload))) {
+                state.players[player.uuid].enabled = false;
+                state.players[player.uuid].bullet = player.mech.weapon.bullet;
+                state.players[player.uuid].reload = player.mech.weapon.alternate ? player.mech.weapon.reload / 2 : player.mech.weapon.reload;
+
+                Vars.scripter.sendMessage("[#AED6F1]Reverted [#D7BDE2]bullet[] of player [#" + player.color + "]" + player.name);
+            
+            } else {
+                state.players[player.uuid].enabled = true;
+                state.players[player.uuid].bullet = bullet;
+
+                if (typeof reload != 'undefined') {
+                    state.players[player.uuid].reload = reload;
+                }
+
+                Vars.scripter.sendMessage("[#AED6F1]Set bullet of [#" + player.color + "]" + player.name + "[#AED6F1] to [#D7BDE2]" + bullet + (typeof reload == 'undefined' ? "" : "[] with reload speed [#D7BDE2]" + reload));
+            }
         }
     }
 
     delete player;
+    delete name;
     delete bullet;
     delete reload;
     delete tryFindPlayer;
