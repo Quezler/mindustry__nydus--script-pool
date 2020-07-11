@@ -1,3 +1,6 @@
-// this is for disguise
+// Usage:
+//  /ts message <msg>
+//  sends <msg> to all players in chat
+
 Call.sendMessage(args[0]);
-"[white]Message sent.";
+0;
