@@ -1,18 +1,50 @@
- if(typeof ts === 'undefined') ts = {}; ts.currentScriptName = "factoryChanger";
+// Usage:
+//   /ts factoryChanger Blocks.<factory> UnitTypes.<unit> maxSpawns?
+//  Changes the unit made by <factory> to <unit>. Optionally maximum units of <factory> can be changed by providing maxSpawns
+
+if(typeof ts === 'undefined') ts = {}; ts.currentScriptName = "factoryChanger";
 if(typeof ts[ts.currentScriptName] === 'undefined') ts[ts.currentScriptName] = {};
 ts[ts.currentScriptName].function = function(){
-  const state = ts[ts.currentScriptName];
+    const state = ts[ts.currentScriptName];
 
-  Vars.scripter.sendMessage("[red] Warning: This ts may cause lag to the server.")
-var factory = args[0]
-var mech = args[1]
-var spawn = args[2]
-factory.unitType = mech
-if(!(spawn == null)){
-  factory.maxSpawn = spawn;
-}
-Vars.scripter.sendMessage("Successfully changed args[0] + to + args[1] + additionally + args[2] + was changed")
-0;
+    var factory = undefined;
+    var unit = undefined;
+    var maxSpawns = undefined;
 
+    if (args.length < 2) {
+        Vars.scripter.sendMessage("[#AED6F1]Script needs factory and a unit");
+
+    } else {
+        for (i = 0; i < args.length; i++) {
+            if (Number.isInteger(args[i])) {
+                maxSpawns = args[i];
+
+            } else if (args[i] instanceof UnitType) {
+                unit = args[i];
+
+            } else if (args[i] instanceof Block) {
+                factory = args[i];
+
+            }
+        }
+
+        if (typeof factory == 'undefined' || unit == 'undefined') {
+            Vars.scripter.sendMessage("[#AED6F1]Script needs factory and a unit");
+        }
+
+        factory.unitType = unit;
+
+        if (typeof maxSpawns !== 'undefined') {
+            factory.maxSpawns = maxSpawns;
+        }
+
+        Vars.scripter.sendMessage("[#AED6F1]Changed " + factory.toString() + "'s unit to " + unit.toString() + (typeof maxSpawns == 'undefined' ? "" : " and changed max spawns to " + String(maxSpawns)))
+    }
+
+    // Cleanup
+    delete unit;
+    delete factory;
+    delete maxSpawns;
 };
 ts[ts.currentScriptName].function();
+0;
