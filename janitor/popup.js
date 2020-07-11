@@ -48,7 +48,7 @@ ts[ts.currentScriptName].function = function(){
         return player;
     }
 
-    if (args.length <= 1) {
+    if (args.length == 0) {
         Vars.scripter.sendMessage("[#F7DC6F]The popup message is requied")
     } else {
         if (args.length == 1) {
