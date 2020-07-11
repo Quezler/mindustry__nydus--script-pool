@@ -17,18 +17,18 @@ This way you can also access your script state with js:
 if(typeof ts === 'undefined') ts = {}; ts.currentScriptName = "yourScriptName";
 if(typeof ts[ts.currentScriptName] === 'undefined') ts[ts.currentScriptName] = {};
 ts[ts.currentScriptName].function = function(){
-  const state = ts[ts.currentScriptName];
+    const state = ts[ts.currentScriptName];
 
-  /*
-    Your script goes here.
-    
-    Do not use global variables. Instead, declare variables with `var`:
-      var randomPlayer = Vars.playerGroup.all().random();
-    
-    Store any persistent state you need between runs in `state`, for example:
-      state.timer = new java.util.Timer("my timer");
-      state.running = true;
-  */
+    /*
+      Your script goes here.
+      
+      Do not use global variables. Instead, declare variables with `var`:
+        var randomPlayer = Vars.playerGroup.all().random();
+      
+      Store any persistent state you need between runs in `state`, for example:
+        state.timer = new java.util.Timer("my timer");
+        state.running = true;
+    */
 };
 ts[ts.currentScriptName].function();
 ```
