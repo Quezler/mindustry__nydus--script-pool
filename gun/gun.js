@@ -15,7 +15,7 @@ ts[ts.currentScriptName].function = function(){
             for (p = 0; p < Vars.playerGroup.all().size; p++) {
                 state.player = Vars.playerGroup.all().get(p);
                 if (typeof state.players[state.player.uuid] != 'undefined') {
-                    if (state.player.isShooting() && state.players[state.player.uuid].enabled && state.players[state.player.uuid].timer.get(0, state.players[state.player.uuid].reload)) {
+                    if (state.player.isShooting() && state.players[state.player.uuid].enabled && state.players[state.player.uuid].timer.get(0, state.players[state.player.uuid].reload) && !state.player.dead) {
                         Calls.createBullet(state.players[state.player.uuid].bullet, state.player.team, state.player.x, state.player.y, state.player.rotation, 1, 1);
                     }
                 }
@@ -119,10 +119,7 @@ ts[ts.currentScriptName].function = function(){
             } else {
                 state.players[player.uuid].enabled = true;
                 state.players[player.uuid].bullet = bullet;
-
-                if (typeof reload != 'undefined') {
-                    state.players[player.uuid].reload = reload;
-                }
+                state.players[player.uuid].reload = typeof reload == 'undefined' ? (player.mech.weapon.alternate ? player.mech.weapon.reload / 2 : player.mech.weapon.reload) : reload;
 
                 Vars.scripter.sendMessage("[#AED6F1]Set bullet of [#" + player.color + "]" + player.name + "[#AED6F1] to [#D7BDE2]" + bullet + (typeof reload == 'undefined' ? "" : "[] with reload speed [#D7BDE2]" + reload));
             }
