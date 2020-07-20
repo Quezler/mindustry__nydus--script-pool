@@ -12,6 +12,7 @@ ts[ts.currentScriptName].function = function(){
     for(var x = 0; x < Vars.world.width(); x++){
         for(var y = 0; y < Vars.world.height(); y++){
             var t = Vars.world.tile(x, y);
+            if (t.block() != Blocks.air) continue;
             if(((t.overlay() == Blocks.oreCopper || t.overlay() ==  Blocks.oreLead || 
                  t.overlay() == Blocks.oreScrap || t.overlay() == Blocks.oreTitanium || 
                  t.overlay() == Blocks.oreThorium || t.overlay() == Blocks.oreCoal) && args.length == 0) || (args.includes(t.overlay()) == true)) {
