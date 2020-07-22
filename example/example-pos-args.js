@@ -1,5 +1,3 @@
-// Welcome to the example of positional arguemnts for /ts command
-// Hopefully this example script will clear the confusion of positional arguments
 // The way the new /ts command now works is that,
 // when you enter the command e.g. /ts someScript PlayerObj "Name" Team x-cord
 // the arguments "PlayerObj "Name" Team x-cord" are put into a js array like this [PlayerObj, "Name", Team, x-cord]
@@ -31,17 +29,17 @@ if (args.length == 0) {
     // should be greater then zero
     // if you use number of arguemetns equal to one here, multiple arguments may cause issues
     // depending on what you're doing ie if 2 are passed the equal check weill no longer be true
-    
+
     // if there is one or more argument it will assign the first one to the variable (in this case)
     // if for some reason no argument then return the defual or previously assigned value in this case undefined
-    
+
     // variable =    condition    ? return on true : return on false
     SomeNumber  = args.length > 0 ?     args[0]    :    SomeNumber
 
-    // checks if two or more arguements were passed 
+    // checks if two or more arguements were passed
     SomeString = args.length > 1 ? args[1] : SomeString
-    
-    // checks if three or more arguements were passed 
+
+    // checks if three or more arguements were passed
     SomePlayerObject = args.length > 2 ? args[2] : SomePlayerObject
 
     // checks if we got the first argument (the one we needed)

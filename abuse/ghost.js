@@ -2,18 +2,18 @@
 //   /ts ghosting new_name?
 //   Changes all player names to an empty string, or optionally to the specified one
 
-if(typeof ts === 'undefined') ts = {}; ts.currentScriptName = "yourScriptName";
+if(typeof ts === 'undefined') ts = {}; ts.currentScriptName = "ghost";
 if(typeof ts[ts.currentScriptName] === 'undefined') ts[ts.currentScriptName] = {};
 ts[ts.currentScriptName].function = function(){
     const state = ts[ts.currentScriptName];
 
     state.ghosted = typeof state.ghosted == 'undefined' ? true : state.ghosted;
     state.originalNames = typeof state.originalNames == 'undefined' ? {} : state.originalNames;
-    
+
     state.ghosted = !state.ghosted;
 
     var newName = "";
-    
+
     if (args.length > 0) {
         newName = typeof args[0] == 'string' ? args[0] : newName;
     }

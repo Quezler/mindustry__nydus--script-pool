@@ -13,13 +13,13 @@ ts[ts.currentScriptName].function = function(){
             if (typeof ByteArrayOutputStream == 'undefined') importPackage(java.io);
             if (typeof FastDeflaterOutputStream == 'undefined') importPackage(Packages.arc.util.io)
             if (typeof NetworkIO == 'undefined') importPackage(Packages.mindustry.net)
-            
+
             stream = new ByteArrayOutputStream();
             def = new FastDeflaterOutputStream(stream);
             NetworkIO.writeWorld(p, def);
             data = new Packets.WorldStream();
             data.stream = new ByteArrayInputStream(stream.toByteArray());
-    
+
             p.con.sendStream(data);
         }
 
@@ -31,7 +31,7 @@ ts[ts.currentScriptName].function = function(){
     function tryFindPlayer(name) {
         function escapeBracket(unescaped) {
             var escaped = "";
-            for(e = 0; e < unescaped.length; e++) {
+            for(var e = 0; e < unescaped.length; e++) {
                 if (unescaped[e] == "[") {
                     escaped += "\\[";
                     continue;
@@ -40,7 +40,7 @@ ts[ts.currentScriptName].function = function(){
             }
             return escaped;
         }
-    
+
         player = Vars.playerGroup.all().find(boolf(p => name === Strings.stripColors(p.name)));
         if (player == null) {
             player = Vars.playerGroup.all().find(boolf(p => name === escapeBracket(Strings.stripColors(p.name))))
@@ -68,7 +68,7 @@ ts[ts.currentScriptName].function = function(){
         }
         return player;
     }
-    
+
     if (args.length == 0) {
         players = Vars.playerGroup.all();
         for (i = 0; i < players.size; i++) {

@@ -4,3 +4,4 @@ for(var x = 0; x < Vars.world.width(); x++){
         if(t.block() == Blocks.air) t.setFloor(Blocks.tar);
     }
 }
+0;

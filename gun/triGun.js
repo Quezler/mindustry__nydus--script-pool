@@ -1,6 +1,7 @@
 // To enable it on yourself or to disable it:
 // /ts triGun
 // Sorry for stealing code from laserGun, I hope you dont mind. -Photemy
+
 if(typeof ts === 'undefined') ts = {}; ts.currentScriptName = "triGun";
 if(typeof ts[ts.currentScriptName] === 'undefined') ts[ts.currentScriptName] = {};
 ts[ts.currentScriptName].function = function(){

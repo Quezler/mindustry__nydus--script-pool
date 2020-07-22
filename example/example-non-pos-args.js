@@ -1,5 +1,3 @@
-// Welcome to the example of non-positional arguemnts for /ts command
-// Hopefully this example script will clear the confusion of non-positional arguments
 // The way the new /ts command now works is that,
 // when you enter the command e.g. /ts someScript PlayerObj "Name" Team x-cord
 // the arguments "PlayerObj "Name" Team x-cord" are put into a js array like this [PlayerObj, "Name", Team, x-cord]
@@ -22,7 +20,7 @@ SomePlayerObject = null
 // check if any arguments were passed
 if (args.length == 0) {
     Vars.scripter.sendMessage("No arguements were passed to the script");
-    
+
 } else { // something was passed to the script
     // since this script is going to be using non-positional arguments
     // in this case we dont what comes first
@@ -54,12 +52,12 @@ if (args.length == 0) {
             SomeString = args[i]
         } else if (Number.isInteger(args[i])) { // was it a number
             // same big previous paragraph applies here
-            
+
             // if it was then assign it
             SomeNumber = args[i]
-        } else if (args[i] instanceof Player) { // was it a player 
+        } else if (args[i] instanceof Player) { // was it a player
             // and also here
-            
+
             // if it was assign it
             SomePlayerObject = args[i]
         }

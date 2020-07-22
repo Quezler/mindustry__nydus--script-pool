@@ -1,2 +1,2 @@
-//Enables and disables editor mode
-"[white]Disabled due to crashes.";
+// Enables and disables editor mode
+"[#FFAB4C]Disabled due to crashes.";

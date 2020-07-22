@@ -2,7 +2,7 @@
 //   /ts godMode
 //    Sets your player health to (2^63)-1. Run again to turn off.
 
-if(typeof ts === 'undefined') ts = {}; ts.currentScriptName = "yourScriptName";
+if(typeof ts === 'undefined') ts = {}; ts.currentScriptName = "godMode";
 if(typeof ts[ts.currentScriptName] === 'undefined') ts[ts.currentScriptName] = {};
 ts[ts.currentScriptName].function = function(){
     const state = ts[ts.currentScriptName];

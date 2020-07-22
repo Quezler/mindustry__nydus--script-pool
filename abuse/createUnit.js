@@ -12,43 +12,37 @@ ts[ts.currentScriptName].function = function(){
     var team = Vars.scripter.team;
     var unit = undefined;
     var amount = 1;
-    
+
     for (i = 0; i < args.length; i++) { // parse them arguments
-        if (args[i] instanceof Team) { 
+        if (args[i] instanceof Team) {
             team = args[i];
 
-        } else if (Number.isInteger(args[i])) { 
+        } else if (Number.isInteger(args[i])) {
             amount = args[i];
 
-        } else if (args[i] instanceof UnitType) { 
+        } else if (args[i] instanceof UnitType) {
             unit = args[i];
 
         }
     }
-    
+
     // Checks before spawning
     if (typeof unit == 'undefined') {
-        Vars.scripter.sendMessage("[#E6B0AA]No unit specified");
+        Vars.scripter.sendMessage("[#FFAB4C]No unit specified");
 
     } else if (amount <= 0) {
-        Vars.scripter.sendMessage("[#AED6F1]What are you trying to do?");
+        Vars.scripter.sendMessage("[#F7DC6F]What are you trying to do?");
 
     } else if (amount + Vars.unitGroup.all().size > UnitCap) {
-        Vars.scripter.sendMessage("[#AED6F1]If the units are made, they will hit the cap.")
+        Vars.scripter.sendMessage("[#F7DC6F]If the units are made, they will hit the cap.")
 
     } else {
-        for(i = 0; i < amount; i++) { // spawn them units
+        for(var i = 0; i < amount; i++) { // spawn them units
             var u = unit.create(team);
             u.set(Vars.scripter.x, Vars.scripter.y);
             u.add();
         }
     }
-
-    // Cleanup scope
-    delete u;
-    delete unit;
-    delete amount;
-    delete team;
 };
 ts[ts.currentScriptName].function();
 0;

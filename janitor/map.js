@@ -8,54 +8,9 @@ ts[ts.currentScriptName].function = function(){
 
     var mapList = Vars.maps.all();
 
-    function stripColor(colored) {
-        var colors = [
-            "clear", "black", "white", "lightgray",
-            "gray", "darkgray", "blue", "navy",
-            "royal", "slate", "sky", "cyan",
-            "teal", "green", "acid", "lime",
-            "forest", "olive", "yellow", "gold",
-            "goldenrod", "orange", "brown", "tan",
-            "brick", "red", "scarlet", "coral", "salmon",
-            "pink", "magenta", "purple", "violet", "maroon"
-        ];
-
-        var stripped = ""
-        var color = ""
-        var inColor = false
-
-        for (i = 0; i < colored.length; i++) {
-            if (colored[i] == "[") {
-                inColor = true;
-                continue;
-            } else if (colored[i] == "]") {
-                inColor = false;
-                if(typeof colors.find(c => c == color) == 'undefined') {
-                    if (!color.match("(^#[0-9A-Fa-f]{6}$)|(^#[0-9A-Fa-f]{8}$)")) {
-                        stripped += "[" + color + "]";
-                    }
-                }
-                color = "";
-                continue;
-            }
-            if (inColor) {
-                if (i == colored.length - 1) {
-                    stripped += "["
-                    stripped += color;
-                    stripped += colored[i];
-                    break;
-                }
-                color += colored[i];
-                continue;
-            }
-            stripped += colored[i];
-        }
-        return stripped;
-    }
-
     function escapeBracket(unescaped) {
         var escaped = "";
-        for(e = 0; e < unescaped.length; e++) {
+        for(var e = 0; e < unescaped.length; e++) {
             if (unescaped[e] == "[") {
                 escaped += "\\[";
                 continue;
@@ -64,7 +19,7 @@ ts[ts.currentScriptName].function = function(){
         }
         return escaped;
     }
-    
+
     function getMapName(map) {
         return map.name()
     }
@@ -94,26 +49,41 @@ ts[ts.currentScriptName].function = function(){
         Vars.scripter.sendMessage("[#85C1E9]Maps Listed [#C39BD3]" + mapList.size);
     } else {
         var newMap = args[0];
-        map = null;
-        
+        var map = null;
+
         if (typeof newMap === 'number') {
             if (!((newMap - 1) >= mapList.size || (newMap - 1) < 0)) {
                 map = mapList.get(newMap - 1);
             }
         } else {
-            map = mapList.find(boolf(m => getMapFile(m).match(newMap)));
+            map = mapList.find(boolf(m => getMapFile(m) === newMap));
             if (map === null) {
-                map = mapList.find(boolf(m => getMapFile(m).match(escapeBracket(newMap))));
+                map = maplist.find(boolf(m => getMapName(m) === newMap));
                 if (map === null) {
-                    map = mapList.find(boolf(m => m.name().match(newMap)));
+                    map = maplist.find(boolf(m => getMapFile(m).toLowerCase() === newMap.toLowerCase()));
                     if (map === null) {
-                        mapList.find(boolf(m => m.name().match(escapeBracket(newMap))));
+                        map = maplist.find(boolf(m => getMapName(m).toLowerCase() === newMap.toLowerCase()));
                         if (map === null) {
-                            map = mapList.find(boolf(m => m.name().match(stripColor(newMap))));
+                            map = maplist.find(boolf(m => getMapFile(m).match(newMap)));
                             if (map === null) {
-                                map = mapList.find(boolf(m => getMapFile(m) === newMap));
+                                map = maplist.find(boolf(m => escapeBracket(getMapFile(m)).match(escapeBracket(newMap))));
+                                if (map === null) {
+                                    map = maplist.find(boolf(m => Strings.stripColors(getMapFile(m)).match(Strings.stripColors(newMap))));
                                     if (map === null) {
-                                    map = mapList.find(boolf(m => m.name() === newMap));
+                                        map = maplist.find(boolf(m => escapeBracket(Strings.stripColors(getMapFile(m))).match(escapeBracket((Strings.stripColors(newMap))))));
+                                        if (map === null) {
+                                            map = maplist.find(boolf(m => getMapName(m).match(newMap)));
+                                            if (map === null) {
+                                                map = maplist.find(boolf(m => escapeBracket(getMapName(m)).match(escapeBracket(newMap))));
+                                                if (map === null) {
+                                                    map = maplist.find(boolf(m => Strings.stripColors(getMapName(m)).match(Strings.stripColors(newMap))));
+                                                    if (map === null) {
+                                                        map = maplist.find(boolf(m => escapeBracket(Strings.stripColors(getMapName(m))).match(escapeBracket((Strings.stripColors(newMap))))));
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -121,13 +91,13 @@ ts[ts.currentScriptName].function = function(){
                 }
             }
         }
-        
+
         if (map === null) {
             if (typeof newMap === 'number') {
                 if ((newMap - 1) < 0) Vars.scripter.sendMessage("[#F7DC6F]Map number cannot be smaller then [#AF7AC5]one");
                 else Vars.scripter.sendMessage("[#F7DC6F]Map number must not be greater then [#AF7AC5]" + mapList.size);
             } else {
-                Vars.scripter.sendMessage(newMap + "[#F1948A] was not found")
+                Vars.scripter.sendMessage(newMap + "[#E6B0AA] was not found")
             }
         } else {
             players = [];
@@ -137,15 +107,15 @@ ts[ts.currentScriptName].function = function(){
             }
 
             var rules = Vars.state.rules;
-            
+
             Vars.logic.reset();
             Call.onWorldDataBegin();
 
-            Vars.world.loadMap(map, map.applyRules(Gamemode.bestFit(rules)));
-            Vars.state.rules = Vars.world.getMap().applyRules(Gamemode.bestFit(rules));
+            Vars.world.loadMap(map, map.applyRules(Gamemode.survival));
+            Vars.state.rules = Vars.world.getMap().applyRules(Gamemode.survival);
 
             Vars.logic.play();
-            
+
             for (i = 0; i < players.length; i++) {
                 if(players[i].con == null) continue;
 
@@ -156,12 +126,6 @@ ts[ts.currentScriptName].function = function(){
             Vars.scripter.sendMessage("[#85C1E9]Changed [#D7BDE2]map[] to []" + map.name());
         }
     }
-
-    delete map;
-    delete newMap;
-    delete sendWorldData;
-    delete stripColor;
-    delete rules;
 };
 ts[ts.currentScriptName].function();
 0;

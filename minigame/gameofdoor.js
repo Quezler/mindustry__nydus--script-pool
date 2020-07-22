@@ -10,3 +10,4 @@ Vars.state.rules.waves = true;
 Vars.state.rules.waitForWaveToEnd = false;
 Vars.logic.runWave();
 Call.onSetRules(Vars.state.rules);
+0;

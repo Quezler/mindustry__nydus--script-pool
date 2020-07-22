@@ -1,7 +1,7 @@
 // ts light <hex color> <transparency/alpha value between 0 and 1>
 // Changes the map's light to a hex color
 
-if(typeof ts === 'undefined') ts = {}; ts.currentScriptName = "yourScriptName";
+if(typeof ts === 'undefined') ts = {}; ts.currentScriptName = "light";
 if(typeof ts[ts.currentScriptName] === 'undefined') ts[ts.currentScriptName] = {};
 ts[ts.currentScriptName].function = function(){
     const state = ts[ts.currentScriptName];
@@ -9,7 +9,7 @@ ts[ts.currentScriptName].function = function(){
     function isValidHexColor(color) {
         return /(^#[0-9A-Fa-f]{6}$)|(^#[0-9A-Fa-f]{8}$)/.test(color);
     }
-    
+
     if (!Vars.state.rules.lighting) Vars.state.rules.lighting = true;
 
     if (args.length == 0 || !isValidHexColor(args[0])) {

@@ -10,7 +10,7 @@ ts[ts.currentScriptName].function = function(){
     function tryFindPlayer(name) {
         function escapeBracket(unescaped) {
             var escaped = "";
-            for(e = 0; e < unescaped.length; e++) {
+            for(var e = 0; e < unescaped.length; e++) {
                 if (unescaped[e] == "[") {
                     escaped += "\\[";
                     continue;
@@ -19,7 +19,7 @@ ts[ts.currentScriptName].function = function(){
             }
             return escaped;
         }
-    
+
         player = Vars.playerGroup.all().find(boolf(p => name === Strings.stripColors(p.name)));
         if (player == null) {
             player = Vars.playerGroup.all().find(boolf(p => name === escapeBracket(Strings.stripColors(p.name))))

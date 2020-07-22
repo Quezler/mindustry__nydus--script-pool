@@ -12,10 +12,10 @@ ts[ts.currentScriptName].function = function(){
     var maxSpawns = undefined;
 
     if (args.length < 2) {
-        Vars.scripter.sendMessage("[#AED6F1]Script needs factory and a unit");
+        Vars.scripter.sendMessage("[#F7DC6F]Script needs factory and a unit");
 
     } else {
-        for (i = 0; i < args.length; i++) {
+        for (var i = 0; i < args.length; i++) {
             if (Number.isInteger(args[i])) {
                 maxSpawns = args[i];
 
@@ -29,7 +29,7 @@ ts[ts.currentScriptName].function = function(){
         }
 
         if (typeof factory == 'undefined' || unit == 'undefined') {
-            Vars.scripter.sendMessage("[#AED6F1]Script needs factory and a unit");
+            Vars.scripter.sendMessage("[#F7DC6F]Script needs factory and a unit");
         }
 
         factory.unitType = unit;
@@ -38,13 +38,8 @@ ts[ts.currentScriptName].function = function(){
             factory.maxSpawns = maxSpawns;
         }
 
-        Vars.scripter.sendMessage("[#AED6F1]Changed " + factory.toString() + "'s unit to " + unit.toString() + (typeof maxSpawns == 'undefined' ? "" : " and changed max spawns to " + String(maxSpawns)))
+        Vars.scripter.sendMessage("[#F7DC6F]Changed [#FFAB4C]" + factory.toString() + "'s[] unit to [#FFAB4C]" + unit.toString() + (typeof maxSpawns == 'undefined' ? "" : "[] and changed max spawns to [#FFAB4C]" + String(maxSpawns)))
     }
-
-    // Cleanup
-    delete unit;
-    delete factory;
-    delete maxSpawns;
 };
 ts[ts.currentScriptName].function();
 0;

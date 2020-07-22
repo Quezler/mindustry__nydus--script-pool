@@ -5,14 +5,16 @@ if(typeof ts === 'undefined') ts = {}; ts.currentScriptName = "buildRadius";
 if(typeof ts[ts.currentScriptName] === 'undefined') ts[ts.currentScriptName] = {};
 ts[ts.currentScriptName].function = function(){
     const state = ts[ts.currentScriptName];
-    
-    radius = args.length > 0 ? args[0] : undefined;
+
+    var radius = args.length > 0 ? args[0] : undefined;
     if (typeof radius == 'undefined') {
-        Vars.scripter.sendMessage("Specify a radius")
+        Vars.scripter.sendMessage("[#FFAB4C]Core no build radius is [#E6B0AA]" + Vars.state.rules.enemyCoreBuildRadius)
+
     } else {
         if (typeof radius == 'string') {
             radius = Number.parseFloat(radius);
         }
+
         Vars.state.rules.enemyCoreBuildRadius = radius;
         Call.onSetRules(Vars.state.rules);
 

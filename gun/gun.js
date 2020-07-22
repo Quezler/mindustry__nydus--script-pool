@@ -4,6 +4,7 @@
 //  <player> defualts to your player
 //  If no bullet is specified, the bullet of <player> is reset
 //  <reload> is also optional, it overrides player's mech's weapon reload
+
 if(typeof ts === 'undefined') ts = {}; ts.currentScriptName = "gun";
 if(typeof ts[ts.currentScriptName] === 'undefined') ts[ts.currentScriptName] = {};
 ts[ts.currentScriptName].function = function(){
@@ -28,7 +29,7 @@ ts[ts.currentScriptName].function = function(){
 
         state.task = task;
         state.timer = timer;
-        
+
         Events.on(EventType.PlayerLeave, cons(e => {
             delete state.players[e.player.uuid];
         }));
@@ -39,7 +40,7 @@ ts[ts.currentScriptName].function = function(){
     function tryFindPlayer(name) {
         function escapeBracket(unescaped) {
             var escaped = "";
-            for(e = 0; e < unescaped.length; e++) {
+            for(var e = 0; e < unescaped.length; e++) {
                 if (unescaped[e] == "[") {
                     escaped += "\\[";
                     continue;
@@ -48,7 +49,7 @@ ts[ts.currentScriptName].function = function(){
             }
             return escaped;
         }
-    
+
         player = Vars.playerGroup.all().find(boolf(p => name === Strings.stripColors(p.name)));
         if (player == null) {
             player = Vars.playerGroup.all().find(boolf(p => name === escapeBracket(Strings.stripColors(p.name))))
@@ -89,19 +90,19 @@ ts[ts.currentScriptName].function = function(){
             if (typeof args[i] === 'string') {
                 player = tryFindPlayer(args[i]);
                 if (player == null) player = args[i]
-            
+
             } else if (args[i] instanceof BulletType) {
                 bullet = args[i];
-            
+
             } else if (Number.isInteger(args[i])) {
                 reload = args[i];
             }
         }
 
-        if (typeof player === 'string') { 
+        if (typeof player === 'string') {
             Vars.scripter.sendMessage(player + "[#F1948A] was not found");
         } else {
-            if (typeof state.players[player.uuid] == 'undefined') { 
+            if (typeof state.players[player.uuid] == 'undefined') {
                 state.players[player.uuid] = { };
                 state.players[player.uuid].enabled = false;
                 state.players[player.uuid].bullet = player.mech.weapon.bullet;
@@ -115,7 +116,7 @@ ts[ts.currentScriptName].function = function(){
                 state.players[player.uuid].reload = player.mech.weapon.alternate ? player.mech.weapon.reload / 2 : player.mech.weapon.reload;
 
                 Vars.scripter.sendMessage("[#AED6F1]Reverted [#D7BDE2]bullet[] of player [#" + player.color + "]" + player.name);
-            
+
             } else {
                 state.players[player.uuid].enabled = true;
                 state.players[player.uuid].bullet = bullet;

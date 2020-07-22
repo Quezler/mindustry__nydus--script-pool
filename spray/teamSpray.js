@@ -1,23 +1,21 @@
-//Kills all untis of the targetetd team
-// "/ts teamSpray team=Team.<team>"
+// Kills all untis of the targetetd team
+// /ts teamSpray Team.<team>
 if(typeof ts === 'undefined') ts = {}; ts.currentScriptName = "teamSpray";
 if(typeof ts[ts.currentScriptName] === 'undefined') ts[ts.currentScriptName] = {};
 ts[ts.currentScriptName].function = function(){
 	const state = ts[ts.currentScriptName];
 
-	unitGroup = Vars.unitGroup.all();
+	var unitGroup = Vars.unitGroup.all();
+	var team = args.length == 0 ? Team.crux : args[0]
 
-	team = args.length == 0 ? Team.crux : args[0]
-
-	for(i=0; i < unitGroup.size; i++) {
-		u = unitGroup.get(i);
+	for(var i = 0; i < unitGroup.size; i++) {
+		var u = unitGroup.get(i);
 		if (u.team === team){
 			u.kill();
 		};
 	};
-	delete team;  
-	
-	Vars.scripter.sendMessage("[white]Units killed."); 
+
+	Vars.scripter.sendMessage("[#FFAB4C]Units of [#E6B0AA]" + team + "[] killed");
 };
 ts[ts.currentScriptName].function();
 0;

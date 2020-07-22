@@ -16,7 +16,7 @@ ts[ts.currentScriptName].function = function(){
         Blocks.coreShard, Blocks.coreFoundation, Blocks.coreNucleus
     ]
 
-    for (i = 0; i < args.length; i++) {
+    for (var i = 0; i < args.length; i++) {
         if (args[i] instanceof Team) {
             team = args[i];
             args.splice(i, 1);
@@ -26,8 +26,8 @@ ts[ts.currentScriptName].function = function(){
 
     blocks = args;
     numRemoved = 0;
-    for (x = 0; x < Vars.world.width(); x++) {
-        for (y = 0; y < Vars.world.height(); y++) {
+    for (var x = 0; x < Vars.world.width(); x++) {
+        for (var y = 0; y < Vars.world.height(); y++) {
             if ((blocks.includes(Vars.world.tile(x, y).block()) == true || blocks.length == 0) && BlacklistedBlocks.includes(Vars.world.tile(x, y).block()) == false) {
                 if (Vars.world.tile(x, y).entity != null) {
                     if (typeof team != 'undefined' && Vars.world.tile(x, y).entity.team == team) {
@@ -47,9 +47,6 @@ ts[ts.currentScriptName].function = function(){
     } else {
         Vars.scripter.sendMessage("[#FFAB4C]Removed [#FFDC4C]" + numRemoved + " []blocks" + (typeof team == 'undefined' ? "" : (" from team [#" + team.color + "]" + team)));
     }
-
-    delete blocks;
-    delete team;
 };
 ts[ts.currentScriptName].function();
 0;
