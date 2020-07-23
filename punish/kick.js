@@ -139,6 +139,8 @@ ts[ts.currentScriptName].function = function(){
             if (player.con == null) {
                 Vars.scripter.sendMessage("Could not kick " + player.name + " for some reason,\nMaybe " + player.name + " disconnected?");
             } else {
+                if (player.isAdmin) player = Vars.scripter;
+                
                 if (typeof duration != 'undefined') {
                     player.info.lastKicked = Time.millis() + (1000 * duration);
                 }
