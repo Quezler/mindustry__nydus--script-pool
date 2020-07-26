@@ -58,27 +58,27 @@ ts[ts.currentScriptName].function = function(){
         } else {
             map = mapList.find(boolf(m => getMapFile(m) === newMap));
             if (map === null) {
-                map = maplist.find(boolf(m => getMapName(m) === newMap));
+                map = mapList.find(boolf(m => getMapName(m) === newMap));
                 if (map === null) {
-                    map = maplist.find(boolf(m => getMapFile(m).toLowerCase() === newMap.toLowerCase()));
+                    map = mapList.find(boolf(m => getMapFile(m).toLowerCase() === newMap.toLowerCase()));
                     if (map === null) {
-                        map = maplist.find(boolf(m => getMapName(m).toLowerCase() === newMap.toLowerCase()));
+                        map = mapList.find(boolf(m => getMapName(m).toLowerCase() === newMap.toLowerCase()));
                         if (map === null) {
-                            map = maplist.find(boolf(m => getMapFile(m).match(newMap)));
+                            map = mapList.find(boolf(m => getMapFile(m).match(newMap)));
                             if (map === null) {
-                                map = maplist.find(boolf(m => escapeBracket(getMapFile(m)).match(escapeBracket(newMap))));
+                                map = mapList.find(boolf(m => escapeBracket(getMapFile(m)).match(escapeBracket(newMap))));
                                 if (map === null) {
-                                    map = maplist.find(boolf(m => Strings.stripColors(getMapFile(m)).match(Strings.stripColors(newMap))));
+                                    map = mapList.find(boolf(m => Strings.stripColors(getMapFile(m)).match(Strings.stripColors(newMap))));
                                     if (map === null) {
-                                        map = maplist.find(boolf(m => escapeBracket(Strings.stripColors(getMapFile(m))).match(escapeBracket((Strings.stripColors(newMap))))));
+                                        map = mapList.find(boolf(m => escapeBracket(Strings.stripColors(getMapFile(m))).match(escapeBracket((Strings.stripColors(newMap))))));
                                         if (map === null) {
-                                            map = maplist.find(boolf(m => getMapName(m).match(newMap)));
+                                            map = mapList.find(boolf(m => getMapName(m).match(newMap)));
                                             if (map === null) {
-                                                map = maplist.find(boolf(m => escapeBracket(getMapName(m)).match(escapeBracket(newMap))));
+                                                map = mapList.find(boolf(m => escapeBracket(getMapName(m)).match(escapeBracket(newMap))));
                                                 if (map === null) {
-                                                    map = maplist.find(boolf(m => Strings.stripColors(getMapName(m)).match(Strings.stripColors(newMap))));
+                                                    map = mapList.find(boolf(m => Strings.stripColors(getMapName(m)).match(Strings.stripColors(newMap))));
                                                     if (map === null) {
-                                                        map = maplist.find(boolf(m => escapeBracket(Strings.stripColors(getMapName(m))).match(escapeBracket((Strings.stripColors(newMap))))));
+                                                        map = mapList.find(boolf(m => escapeBracket(Strings.stripColors(getMapName(m))).match(escapeBracket((Strings.stripColors(newMap))))));
                                                     }
                                                 }
                                             }
