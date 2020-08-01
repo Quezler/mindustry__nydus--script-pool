@@ -5,6 +5,9 @@ Scripts are ran in the global namespace (same as with `/js`).
 
 ## Script template
 
+If you are going to need persistent state between command invocations,
+or you need lots of variables, here's an useful snippet.
+
 This script template avoids namespace pollution by having the code in a function
 and storing all the persistent state in the `ts` global variable.
 This way you can also access your script state with js:
