@@ -56,7 +56,7 @@ ts[ts.currentScriptName].function = function(){
         }));
 
 
-        state.color = Color.valueOf("#FF9F3311");
+        state.color = new Color();
 
         // Timer for updating seletion
         function updateSelections() {
