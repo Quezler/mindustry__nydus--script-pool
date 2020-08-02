@@ -13,6 +13,11 @@ ts[ts.currentScriptName].function = function(){
 
     state.eventsRegisterted = typeof state.eventsRegisterted !== 'undefined' ? state.eventsRegisterted : (function() {
         state.players = {};
+        
+        // cleanup
+        Events.on(EventType.PlayerLeave, cons(e => {
+            delete state.players[e.player.uuid];
+        }));
 
         // Event that will select the area
         Events.on(EventType.TapEvent, cons(e => {
@@ -55,8 +60,7 @@ ts[ts.currentScriptName].function = function(){
             }
         }));
 
-
-        state.color = new Color();
+        state.color = Color.valueOf("#FF9F3311");
 
         // Timer for updating seletion
         function updateSelections() {
@@ -124,7 +128,7 @@ ts[ts.currentScriptName].function = function(){
         var selectionUpdateTask = java.util.TimerTask({run: updateSelections});
         var selectionUpdateTimer = java.util.Timer();
 
-        selectionUpdateTimer.schedule(selectionUpdateTask, 0, 10);
+        selectionUpdateTimer.schedule(selectionUpdateTask, 0, 160);
 
         state.selectionUpdateTask = selectionUpdateTask;
         state.selectionUpdateTimer = selectionUpdateTimer;
