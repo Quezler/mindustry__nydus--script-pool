@@ -56,7 +56,7 @@ ts[ts.currentScriptName].function = function(){
         }));
 
 
-        state.color = new Color();
+        state.color = Color.valueOf("#FF9F3311");
 
         // Timer for updating seletion
         function updateSelections() {
@@ -118,7 +118,7 @@ ts[ts.currentScriptName].function = function(){
         }
 
         function point(x, y, p) {
-            if (p.con !== null) Call.onEffect(p.con, Fx.placeBlock, x, y, 0, state.color);
+            try { if (p.con !== null) Call.createLighting(p.con, 0, p.team, state.color, 0, x, y, 0, 2) } catch (e) { }
         }
 
         var selectionUpdateTask = java.util.TimerTask({run: updateSelections});
