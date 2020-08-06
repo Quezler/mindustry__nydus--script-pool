@@ -55,7 +55,7 @@ ts[ts.currentScriptName].function = function(){
                     Vars.world.tile(x, y).setOverlay(newBlocks[Math.floor(Math.random() * newBlocks.length)])
                     count++;
                 } else if (type == "block" && isIn(blocksToReplace, Vars.world.tile(x, y).block())) {
-                    Vars.world.tile(x, y).setBlock(newBlocks[Math.floor(Math.random() * newBlocks.length)])
+                    Vars.world.tile(x, y).setBlock(newBlocks[Math.floor(Math.random() * newBlocks.length)], Vars.scripter.team)
                     count++;
                 } else if (type == "floor" && (isIn(blocksToReplace, Vars.world.tile(x, y).floor()) || (blocksToReplace == null && Vars.world.tile(x, y).block() == Blocks.air))) {
                     Vars.world.tile(x, y).setFloor(newBlocks[Math.floor(Math.random() * newBlocks.length)])
