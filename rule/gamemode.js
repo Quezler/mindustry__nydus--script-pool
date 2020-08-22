@@ -6,7 +6,7 @@ ts[ts.currentScriptName].function = function(){
 		var gamemode = args[0]
 		var hardmode = Vars.state.rules.waveSpacing / 2 //and i messed up agaain.
        if (gamemode === "attack") {
-         js Vars.state.rules.attackMode = true; Vars.scripter.sendMessage("Enabled attack mode."
+         js Vars.state.rules.attackMode = true; Vars.scripter.sendMessage("Enabled attack mode.")
         }
 		if (gamemode === "survival") {
             js Vars.state.rules.attackMode = false; Vars.state.rules.waveTimer = true; Vars.state.rules.pvp = false; Vars.scripter.sendMessage
