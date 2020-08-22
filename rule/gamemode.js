@@ -2,10 +2,7 @@ if(typeof ts === 'undefined') ts = {}; ts.currentScriptName = "gamemode";
 if(typeof ts[ts.currentScriptName] === 'undefined') ts[ts.currentScriptName] = {};
 ts[ts.currentScriptName].function = function(){
     const state = ts[ts.currentScriptName];
-
-
 //how
-        const state = ts[ts.currentScriptName];
 		var gamemode = args[0]
 		var hardmode Vars.state.rules.waveSpacing / 2 
 		
