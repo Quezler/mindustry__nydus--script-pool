@@ -13,15 +13,27 @@ ts[ts.currentScriptName].function = function(){
     var hardmode = Vars.state.rules.waveSpacing / 2; //and i messed up agaain.
     
     if (gamemode === "attack") {
+        Vars.state.rules.infiniteResources = false;
         Vars.state.rules.attackMode = true; 
         Vars.state.rules.waveTimer = false; 
-        Vars.state.rules.pvp = false; 
+        Vars.state.rules.waves = false;
+        Vars.state.rules.pvp = false;
         Vars.scripter.sendMessage("Gamemode set to attack");
       
     } else if (gamemode === "survival") {
+        Vars.state.rules.infiniteResources = false;
         Vars.state.rules.attackMode = false; 
         Vars.state.rules.waveTimer = true; 
-        Vars.state.rules.pvp = false; 
+        Vars.state.rules.waves = true;
+        Vars.state.rules.pvp = false;
+        Vars.scripter.sendMessage("Gamemode set to survival");
+        
+    } else if (gamemode === "pvp") {
+        Vars.state.rules.infiniteResources = false;
+        Vars.state.rules.attackMode = false; 
+        Vars.state.rules.waveTimer = false; 
+        Vars.state.rules.waves = false;
+        Vars.state.rules.pvp = true;
         Vars.scripter.sendMessage("Gamemode set to survival");
         
     } else if (gamemode === "hardmode") {
@@ -29,8 +41,10 @@ ts[ts.currentScriptName].function = function(){
         Vars.scripter.sendMessage("Gamemode set to hardmode");
        
     } else if (gamemode === "sandbox") {
+        Vars.state.rules.infiniteResources = true;
         Vars.state.rules.attackMode = false; 
         Vars.state.rules.waveTimer = false; 
+        Vars.state.rules.waves = false;
         Vars.state.rules.pvp = false;
         Vars.scripter.sendMessage("Gamemode set to sandbox");
         
