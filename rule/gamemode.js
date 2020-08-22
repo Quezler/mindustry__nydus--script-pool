@@ -6,12 +6,12 @@ ts[ts.currentScriptName].function = function(){
 		var gamemode = args[0]
 		var hardmode = Vars.state.rules.waveSpacing / 2 //and i messed up agaain.
        if (gamemode === "attack")
-		   then js Vars.state.rules.attackMode = true; Vars.scripter.sendMessage("Enabled attack mode.")
+		   then js Vars.state.rules.attackMode = true; Vars.scripter.sendMessage("Enabled attack mode.");
 	   if (gamemode === "survival")
-		   then js Vars.state.rules.attackMode = false; Vars.state.rules.waveTimer = true; Vars.state.rules.pvp = false; Vars.scripter.sendMessage("Enabled survival mode")
+		   then js Vars.state.rules.attackMode = false; Vars.state.rules.waveTimer = true; Vars.state.rules.pvp = false; Vars.scripter.sendMessage("Enabled survival mode");
 	   if (gamemode === "hardmode")
-		   then js Vars.state.rules.waveSpacing = hardmode; Vars.scripter.sendMessage("enabled hardmode, have fun.")
+		   then js Vars.state.rules.waveSpacing = hardmode; Vars.scripter.sendMessage("enabled hardmode, have fun.");
 	   if (gamemode === "sandbox")
-		   then js Vars.state.rules.infiniteResources = true; Vars.state.rules.waveTimer = false; Vars.scripter.sendMessage("Enabled sandbox mode")
+		   then js Vars.state.rules.infiniteResources = true; Vars.state.rules.waveTimer = false; Vars.scripter.sendMessage("Enabled sandbox mode");
 	   };
 ts[ts.currentScriptName].function();
