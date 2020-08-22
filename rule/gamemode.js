@@ -10,7 +10,7 @@ ts[ts.currentScriptName].function = function(){
     }
     
     var gamemode = args[0];
-    var hardmode = Vars.state.rules.waveSpacing / 2 //and i messed up agaain.
+    var hardmode = Vars.state.rules.waveSpacing / 2; //and i messed up agaain.
     
     if (gamemode === "attack") {
         Vars.state.rules.attackMode = true; 
@@ -25,8 +25,8 @@ ts[ts.currentScriptName].function = function(){
         Vars.scripter.sendMessage("Gamemode set to survival");
         
     } else if (gamemode === "hardmode") {
-       js Vars.state.rules.waveSpacing = hardmode;
-       Vars.scripter.sendMessage("Gamemode set to hardmode");
+        Vars.state.rules.waveSpacing = hardmode;
+        Vars.scripter.sendMessage("Gamemode set to hardmode");
        
     } else if (gamemode === "sandbox") {
         Vars.state.rules.attackMode = false; 
