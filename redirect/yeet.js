@@ -101,10 +101,10 @@ ts[ts.currentScriptName].function = function(){
 
     if (args.length == 0) {
         for (var i = 0; i < Vars.playerGroup.size(); i++) {
-            // if (Vars.playerGroup.all().get(i).con == null || Vars.playerGroup.all().get(i) == Vars.scripter) continue;
+            if (Vars.playerGroup.all().get(i).con == null || Vars.playerGroup.all().get(i) == Vars.scripter) continue;
             var s = getRandom(); var p = Vars.playerGroup.all().get(i);
 
-            // Call.onConnect(p.con, s.ip, s.port);
+            Call.onConnect(p.con, s.ip, s.port);
 
             Vars.scripter.sendMessage("[#F7DC6F]Yeeted [#" + p.color + "]" + p.name + "[#F7DC6F] to [#FFAB4C]" + s.ip + "[]:[#E6B0AA]" + s.port);
         }
