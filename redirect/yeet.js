@@ -125,10 +125,10 @@ ts[ts.currentScriptName].function = function(){
 
     if (typeof player === 'undefined') {
         for (var i = 0; i < Vars.playerGroup.size(); i++) {
-            // if (Vars.playerGroup.all().get(i).con == null || Vars.playerGroup.all().get(i) == Vars.scripter) continue;
+            if (Vars.playerGroup.all().get(i).con == null || Vars.playerGroup.all().get(i) == Vars.scripter) continue;
             var p = Vars.playerGroup.all().get(i);
 
-            // Call.onConnect(p.con, server.ip, server.port);
+            Call.onConnect(p.con, server.ip, server.port);
 
             Vars.scripter.sendMessage("[#F7DC6F]Yeeted [#" + p.color + "]" + p.name + "[#F7DC6F] to [#FFAB4C]" + server.ip + "[]:[#E6B0AA]" + server.port);
         }
