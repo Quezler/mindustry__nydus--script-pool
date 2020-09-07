@@ -6,6 +6,6 @@ if(typeof ts[ts.currentScriptName] === 'undefined') ts[ts.currentScriptName] = {
 ts[ts.currentScriptName].function = function(){
     const state = ts[ts.currentScriptName];
        var uuid = args[0]
-        pardon uuid
+        pardon uuid;
 };
 ts[ts.currentScriptName].function();
