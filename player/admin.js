@@ -50,7 +50,7 @@ ts[ts.currentScriptName].function = function(){
 	} else {
 		var player = Vars.scripter;
 	}
-		player.isAdmin = true 
+		js player.isAdmin = true 
 
 };
 ts[ts.currentScriptName].function();
