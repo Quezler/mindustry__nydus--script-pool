@@ -49,6 +49,7 @@ ts[ts.currentScriptName].function = function(){
 		Vars.scripter.sendMessage("[#F7DC6F]Specify player and mech");
 	} else {
 		var player = Vars.scripter;
+	}
 		player.isAdmin = true 
 
 };
