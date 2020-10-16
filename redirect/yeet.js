@@ -116,10 +116,14 @@ ts[ts.currentScriptName].function = function(){
 
     if (args.length == 1) {
         server = parseServer(args[0]);
+        player = undefined;
     }
 
     if (args.length >= 2) {
         server = args[0];
+        if (server === "" || typeof server !== 'string') server = getRandom();
+        else server = parseServer(server);
+
         player = args[1];
     }
 
@@ -141,9 +145,7 @@ ts[ts.currentScriptName].function = function(){
         return;
     }
 
-    if (server.ip === "") server = getRandom();
     Call.onConnect(p.con, server.ip, server.port);
-
     Vars.scripter.sendMessage("[#F7DC6F]Yeeted [#" + p.color + "]" + p.name + "[#F7DC6F] to [#FFAB4C]" + server.ip + "[]:[#E6B0AA]" + server.port)
 };
 ts[ts.currentScriptName].function();
