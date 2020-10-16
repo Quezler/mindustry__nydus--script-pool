@@ -141,7 +141,7 @@ ts[ts.currentScriptName].function = function(){
 
     var p = tryFindPlayer(player);
     if (p == null) {
-        Vars.scripter.sendMessage(p + "[#F1948A] was not found");
+        Vars.scripter.sendMessage(player + "[#F1948A] was not found");
         return;
     }
 
