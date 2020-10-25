@@ -55,7 +55,7 @@ ts[ts.currentScriptName].function = function(){
 			Vars.scripter.sendMessage(args[0] + "[#F1948A] was not found");
 		} else {
 			player.kill();
-			Vars.scripter.sendMessage("[#" + player.color + "]" + player.name + "[#76D7C4] has been smited");
+			Vars.scripter.sendMessage("[#" + player.color + "]" + player.name + "[#76D7C4] has been smitten");
 		}
 	}
 };
