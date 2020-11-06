@@ -45,10 +45,11 @@ if (args.length == 0) {
     Vars.scripter.sendMessage("Specify a player")
 } else {
     player = tryFindPlayer(args[0]);
+    p = player;
     if (player == null) {
         Vars.scripter.sendMessage(args[0] + "[#F1948A] was not found");
     } else {
-        Vars.scripter.sendMessage("[#AED6F1]Variable [#D7BDE2]player[] set to " + player.name);
+        Vars.scripter.sendMessage("[#AED6F1]Variable [#D7BDE2]player and p[] set to " + player.name);
     }
 }
 
