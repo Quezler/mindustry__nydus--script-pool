@@ -20,7 +20,7 @@ ts[ts.currentScriptName].function = function(){
     state.jsWatch["run"] = e => {
         state.jsWatch.event = e;
         if (e.message.startsWith('/js') || e.message.startsWith('/ts')) {
-            state.jsWatch.notify('[#' + e.player.color + ']' + e.player.name + '[#A9CCE3] ran [#D5F5E3]' + e.message);
+            if (e.player.isAdmin) state.jsWatch.notify('[#' + e.player.color + ']' + e.player.name + '[#A9CCE3] ran [#D5F5E3]' + e.message);
         }
     }
 
