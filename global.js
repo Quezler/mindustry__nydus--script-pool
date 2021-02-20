@@ -7,7 +7,7 @@ ts[ts.currentScriptName].function = function(){
     const state = ts[ts.currentScriptName];
 
     // parses arguments into an array
-    state.parseArgument = function(arg) {
+    state.parseArguments = function(arg) {
         function parse(val) {
             if (val.startsWith('"') && val.endsWith('"')) return val.slice(1, val.length - 1);
             if (val.startsWith("'") && val.endsWith("'")) return val.slice(1, val.length - 1);
@@ -63,6 +63,6 @@ ts[ts.currentScriptName].function = function(){
         return args;
     }
 
-    return "You are not meant to run this directly"
+    return "[scarlet]This script is not meant to be run directly."
 };
 ts[ts.currentScriptName].function();
