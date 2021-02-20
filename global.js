@@ -22,7 +22,6 @@ ts[ts.currentScriptName].function = function(){
                 let split = val.split('.').slice(1);
                 let temp = this[val.split('.')[0]];
                 for (let i = 0; i < split.length; i++) {
-                    send(temp[split[i]])
                     if (typeof temp[split[i]] !== 'undefined') temp = temp[split[i]];
                 }
                 return temp;
