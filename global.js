@@ -6,6 +6,14 @@ if(typeof ts[ts.currentScriptName] === 'undefined') ts[ts.currentScriptName] = {
 ts[ts.currentScriptName].function = function(){
     const state = ts[ts.currentScriptName];
 
+    state.eval = function(js) {
+        Vars.mods.getScripts().runConsole('try{evalOut = ' + js + '}catch(e){evalOut = e}');
+        if (evalOut instanceof Error) {
+            throw evalOut
+        }
+        return evalOut
+    }
+
     // parses arguments into an array
     state.parseArguments = function(arg) {
         function parse(val) {
@@ -18,15 +26,12 @@ ts[ts.currentScriptName].function = function(){
             if (val === "undefined") return undefined;
             if (val === "null") return undefined;
             if (typeof this[val] !== 'undefined') return this[val];
-            if (val.includes('.')) {
-                let split = val.split('.').slice(1);
-                let temp = this[val.split('.')[0]];
-                for (let i = 0; i < split.length; i++) {
-                    if (typeof temp[split[i]] !== 'undefined') temp = temp[split[i]];
-                }
-                return temp;
+            
+            try {
+                return state.eval(val);
+            } catch(e) {
+                return val;
             }
-            return val;
         }
 
         let inDoubleQuote = false;
