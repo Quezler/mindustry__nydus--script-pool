@@ -16,7 +16,7 @@ ts[ts.currentScriptName].function = function(){
             if (!p.dead() && state.players[p.uuid()] && state.players[p.uuid()].enabled) {
                 var s = state.players[p.uuid()];
                 if (p.unit().isShooting && s.timer.get(0, s.reload)) {
-                    Call.createBullet(s.bullet, p.team(), p.x, p.y, p.unit().angleTo(p.unit().aimX, p.unit().aimY), s.bullet.damage, 1, Math.min(25, s.bullet.lifetime));
+                    Call.createBullet(s.bullet, p.team(), p.x, p.y, p.unit().angleTo(p.unit().aimX, p.unit().aimY), s.bullet.damage, 1, Math.min(15, s.bullet.lifetime));
                 }
             }
         }))
