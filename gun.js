@@ -3,7 +3,7 @@
 //  Changes bullet of <player> to <bullet>
 //  [player] defualts to your player
 //  If no bullet is specified, the bullet of <player> is reset
-//  <reload> is also optional, it overrides player's mech's weapon reload
+//  <reload> is also optional, it overrides player's unit's weapon reload
 
 if(typeof ts === 'undefined') ts = {}; ts.currentScriptName = "gun";
 if(typeof ts[ts.currentScriptName] === 'undefined') ts[ts.currentScriptName] = {};
