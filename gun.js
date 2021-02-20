@@ -1,6 +1,6 @@
 // Usage:
 //   /ts gun [player] Bullets.<bullet> <reload>
-//  Changes bullet of <player> to <bullet>
+//  Changes bullet of [player] to <bullet>
 //  [player] defualts to your player
 //  If no bullet is specified, the bullet of <player> is reset
 //  <reload> is also optional, it overrides player's unit's weapon reload
@@ -45,7 +45,7 @@ ts[ts.currentScriptName].function = function(){
 
     if (!target) target = me.name;
     
-    var resolvedTarget = Groups.player.find(boolf(p => Strings.stripColors(p.name) === target));
+    var resolvedTarget = Groups.player.find(boolf(p => Strings.stripColors(p.name) === Strings.stripColors(target)));
     if (!resolvedTarget) {
         if (!bullet) return "[#EB984E]No bullet specified"
         return "[#EB984E]That player is no where to be found"
