@@ -46,7 +46,7 @@
     
     var resolvedTarget = Groups.player.find(boolf(p => Strings.stripColors(p.name) === Strings.stripColors(target)));
     if (!resolvedTarget) {
-        if (!bullet) return "[#EB984E]No bullet specified"
+        if (!bullet) return "[#EB984E]Either no bullet was provided or the provided one is invalid"
         return "[#EB984E]That player is no where to be found"
     }
 
