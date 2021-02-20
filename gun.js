@@ -5,11 +5,10 @@
 //  If no bullet is specified, the bullet of <player> is reset
 //  <reload> is also optional, it overrides player's unit's weapon reload
 
-if(typeof ts === 'undefined') ts = {}; ts.currentScriptName = "gun";
-if(typeof ts[ts.currentScriptName] === 'undefined') ts[ts.currentScriptName] = {};
-ts[ts.currentScriptName].function = function(){
-    const state = ts[ts.currentScriptName];
+function run(){
     const args = ts.global.parseArguments(argument);
+    if (typeof ts.gun === 'undefined') ts.gun = {};
+    const state = ts.gun;
 
     function update() {
         Groups.player.each(cons(p => {
@@ -78,15 +77,13 @@ ts[ts.currentScriptName].function = function(){
         state.players[resolvedTarget.uuid()].enabled = true;
         state.players[resolvedTarget.uuid()].bullet = bullet;
         state.players[resolvedTarget.uuid()].reload = reload;
-        state.players[resolvedTarget.uuid()].timer = new Interval();;
+        state.players[resolvedTarget.uuid()].timer = new Interval();
     }
 
-    var s = state.players[resolvedTarget.uuid()];
-    s.bullet = bullet;
-    s.reload = reload;
-    s.enabled = true;
-    state.players[resolvedTarget.uuid()] = s;
+    state.players[resolvedTarget.uuid()].bullet = bullet;
+    state.players[resolvedTarget.uuid()].reload = reload;
+    state.players[resolvedTarget.uuid()].enabled = true;
 
     return "[#7FB3D5]Updated bullet to [#76D7C4]" + bullet + "[] reload [#76D7C4]" + reload + (target !== me.name ? "[] player [#76D7C4]" + resolvedTarget.name : "");
-};
-ts[ts.currentScriptName].function();
+}
+run()
