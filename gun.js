@@ -5,7 +5,7 @@
 //  If no bullet is specified, the bullet of <player> is reset
 //  <reload> is also optional, it overrides player's unit's weapon reload
 
-function run(){
+(function(){
     const args = ts.global.parseArguments(argument);
     if (typeof ts.gun === 'undefined') ts.gun = {};
     const state = ts.gun;
@@ -33,7 +33,7 @@ function run(){
         state.eventsRegistered = true;
     }
 
-    if (args.length === 0) return "No bullet specified"
+    if (args.length === 0) return "[#EB984E]No bullet specified"
     var bullet, target, reload;
 
     for (let i = 0; i < args.length; i++) {
@@ -85,5 +85,4 @@ function run(){
     state.players[resolvedTarget.uuid()].enabled = true;
 
     return "[#7FB3D5]Updated bullet to [#76D7C4]" + bullet + "[] reload [#76D7C4]" + reload + (target !== me.name ? "[] player [#76D7C4]" + resolvedTarget.name : "");
-}
-run()
+})()
