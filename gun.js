@@ -71,6 +71,7 @@
     }
 
     if (!bullet) return "[#EB984E]No bullet specified"
+    if (!(bullet instanceof BulletType)) return "[#EB984E]Invalid Bullet"
 
     if (!state.players[resolvedTarget.uuid()]) {
         state.players[resolvedTarget.uuid()] = {};
