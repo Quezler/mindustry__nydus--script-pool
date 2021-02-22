@@ -23,7 +23,7 @@ parseArguments = function(arg) {
         if (val === "undefined") return undefined;
         if (val === "null") return undefined;
         if (typeof this[val] !== 'undefined') return this[val];
-        
+
         try {
             return eval(val);
         } catch(e) {
@@ -68,6 +68,11 @@ parseArguments = function(arg) {
 // should work with a part of a name or regex
 resolvePlayer = function(player) {
     return Groups.player.find(boolf(p => Strings.stripColors(p.name).includes(Strings.stripColors(player)) || Strings.stripColors(p.name).match(Strings.stripColors(player))))
+}
+
+// syncs rules for every player
+syncRules = function() {
+    Call.setRules(Vars.state.rules)
 }
 
 "[scarlet]This script is not meant to be run directly."
