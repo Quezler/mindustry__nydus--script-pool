@@ -75,4 +75,25 @@ syncRules = function() {
     Call.setRules(Vars.state.rules)
 }
 
+// force syncs a player
+sync = function(player) {
+    function sendWorldData(p) {
+        if (typeof ByteArrayOutputStream == 'undefined') importPackage(java.io);
+        if (typeof FastDeflaterOutputStream == 'undefined') importPackage(Packages.arc.util.io)
+        if (typeof NetworkIO == 'undefined') importPackage(Packages.mindustry.net)
+
+        var stream = new ByteArrayOutputStream()
+        var def = new FastDeflaterOutputStream(stream)
+        NetworkIO.writeWorld(p, def);
+
+        var data = new Packets.WorldStream();
+        data.stream = new ByteArrayInputStream(stream.toByteArray());
+
+        p.con.sendStream(data);
+    }
+
+    Call.worldDataBegin(player.con);
+    sendWorldData(player);
+}
+
 "[scarlet]This script is not meant to be run directly."
