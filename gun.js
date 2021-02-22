@@ -6,7 +6,7 @@
 //  <reload> is also optional, it overrides player's unit's weapon reload
 
 (function(){
-    const args = ts.global.parseArguments(argument);
+    const args = parseArguments(argument);
     if (typeof ts.gun === 'undefined') ts.gun = {};
     const state = ts.gun;
 
@@ -44,7 +44,7 @@
 
     if (!target) target = me.name;
     
-    var resolvedTarget = Groups.player.find(boolf(p => Strings.stripColors(p.name) === Strings.stripColors(target)));
+    var resolvedTarget = resolvePlayer(target)
     if (!resolvedTarget) {
         if (!bullet) return "[#EB984E]No bullet specified"
         return "[#EB984E]That player is no where to be found"

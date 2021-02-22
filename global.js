@@ -1,9 +1,9 @@
 // this script is not meant to be directly called using /ts
 // this script is run every time the server starts up or script pool is updated
 
-if(typeof ts === 'undefined') ts = { global: {} };
+if(typeof ts === 'undefined') ts = { }; // for scripts that need stuff to persist accross runs
 
-ts.global.eval = function(js) {
+eval = function(js) {
     Vars.mods.getScripts().runConsole('try{evalOut = ' + js + '}catch(e){evalOut = e}');
     if (evalOut instanceof Error) {
         throw evalOut
@@ -12,8 +12,8 @@ ts.global.eval = function(js) {
 }
 
 // parses arguments into an array
-ts.global.parseArguments = function(arg) {
-    function parse(val) {
+parseArguments = function(arg) {
+    function parse(val) { // eval with extra steps, i should probably get rid of this
         if (val.startsWith('"') && val.endsWith('"')) return val.slice(1, val.length - 1);
         if (val.startsWith("'") && val.endsWith("'")) return val.slice(1, val.length - 1);
         if (Strings.canParseFloat(val)) return parseFloat(val);
@@ -25,7 +25,7 @@ ts.global.parseArguments = function(arg) {
         if (typeof this[val] !== 'undefined') return this[val];
         
         try {
-            return ts.global.eval(val);
+            return eval(val);
         } catch(e) {
             return val;
         }
@@ -62,6 +62,12 @@ ts.global.parseArguments = function(arg) {
         str += char;
     }
     return args;
+}
+
+// tries to find a player, returns null if not found
+// should work with a part of a name or regex
+resolvePlayer = function(player) {
+    return Groups.player.find(boolf(p => Strings.stripColors(p.name).includes(Strings.stripColors(player)) || Strings.stripColors(p.name).match(Strings.stripColors(player))))
 }
 
 "[scarlet]This script is not meant to be run directly."

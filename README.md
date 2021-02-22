@@ -9,7 +9,7 @@ This contains all the arguments as a single string.
 ## Script template
 ```javascript
 (function(){
-    const args = ts.global.parseArguments(argument);
+    const args = parseArguments(argument);
 
     /*
       Your script goes here.
