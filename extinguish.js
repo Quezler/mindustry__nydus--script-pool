@@ -1,1 +1,1 @@
-
+Vars.fireGroup.clear()
