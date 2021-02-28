@@ -1,1 +1,1 @@
-Groups.fire.clear
+Groups.fire.clear()
