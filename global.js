@@ -127,6 +127,8 @@ kickpirated(p) {
 
 if (!ts.eventsRegistered) {
     Events.on(EventType.PlayerConnect, cons(e => kickpirated(e.player)))
+    
+    ts.eventsRegistered = true
 }
 
 "[scarlet]This script is not meant to be run directly."
