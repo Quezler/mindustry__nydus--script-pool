@@ -1,7 +1,7 @@
 // this script is not meant to be directly called using /ts
 // this script is run every time the server starts up or script pool is updated
 
-if(typeof ts === 'undefined') ts = { }; // for scripts that need stuff to persist accross runs
+if(typeof ts === 'undefined') ts = { eventsRegistered: false }; // for scripts that need stuff to persist accross runs
 
 eval = function(js) {
     Vars.mods.getScripts().runConsole('try{evalOut = ' + js + '}catch(e){evalOut = e}');
@@ -94,6 +94,39 @@ sync = function(player) {
 
     Call.worldDataBegin(player.con);
     sendWorldData(player);
+}
+
+// :groundzero:
+GroundZero = ""
+    + "[#0000000][#fac11b80][#fac11b][][]\n"
+    + "[white][#fac11b][#fac11b80][][][]\n"
+    + "[white][#0][][#fac11b][][#0][][][#fac11b][#fac11b80][][]\n"
+    + "[#0][white][#fac11b][][][#fac11b][][]\n"
+    + "[#0][white][#fac11b][][][#fac11b][][][#fac11b80][]\n"
+    + "[#fac11b][#0][white][][white][][white][][]\n"
+    + "[#fac11b80][][#0][][white][]\n"
+    + "[#0][]\n"
+    + "\n"
+    + "\n"
+    + "\n"
+    + "[#fac11b80][][#fac11b80][][]\n"
+    + "[#fac11b80][#fac11b][][]\n"
+    + "[#fac11b80][#fac11b][][]\n"
+
+kickpirated(p) {
+    if (["VALVE"].includes(Strings.stripColors(Strings.stripGlyphs(p.name)).trim())) {
+        Call.kick(p.con, ""
+             + "Mindustry is free on [royal]https://anuke.itch.io/mindustry[]\n"
+             + "\n"
+             + "Mindustry можно скачать бесплатно на [royal]https://anuke.itch.io/mindustry[]\n"
+             + "\n"
+             + GroundZero
+        )
+    }
+}
+
+if (!ts.eventsRegistered) {
+    Events.on(EventType.PlayerConnect, cons(e => kickpirated(e.player)))
 }
 
 "[scarlet]This script is not meant to be run directly."
