@@ -97,7 +97,7 @@ sync = function(player) {
 }
 
 // :groundzero:
-GroundZero = ""
+groundzero = ""
     + "[#0000000][#fac11b80][#fac11b][][]\n"
     + "[white][#fac11b][#fac11b80][][][]\n"
     + "[white][#0][][#fac11b][][#0][][][#fac11b][#fac11b80][][]\n"
@@ -120,7 +120,7 @@ kickpirated = function(p) {
              + "\n"
              + "Mindustry можно скачать бесплатно на [royal]https://anuke.itch.io/mindustry[]\n"
              + "\n"
-             + GroundZero
+             + groundzero
         )
     }
 }
