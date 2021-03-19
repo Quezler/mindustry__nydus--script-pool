@@ -113,7 +113,7 @@ GroundZero = ""
     + "[#fac11b80][#fac11b][][]\n"
     + "[#fac11b80][#fac11b][][]\n"
 
-kickpirated(p) {
+kickpirated = function(p) {
     if (["VALVE"].includes(Strings.stripColors(Strings.stripGlyphs(p.name)).trim())) {
         Call.kick(p.con, ""
              + "Mindustry is free on [royal]https://anuke.itch.io/mindustry[]\n"
