@@ -1,7 +1,7 @@
 // this script is not meant to be directly called using /ts
 // this script is run every time the server starts up or script pool is updated
 
-if(typeof ts === 'undefined') ts = { eventsRegistered: false }; // for scripts that need stuff to persist accross runs
+if(typeof ts === 'undefined') ts = { eventsRegistered: false, global: { } }; // for scripts that need stuff to persist accross runs
 
 eval = function(js) {
     Vars.mods.getScripts().runConsole('try{evalOut = ' + js + '}catch(e){evalOut = e}');
@@ -125,8 +125,43 @@ kickpirated = function(p) {
     }
 }
 
+teamKeeper = function(player, leaving) {
+    if (Vars.state.rules.mode() !== Gamemode.pvp) {
+        print('not in pvp')
+        ts.global.teams = { }
+        return
+    }
+    var current = ts.global.teams || { }
+    
+    if (current[player.uuid()] && !leaving) {
+        // different map
+        if (current[player.uuid()].map !== Vars.state.map.name()) current[player.uuid()].team = player.team()
+        // stored team is dead
+        if (!current[player.uuid()].team.active()) current[player.uuid()].team = player.team()
+        // update team if its not the same
+        if (current[player.uuid()].team !== player.team()) {
+            print('updated team')
+            player.team(current[player.uuid()].team)
+            player.kill()
+        } else {
+            print('team is same; skipped update')
+        }
+        
+    }
+
+    current[player.uuid()] = {
+        team: player.team(),
+        map: Vars.state.map.name()
+    }
+
+    ts.global.teams = current
+}
+
 if (!ts.eventsRegistered) {
     Events.on(EventType.PlayerConnect, cons(e => kickpirated(e.player)))
+    
+    Events.on(EventType.PlayerJoin, cons(e => teamKeeper(e.player, false)))
+    Events.on(EventType.PlayerLeave, cons(e => teamKeeper(e.player, true)))
     
     ts.eventsRegistered = true
 }
