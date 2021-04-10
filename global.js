@@ -127,7 +127,6 @@ kickpirated = function(p) {
 
 teamKeeper = function(player, leaving) {
     if (Vars.state.rules.mode() !== Gamemode.pvp) {
-        print('not in pvp')
         ts.global.teams = { }
         return
     }
@@ -138,15 +137,15 @@ teamKeeper = function(player, leaving) {
         if (current[player.uuid()].map !== Vars.state.map.name()) current[player.uuid()].team = player.team()
         // stored team is dead
         if (!current[player.uuid()].team.active()) current[player.uuid()].team = player.team()
+        // stored team has all the players
+        var teamPlayers = 0
+        Groups.player.each(boolf(p => p.team() === current[player.uuid()].team), cons(() => teamPlayers++))
+        if (teamPlayers === Groups.player.size() - 1) current[player.uuid()].team = player.team()
         // update team if its not the same
         if (current[player.uuid()].team !== player.team()) {
-            print('updated team')
             player.team(current[player.uuid()].team)
             player.kill()
-        } else {
-            print('team is same; skipped update')
         }
-        
     }
 
     current[player.uuid()] = {
