@@ -144,7 +144,7 @@ teamKeeper = function(player, leaving) {
         // update team if its not the same
         if (current[player.uuid()].team !== player.team()) {
             player.team(current[player.uuid()].team)
-            player.kill()
+            player.kill() // respawn at new core
         }
     }
 
@@ -158,10 +158,10 @@ teamKeeper = function(player, leaving) {
 
 if (!ts.eventsRegistered) {
     Events.on(EventType.PlayerConnect, cons(e => kickpirated(e.player)))
-    
-    Events.on(EventType.PlayerJoin, cons(e => teamKeeper(e.player, false)))
-    Events.on(EventType.PlayerLeave, cons(e => teamKeeper(e.player, true)))
-    
+
+    // Events.on(EventType.PlayerJoin, cons(e => teamKeeper(e.player, false)))
+    // Events.on(EventType.PlayerLeave, cons(e => teamKeeper(e.player, true)))
+
     ts.eventsRegistered = true
 }
 
