@@ -1,1 +1,1 @@
-Vars.state.rules.lighting
+Vars.state.rules.lighting=false
