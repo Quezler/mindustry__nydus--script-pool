@@ -1,0 +1,6 @@
+Groups.unit.each(u => u.type == UnitTypes.flare ? u.kill() : 0) 
+Groups.unit.each(u => u.type == UnitTypes.flare ? u.kill() : 0) 
+Groups.unit.each(u => u.type == UnitTypes.flare ? u.kill() : 0) 
+Groups.unit.each(u => u.type == UnitTypes.flare ? u.kill() : 0) 
+Groups.unit.each(u => u.type == UnitTypes.flare ? u.kill() : 0) 
+Groups.unit.each(u => u.type == UnitTypes.flare ? u.kill() : 0) 
