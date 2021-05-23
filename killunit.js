@@ -37,7 +37,14 @@
             Groups.unit.each(u => u.type == UnitTypes.crawler ? u.kill() : 0);
             Groups.unit.each(u => u.type == UnitTypes.crawler ? u.kill() : 0);
             return "crawlers dead, made them attack lol"
-    }
+    case 'crawler':
+            Groups.unit.each(u => u.type == UnitTypes.mace ? u.kill() : 0);
+            Groups.unit.each(u => u.type == UnitTypes.mace ? u.kill() : 0);
+            Groups.unit.each(u => u.type == UnitTypes.mace ? u.kill() : 0);
+            Groups.unit.each(u => u.type == UnitTypes.mace ? u.kill() : 0);
+            Groups.unit.each(u => u.type == UnitTypes.mace ? u.kill() : 0);
+            return "fire bad"
+}
 
     return "not a unit/not implemented(yet)"
 })();
