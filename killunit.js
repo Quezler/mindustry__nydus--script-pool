@@ -4,8 +4,7 @@
 
     if (args.length === 0) return "specify a unit cheesehead";
 
-    let newGamemode = args[0].length === 1 ? args[0] : args[0].slice(0, 2)
-    switch (newGamemode.toLowerCase()) {
+    switch (args[0].toLowerCase()) {
         case 'flare': 
             Groups.unit.each(u => u.type == UnitTypes.flare ? u.kill() : 0);
             Groups.unit.each(u => u.type == UnitTypes.flare ? u.kill() : 0);
