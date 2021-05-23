@@ -37,13 +37,20 @@
             Groups.unit.each(u => u.type == UnitTypes.crawler ? u.kill() : 0);
             Groups.unit.each(u => u.type == UnitTypes.crawler ? u.kill() : 0);
             return "crawlers dead, made them attack lol"
-    case 'crawler':
+    case 'mace':
             Groups.unit.each(u => u.type == UnitTypes.mace ? u.kill() : 0);
             Groups.unit.each(u => u.type == UnitTypes.mace ? u.kill() : 0);
             Groups.unit.each(u => u.type == UnitTypes.mace ? u.kill() : 0);
             Groups.unit.each(u => u.type == UnitTypes.mace ? u.kill() : 0);
             Groups.unit.each(u => u.type == UnitTypes.mace ? u.kill() : 0);
             return "fire bad"
+    case 'pulsar':
+            Groups.unit.each(u => u.type == UnitTypes.pulsar ? u.kill() : 0);
+            Groups.unit.each(u => u.type == UnitTypes.pulsar ? u.kill() : 0);
+            Groups.unit.each(u => u.type == UnitTypes.pulsar ? u.kill() : 0);
+            Groups.unit.each(u => u.type == UnitTypes.pulsar ? u.kill() : 0);
+            Groups.unit.each(u => u.type == UnitTypes.pulsar ? u.kill() : 0);
+            return "alternative to fire also bad"
 }
 
     return "not a unit/not implemented(yet)"
