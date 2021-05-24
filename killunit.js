@@ -5,8 +5,8 @@
     if (args.length === 0) return "specify a unit cheesehead";
     if (UnitTypes[args[0]] == null) return "invalid unit"
 
-    Groups.unit.each(u => u.type === UnitTypes[args[0]], u => u.kill)
-    Groups.unit.each(u => u.type === UnitTypes[args[0]], u => u.kill)
+    Groups.unit.each(boolf(u => u.type === UnitTypes[args[0]]), u => u.kill())
+    Groups.unit.each(boolf(u => u.type === UnitTypes[args[0]]), u => u.kill())
 
     return args[0] + " dead, probably"
 })();
