@@ -114,7 +114,7 @@ groundzero = ""
     + "[#fac11b80][#fac11b][][]\n"
 
 kickpirated = function(p) {
-    if (["VALVE", "IGGAMES", "Igruha.org"].includes(Strings.stripColors(p.name).trim())) {
+    if (["VALVE", "IGGAMES", "Igruha.org", "tuttop", "CODEX", "FreeTP.Org"].includes(Strings.stripColors(p.name).trim())) {
         Call.kick(p.con, ""
              + "Mindustry is free on [royal]https://anuke.itch.io/mindustry[]\n"
              + "\n"
