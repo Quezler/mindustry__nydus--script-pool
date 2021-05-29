@@ -161,7 +161,20 @@ if (!ts.eventsRegistered) {
 
     // Events.on(EventType.PlayerJoin, cons(e => teamKeeper(e.player, false)))
     // Events.on(EventType.PlayerLeave, cons(e => teamKeeper(e.player, true)))
-
+    
+    var lastTick = 0
+    var mean = new WindowedMean(60)
+    const timer = new Interval()
+    Events.run(Trigger.update, () -> {
+        mean.add(Time.sinceMillis(lastTick))
+        lastTick = Time.millis()
+        if (timer.get(60) { // Run once a second
+            const tps = 1000 / mean.rawMean()
+            Call.infoPopup(`TPS: ${tps}`, 1,  Align.top, 120, 0, 0, 0) // 3 times to approximately match the background color of the item hud
+            Call.infoPopup(`TPS: ${tps}`, 1,  Align.top, 120, 0, 0, 0)
+            Call.infoPopup(`TPS: ${tps}`, 1,  Align.top, 120, 0, 0, 0)
+        }
+    })
     ts.eventsRegistered = true
 }
 
