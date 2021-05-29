@@ -174,7 +174,7 @@ if (!ts.eventsRegistered) {
                 Call.infoPopup(p.con, `TPS: ${tps}`, 1,  Align.top, p.con.mobile ? 0 : 120, 0, 0, 0) // 3 times to approximately match the background color of the item hud
                 Call.infoPopup(p.con, `TPS: ${tps}`, 1,  Align.top, p.con.mobile ? 0 : 120, 0, 0, 0)
                 Call.infoPopup(p.con, `TPS: ${tps}`, 1,  Align.top, p.con.mobile ? 0 : 120, 0, 0, 0)
-            }
+            }))
         }
     })
     ts.eventsRegistered = true
