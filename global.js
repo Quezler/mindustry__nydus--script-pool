@@ -166,7 +166,7 @@ if (!ts.eventsRegistered) {
     var mean = new WindowedMean(60)
     const timer = new Interval()
     Events.run(Trigger.update, () -> {
-        mean.add(Time.sinceMillis(lastTick))
+        mean.add(Time.timeSinceMillis(lastTick))
         lastTick = Time.millis()
         if (timer.get(60)) { // Run once a second
             const tps = 1000 / mean.rawMean()
