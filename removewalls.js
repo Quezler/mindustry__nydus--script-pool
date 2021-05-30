@@ -11,4 +11,4 @@
     }
     if (start + 50 < Vars.world.height * Vars.world.width) Core.app.post(() => removeWalls())
     start += 50
-})();
+})(0);
