@@ -11,6 +11,7 @@ function removeWalls(start){
         if (i == 2) {
             Call.sendMessage("a", null, null)
             removeWalls(start + 3)
+        }
     }
 }
 removeWalls(0)
