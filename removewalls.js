@@ -14,4 +14,4 @@ removewalls = function removeWalls(start){
         }
     }
 }
-removeWalls(0)
+removewalls(0)
