@@ -3,8 +3,9 @@ if (!ts.removeWalls) {
     Events.run(Trigger.update, () => {
         if (ts.removeWalls == -1) return
         const start = time.millis()
+        const tiles = Vars.world.height() * Vars.world.width()
         while (Time.timeSinceMillis(start < 33.3)) { // This will drop the tps to 30
-            if (ts.removeWalls > Vars.world.height() * Vars.world.width()) {
+            if (ts.removeWalls > tiles) {
                 ts.removeWalls = -1
                 Groups.player.each(cons(p => sync(p)))
                 return
