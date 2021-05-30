@@ -1,15 +1,14 @@
 // Horrible and slow but it somewhat works kind of barely
-function removeWalls(){
-    let i = 0
-    Vars.world.tiles.eachTile(cons(t => {
-        if (t.block() instanceof StaticWall) {
-            if (i++ == 30) {
-                Core.app.post(() => removeWalls()) // Remove 30 walls a tick
-            } else if (i <= 30) {
-                t.setNet(Blocks.air)
-            }
+function removeWalls(start){
+    for (let i = start; i < start + 50; i++) {
+        if (i > Tiles.size()) {
+            Groups.player.each(cons(p => sync(p)))
+            break
         }
-    }))
-    if (i < 30) Groups.player.each(cons(p => sync(p)))
+
+        let t = Tiles.geti(i)
+        if (t.block() instanceof StaticWall) t.setNet(Blocks.air)
+    }
+    if (start + 50 < Tiles.size()) Core.app.post(() => removeWalls(start + 50))
 }
-removeWalls()
+removeWalls(0)
