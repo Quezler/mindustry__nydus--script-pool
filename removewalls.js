@@ -7,8 +7,8 @@ function removeWalls(start){
         }
 
         let t = Vars.world.tile(i)
-        if (t.block() instanceof StaticWall) t.setNet(Blocks.air)
+        if (t.blockt.block() instanceof StaticWall) t.setNet(Blocks.air)
     }
-    if ((start + 50) < (Vars.world.height() * Vars.world.width())) Core.app.post(() => removeWalls(start + 50))
+    // if ((start + 50) < (Vars.world.height() * Vars.world.width())) Core.app.post(() => removeWalls(start + 50))
 }
 (function(){removeWalls(0)})();
