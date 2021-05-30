@@ -8,7 +8,9 @@ function removeWalls(start){
 
         let t = Vars.world.tiles.geti(i)
         if (t.block() instanceof StaticWall) t.setNet(Blocks.air)
-        if (i == 2) removeWalls(start + 3)
+        if (i == 2) {
+            Call.sendMessage("a", null, null)
+            removeWalls(start + 3)
     }
 }
 removeWalls(0)
