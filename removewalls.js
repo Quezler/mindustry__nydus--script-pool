@@ -6,9 +6,9 @@ function removeWalls(start){
             break
         }
 
-        let t = Vars.world.tile(i)
+        let t = Vars.world.tiles.geti(i)
         if (t.block() instanceof StaticWall) t.setNet(Blocks.air)
     }
-    if ((start + 50) < (Vars.world.height() * Vars.world.width())) Core.app.post(removeWalls(549860))
+    if (start + 50 < Vars.world.height() * Vars.world.width()) Core.app.post(removeWalls(start + 50))
 }
 removeWalls(0)
