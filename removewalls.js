@@ -1,6 +1,7 @@
 // Horrible and slow but it somewhat works kind of barely
 (function(){
     if (!ts.removeWalls) {
+        ts.removeWalls = 0
         Events.run(Trigger.update, () => {
             if (ts.removeWalls == -1) return
             const start = Time.millis()
