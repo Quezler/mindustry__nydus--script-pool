@@ -125,6 +125,22 @@ kickpirated = function(p) {
     }
 }
 
+silicone = function(player) { // Spelling is hard, this will help
+    Call.infoMessage(player.con, ""
+         + "\"In short, silicon is a naturally occurring chemical element, whereas silicone is a synthetic substance.\""
+         + "\n"
+         + "They are not the same, please get it right!"
+    )
+}
+
+polies = function(player) { // Spelling is hard, this will help 2: electric boogaloo
+    Call.infoMessage(player.con, ""
+         + "Unlike a roly-poly whose plural is roly-polies, the plural form of poly is polys." 
+         + "\n"
+         + "Please remember this, thanks! :)"
+    )
+}
+
 teamKeeper = function(player, leaving) {
     if (Vars.state.rules.mode() !== Gamemode.pvp) {
         ts.global.teams = { }
@@ -158,7 +174,12 @@ teamKeeper = function(player, leaving) {
 
 if (!ts.eventsRegistered) {
     Events.on(EventType.PlayerConnect, cons(e => kickpirated(e.player)))
-
+    
+    Events.on(EventType.PlayerChatEvent, cons(e => {
+        if (e.message.toLowerCase().includes("silicone")) silicone(e.player)
+        if (e.message.toLowerCase().includes("polies")) polies(e.player)
+    }))
+    
     // Events.on(EventType.PlayerJoin, cons(e => teamKeeper(e.player, false)))
     // Events.on(EventType.PlayerLeave, cons(e => teamKeeper(e.player, true)))
 
