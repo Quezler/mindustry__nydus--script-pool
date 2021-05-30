@@ -13,4 +13,4 @@ function removeWalls(){
     ts.removeWalls += 50
     if (ts.removeWalls < Vars.world.height * Vars.world.width) Core.app.post(() => removeWalls())
 }
-(removeWalls())();
+removeWalls()
