@@ -10,7 +10,7 @@ removewalls = function(start){
         if (t.block() instanceof StaticWall) t.setNet(Blocks.air)
         if (i == 2) {
             Call.sendMessage("a", null, null)
-            removewalls(start + 3)
+            Call.sendMessage(removewalls(start + 3), null, null)
         }
     }
 }
