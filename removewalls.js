@@ -5,7 +5,7 @@
             if (ts.removeWalls == -1) return
             const start = Time.millis()
             const tiles = Vars.world.height() * Vars.world.width()
-            while (Time.timeSinceMillis(start) < 33.3) {
+            while (Time.timeSinceMillis(start) < 5) {
                 if (ts.removeWalls > tiles) {
                     ts.removeWalls = -1
                     Groups.player.each(cons(p => sync(p)))
