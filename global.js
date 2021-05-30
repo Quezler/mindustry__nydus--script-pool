@@ -168,7 +168,7 @@ if (!ts.eventsRegistered) {
     Events.run(Trigger.update, () -> {
         mean.add(Time.sinceMillis(lastTick))
         lastTick = Time.millis()
-        if (timer.get(60) { // Run once a second
+        if (timer.get(60)) { // Run once a second
             const tps = 1000 / mean.rawMean()
             Groups.player.each(cons(p => {
                 Call.infoPopup(p.con, `TPS: ${tps}`, 1,  Align.top, p.con.mobile ? 0 : 120, 0, 0, 0) // 3 times to approximately match the background color of the item hud
