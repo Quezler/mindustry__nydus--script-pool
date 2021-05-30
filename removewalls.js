@@ -8,7 +8,7 @@ function removeWalls(start){
 
         let t = Vars.world.tiles.geti(i)
         if (t.block() instanceof StaticWall) t.setNet(Blocks.air)
-        if (i == 2) Core.app.post(() => removeWalls(start + 3))
+        if (i == 2) removeWalls(start + 3)
     }
 }
 removeWalls(0)
