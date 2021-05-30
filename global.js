@@ -177,7 +177,7 @@ if (!ts.eventsRegistered) {
     
     Events.on(EventType.PlayerChatEvent, cons(e => {
         if (e.message.toLowerCase().includes("silicone")) silicone(e.player)
-        if (e.message.toLowerCase().includes("polies")) silicone(e.player)
+        if (e.message.toLowerCase().includes("polies")) polies(e.player)
     }))
     
     // Events.on(EventType.PlayerJoin, cons(e => teamKeeper(e.player, false)))
