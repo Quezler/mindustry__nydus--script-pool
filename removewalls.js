@@ -1,6 +1,6 @@
 // Horrible and slow but it somewhat works kind of barely
-let start = 0
-(function removeWalls(){
+(let start = 0
+function removeWalls(){
     for (let i = start; i < start + 50; i++) {
         if (i > Vars.world.height * Vars.world.width) {
             Groups.player.each(cons(p => sync(p)))
