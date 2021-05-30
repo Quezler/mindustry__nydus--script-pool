@@ -13,5 +13,5 @@
         ts.tps.eventsRegistered = true
     }
 
-    return '[royal]Server TPS: []' + Math.max(60, Mathf.round(1000 / ts.mean.rawMean()))
+    return '[royal]Server TPS: []' + Math.min(60, Mathf.round(1000 / ts.mean.rawMean()))
 })();
