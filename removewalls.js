@@ -12,7 +12,7 @@
                     return
                 }
 
-                const t = Vars.world.tiles.geti(ts.removeWalls++)}
+                const t = Vars.world.tiles.geti(ts.removeWalls++)
                 if (t.block() instanceof StaticWall) t.setNet(Blocks.air)
             }
         })
