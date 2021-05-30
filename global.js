@@ -159,8 +159,8 @@ teamKeeper = function(player, leaving) {
 if (!ts.eventsRegistered) {
     Events.on(EventType.PlayerConnect, cons(e => kickpirated(e.player)))
 
-    // Events.on(EventType.PlayerJoin, cons(e => teamKeeper(e.player, false)))
-    // Events.on(EventType.PlayerLeave, cons(e => teamKeeper(e.player, true)))
+    Events.on(EventType.PlayerJoin, cons(e => teamKeeper(e.player, false)))
+    Events.on(EventType.PlayerLeave, cons(e => teamKeeper(e.player, true)))
 
     ts.eventsRegistered = true
 }
