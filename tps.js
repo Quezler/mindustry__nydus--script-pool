@@ -1,4 +1,6 @@
 (function (){
+    const args = parseArguments(argument)
+
     if (!ts.tps) ts.tps = { eventsRegistered: false, displays: {} }
     const state = ts.tps
 
