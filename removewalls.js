@@ -1,4 +1,4 @@
-(function removeWalls(){
+function removeWalls(){
     let i = 0
     Vars.world.tiles.eachTile(cons(t => {
         if (t.block() instanceof StaticWall) {
@@ -10,5 +10,5 @@
         }
     }))
     if (i < 100) Groups.player.each(cons(p => sync(p)))
-})();
-removeWalls();
+}
+removeWalls()
