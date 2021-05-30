@@ -1,17 +1,14 @@
 // Horrible and slow but it somewhat works kind of barely
-removewalls = function(start){
-    for (let i = start; i < start + 3; i++) {
-        if (i > Vars.world.height() * Vars.world.width()) {
-            Groups.player.each(cons(p => sync(p)))
-            break
+if (!ts.removeWalls) {
+    Events.run(Trigger.update, () => {
+        if (ts.removeWalls == -1) return
+        if (ts.removeWalls > Vars.world.height() * Vars.world.width()) {
+            ts.removeWalls = -1
+            return
         }
 
-        let t = Vars.world.tiles.geti(i)
+        const t = Vars.world.tiles.geti(ts.removeWalls++)
         if (t.block() instanceof StaticWall) t.setNet(Blocks.air)
-        if (i == 2) {
-            Call.sendMessage("a", null, null)
-            Call.sendMessage(removewalls(start + 3), null, null)
-        }
-    }
+    })
 }
-removewalls(0)
+ts.removeWalls = 0
