@@ -2,13 +2,19 @@
 if (!ts.removeWalls) {
     Events.run(Trigger.update, () => {
         if (ts.removeWalls == -1) return
-        if (ts.removeWalls > Vars.world.height() * Vars.world.width()) {
-            ts.removeWalls = -1
-            return
-        }
+        const start = time.millis()
+        while Time.timeSinceMillis(start < 33.3) { // This will drop the tps to 30
+                if (ts.removeWalls > Vars.world.height() * Vars.world.width()) {
+                    ts.removeWalls = -1
+                    Groups.player.each(cons(p => sync(p)))
+                    return
+                }
 
-        const t = Vars.world.tiles.geti(ts.removeWalls++)
-        if (t.block() instanceof StaticWall) t.setNet(Blocks.air)
+                const t = Vars.world.tiles.geti(ts.removeWalls++)
+                if (t.block() instanceof StaticWall) {
+                    t.setNet(Blocks.air)
+                }
+            }
     })
 }
 ts.removeWalls = 0
