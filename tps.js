@@ -9,9 +9,9 @@
             const tps = Core.graphics.getFramesPerSecond()
             Groups.player.each(cons(p => {
                 if (state.displays[p.uuid()] && state.displays[p.uuid()].enabled) {
-                    Call.infoPopup(p.con, 'TPS: ' + tps, 1.050,  Align.top, state.displays[p.uuid()].offset, 0, 0, 0) // 3 times to approximately match the background color of the item hud
-                    Call.infoPopup(p.con, 'TPS: ' + tps, 1.050,  Align.top, state.displays[p.uuid()].offset, 0, 0, 0)
-                    Call.infoPopup(p.con, 'TPS: ' + tps, 1.050,  Align.top, state.displays[p.uuid()].offset, 0, 0, 0)
+                    Call.infoPopup(p.con, 'TPS: ' + tps, 1,  Align.top, state.displays[p.uuid()].offset, 0, 0, 0) // 3 times to approximately match the background color of the item hud
+                    Call.infoPopup(p.con, 'TPS: ' + tps, 1,  Align.top, state.displays[p.uuid()].offset, 0, 0, 0)
+                    Call.infoPopup(p.con, 'TPS: ' + tps, 1,  Align.top, state.displays[p.uuid()].offset, 0, 0, 0)
                 }
             }))
         }, 0, 1)
