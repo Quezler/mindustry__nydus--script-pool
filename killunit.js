@@ -5,8 +5,12 @@
     if (args.length === 0) return "specify a unit cheesehead";
     if (UnitTypes[args[0]] == null) return "invalid unit"
 
-    Groups.unit.each(u => u.type === UnitTypes[args[0]] ? u.kill() : 0)
-    Core.app.post (() => Core.app.post (() => Groups.unit.each(u => u.type === UnitTypes[args[0]] ? u.kill() : 0))) // Delay 2 ticks because otherwise sometimes things dont die
+    Groups.unit.each(u => {
+        if (u.type == UnitTypes.gamma) {
+            u.kill() // Kill so their removal is synced
+            u.remove() // Remove so they dont respawn
+        }
+    })
 
     return args[0] + " dead, probably"
 })();
