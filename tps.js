@@ -23,7 +23,7 @@
     }
 
     if (args.length > 0 && args[0][0] === 'd') {
-        const offset = args.length > 1 ? args[1] : 0
+        const offset = args.length > 1 ? args[1] : me.con.mobile ? 0 : 104 // 104 is the perfect height for PC users with the tile hud on
 
         // running for the first time
         if (!state.displays[me.uuid()]) {
