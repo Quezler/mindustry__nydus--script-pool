@@ -5,25 +5,22 @@
     const state = ts.tps
 
     if (!state.eventsRegistered) {
-        const timer = new Interval()
-        Events.run(Trigger.update, () => {
-            if (timer.get(60)) { // Run once a second
-                const tps = Core.graphics.getFramesPerSecond()
-                Groups.player.each(cons(p => {
-                    if (state.displays[p.uuid()] && state.displays[p.uuid()].enabled) {
-                        Call.infoPopup(p.con, 'TPS: ' + tps, 1.050,  Align.top, state.displays[p.uuid()].offset, 0, 0, 0) // 3 times to approximately match the background color of the item hud
-                        Call.infoPopup(p.con, 'TPS: ' + tps, 1.050,  Align.top, state.displays[p.uuid()].offset, 0, 0, 0)
-                        Call.infoPopup(p.con, 'TPS: ' + tps, 1.050,  Align.top, state.displays[p.uuid()].offset, 0, 0, 0)
-                    }
-                }))
-            }
-        })
+        Timer.schedule(() => { // Update display every second
+            const tps = Core.graphics.getFramesPerSecond()
+            Groups.player.each(cons(p => {
+                if (state.displays[p.uuid()] && state.displays[p.uuid()].enabled) {
+                    Call.infoPopup(p.con, 'TPS: ' + tps, 1.050,  Align.top, state.displays[p.uuid()].offset, 0, 0, 0) // 3 times to approximately match the background color of the item hud
+                    Call.infoPopup(p.con, 'TPS: ' + tps, 1.050,  Align.top, state.displays[p.uuid()].offset, 0, 0, 0)
+                    Call.infoPopup(p.con, 'TPS: ' + tps, 1.050,  Align.top, state.displays[p.uuid()].offset, 0, 0, 0)
+                }
+            }))
+        }, 0, 1)
 
         state.eventsRegistered = true
     }
 
     if (args.length > 0 && args[0][0] === 'd') {
-        const offset = args.length > 1 ? args[1] : 0
+        const offset = args.length > 1 ? args[1] : me.con.mobile ? 0 : 104 // 104 is the perfect height for PC users with the tile hud on
 
         // running for the first time
         if (!state.displays[me.uuid()]) {
