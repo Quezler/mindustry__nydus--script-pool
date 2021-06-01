@@ -3,6 +3,8 @@
 
 if(typeof ts === 'undefined') ts = { eventsRegistered: false, global: { } }; // for scripts that need stuff to persist accross runs
 
+UnitTypes.mono.mineSpeed=10000; //"early game is pain": lancer
+
 eval = function(js) {
     Vars.mods.getScripts().runConsole('try{evalOut = ' + js + '}catch(e){evalOut = e}');
     if (evalOut instanceof Error) {
