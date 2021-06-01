@@ -162,7 +162,7 @@ if (!ts.eventsRegistered) {
     Events.on(EventType.PlayerJoin, cons(e => teamKeeper(e.player, false)))
     Events.on(EventType.PlayerLeave, cons(e => teamKeeper(e.player, true)))
 
-    Events.on(EventType.playerConnect, cons(e => { // Prevent duped uuids
+    Events.on(EventType.PlayerConnect, cons(e => { // Prevent duped uuids
         if (Groups.player.contains(p => p.uuid().equals(e.player.uuid()) || p.usid().equals(e.player.usid()))) e.player.kick(KickReason.idInUse)
     }))
 
