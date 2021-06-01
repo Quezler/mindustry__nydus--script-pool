@@ -163,7 +163,7 @@ if (!ts.eventsRegistered) {
     Events.on(EventType.PlayerLeave, cons(e => teamKeeper(e.player, true)))
 
     Events.on(EventType.ConnectionEvent, cons(e => { // Prevent duped uuids
-        if (Groups.player.contains(p => p.uuid() == e.uuid() || p.usid() == e.usid())) e.kick(KickReason.idInUse)
+        if (Groups.player.contains(p => p.uuid() == e.uuid || p.usid() == e.usid)) e.kick(KickReason.idInUse)
     }))
 
     ts.eventsRegistered = true
