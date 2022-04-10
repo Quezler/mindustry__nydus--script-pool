@@ -156,6 +156,12 @@ teamKeeper = function(player, leaving) {
     ts.global.teams = current
 }
 
+waveLimit = function() {
+    if (Vars.state.wave > 500 && Groups.player.size() === 0 && Groups.unit.size() > 3000) {
+        Events.fire(new GameOverEvent(Team.sharded))   
+    }
+}
+
 if (!ts.eventsRegistered) {
     Events.on(EventType.PlayerConnect, cons(e => kickpirated(e.player)))
 
@@ -165,6 +171,8 @@ if (!ts.eventsRegistered) {
     Events.on(EventType.PlayerJoin, cons(e => { // Prevent duped uuids
         if (Groups.player.contains(p => p != e.player && (p.uuid() == e.player.uuid() || p.usid() == e.player.usid()))) e.player.kick(Packets.KickReason.idInUse)
     }))
+    
+    Events.on(EventType.WaveEvent, () => waveLimit())
 
     ts.eventsRegistered = true
 }
