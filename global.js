@@ -173,6 +173,34 @@ if (!ts.eventsRegistered) {
     }))
     
     Events.on(EventType.WaveEvent, () => waveLimit())
+    
+    Timer.schedule(() => {
+        if (Groups.unit.size() > 5000) {
+            const counts = {}
+            
+            Groups.unit.each(u => {
+                if (counts[u.team] == null) counts[u.team] = 0
+                counts[u.team]++
+            })
+            
+            let highest = 0
+            let highestTeam = ''
+            for (const team in counts) {
+                if (counts[team] > highest) {
+                    highestTeam = team
+                    highest = counts[team]
+                }
+            }
+            
+            let killCount = 0
+            Groups.unit.each(u => u.team == highestTeam, u => {
+                if (killCount < 100) {
+                    u.kill()
+                    killCount++
+                }
+            })
+        }
+    }, 0, 5)2
 
     ts.eventsRegistered = true
 }
