@@ -200,7 +200,7 @@ if (!ts.eventsRegistered) {
                 }
             })
         }
-    }, 0, 5)2
+    }, 0, 5)
 
     ts.eventsRegistered = true
 }
