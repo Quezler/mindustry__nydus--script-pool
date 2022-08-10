@@ -185,7 +185,8 @@ if (!ts.eventsRegistered) {
             
             let highest = 0
             let highestTeam = ''
-            for (const team of Object.keys(counts)) {
+            for (let i = 0; i < Object.keys(counts).length; i++) {
+                const team = Object.keys(counts)[i]
                 if (counts[team] > highest) {
                     highestTeam = team
                     highest = counts[team]
