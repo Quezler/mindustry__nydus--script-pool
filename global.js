@@ -144,7 +144,7 @@ teamKeeper = function(player, leaving) {
         // update team if its not the same
         if (current[player.uuid()].team !== player.team()) {
             player.team(current[player.uuid()].team)
-            player.kill() // respawn at new core
+            player.unit().kill() // respawn at new core
         }
     }
 
